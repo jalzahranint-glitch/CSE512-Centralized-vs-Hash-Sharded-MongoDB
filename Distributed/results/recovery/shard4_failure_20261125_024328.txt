@@ -1,0 +1,7 @@
+=== SHARD 4 FAILURE TEST ===
+Shard 4 stopped.
+Exit code: 2
+QUERY_FAILED: operation exceeded time limit
+=== RESTART SHARD 4 ===
+Restart exit code: 0
+nyc-mongo-distributed-shard4-1

@@ -1,0 +1,30 @@
+{
+  query: 'Q1 - Vehicle Lookup',
+  dataset: '100k',
+  mode: 'Centralized - No Index',
+  executionTimeMillis: 33,
+  latencyMillis: 42,
+  totalDocsExamined: 100000,
+  totalKeysExamined: 0,
+  nReturned: 1
+}
+{
+  query: 'Q1 - Vehicle Lookup',
+  dataset: '500k',
+  mode: 'Centralized - No Index',
+  executionTimeMillis: 171,
+  latencyMillis: 509,
+  totalDocsExamined: 500000,
+  totalKeysExamined: 0,
+  nReturned: 1
+}
+{
+  query: 'Q1 - Vehicle Lookup',
+  dataset: '1m',
+  mode: 'Centralized - No Index',
+  executionTimeMillis: 350,
+  latencyMillis: 1008,
+  totalDocsExamined: 1000000,
+  totalKeysExamined: 0,
+  nReturned: 2
+}

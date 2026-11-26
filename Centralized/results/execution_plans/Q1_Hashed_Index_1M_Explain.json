@@ -1,0 +1,136 @@
+{
+  "explainVersion": "1",
+  "queryPlanner": {
+    "namespace": "nyc_traffic.violations_1m",
+    "parsedQuery": {
+      "vehicle_hash": {
+        "$eq": "e1b3dc8fd32093207a7a965292593e4601fe2825d72d02e58f37d0d438e84dd2"
+      }
+    },
+    "indexFilterSet": false,
+    "queryHash": "30590474",
+    "planCacheShapeHash": "30590474",
+    "planCacheKey": "5D975F38",
+    "optimizationTimeMillis": 0,
+    "maxIndexedOrSolutionsReached": false,
+    "maxIndexedAndSolutionsReached": false,
+    "maxScansToExplodeReached": false,
+    "prunedSimilarIndexes": false,
+    "winningPlan": {
+      "isCached": false,
+      "stage": "FETCH",
+      "filter": {
+        "vehicle_hash": {
+          "$eq": "e1b3dc8fd32093207a7a965292593e4601fe2825d72d02e58f37d0d438e84dd2"
+        }
+      },
+      "inputStage": {
+        "stage": "IXSCAN",
+        "keyPattern": {
+          "vehicle_hash": "hashed"
+        },
+        "indexName": "vehicle_hash_hashed",
+        "isMultiKey": false,
+        "isUnique": false,
+        "isSparse": false,
+        "isPartial": false,
+        "indexVersion": 2,
+        "direction": "forward",
+        "indexBounds": {
+          "vehicle_hash": [
+            "[-699523373090794189, -699523373090794189]"
+          ]
+        }
+      }
+    },
+    "rejectedPlans": []
+  },
+  "executionStats": {
+    "executionSuccess": true,
+    "nReturned": 2,
+    "executionTimeMillis": 24,
+    "totalKeysExamined": 2,
+    "totalDocsExamined": 2,
+    "executionStages": {
+      "isCached": false,
+      "stage": "FETCH",
+      "filter": {
+        "vehicle_hash": {
+          "$eq": "e1b3dc8fd32093207a7a965292593e4601fe2825d72d02e58f37d0d438e84dd2"
+        }
+      },
+      "nReturned": 2,
+      "executionTimeMillisEstimate": 24,
+      "works": 3,
+      "advanced": 2,
+      "needTime": 0,
+      "needYield": 0,
+      "saveState": 1,
+      "restoreState": 1,
+      "isEOF": 1,
+      "docsExamined": 2,
+      "alreadyHasObj": 0,
+      "inputStage": {
+        "stage": "IXSCAN",
+        "nReturned": 2,
+        "executionTimeMillisEstimate": 24,
+        "works": 3,
+        "advanced": 2,
+        "needTime": 0,
+        "needYield": 0,
+        "saveState": 1,
+        "restoreState": 1,
+        "isEOF": 1,
+        "keyPattern": {
+          "vehicle_hash": "hashed"
+        },
+        "indexName": "vehicle_hash_hashed",
+        "isMultiKey": false,
+        "isUnique": false,
+        "isSparse": false,
+        "isPartial": false,
+        "indexVersion": 2,
+        "direction": "forward",
+        "indexBounds": {
+          "vehicle_hash": [
+            "[-699523373090794189, -699523373090794189]"
+          ]
+        },
+        "keysExamined": 2,
+        "seeks": 1,
+        "dupsTested": 0,
+        "dupsDropped": 0
+      }
+    }
+  },
+  "queryShapeHash": "DF0B843CC092BBF5877897AC30FEEE30182B33BD4F18136CE44E3ACC96C91FA7",
+  "command": {
+    "find": "violations_1m",
+    "filter": {
+      "vehicle_hash": "e1b3dc8fd32093207a7a965292593e4601fe2825d72d02e58f37d0d438e84dd2"
+    },
+    "hint": {
+      "vehicle_hash": "hashed"
+    },
+    "$db": "nyc_traffic"
+  },
+  "serverInfo": {
+    "host": "6dcc8e22ff36",
+    "port": 27017,
+    "version": "8.0.34",
+    "gitVersion": "51db4515a6597aedcf6188ee4e48a27e65b065ae"
+  },
+  "serverParameters": {
+    "internalQueryFacetBufferSizeBytes": 104857600,
+    "internalQueryFacetMaxOutputDocSizeBytes": 104857600,
+    "internalLookupStageIntermediateDocumentMaxSizeBytes": 104857600,
+    "internalDocumentSourceGroupMaxMemoryBytes": 104857600,
+    "internalQueryMaxBlockingSortMemoryUsageBytes": 104857600,
+    "internalQueryProhibitBlockingMergeOnMongoS": 0,
+    "internalQueryMaxAddToSetBytes": 104857600,
+    "internalDocumentSourceSetWindowFieldsMaxMemoryBytes": 104857600,
+    "internalQueryFrameworkControl": "trySbeRestricted",
+    "internalQueryPlannerIgnoreIndexWithCollationForRegex": 1
+  },
+  "ok": 1
+}

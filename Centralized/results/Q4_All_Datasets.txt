@@ -1,0 +1,192 @@
+===== Q4 Results: 100k =====
+[
+  {
+    total_violations: 4567,
+    borough: 'Queens',
+    month: '2023-10'
+  },
+  {
+    total_violations: 4411,
+    borough: 'Queens',
+    month: '2024-08'
+  },
+  {
+    total_violations: 4349,
+    borough: 'Queens',
+    month: '2024-07'
+  },
+  {
+    total_violations: 3765,
+    borough: 'Queens',
+    month: '2024-01'
+  },
+  {
+    total_violations: 3663,
+    borough: 'Queens',
+    month: '2023-09'
+  },
+  {
+    total_violations: 3120,
+    borough: 'Brooklyn',
+    month: '2023-10'
+  },
+  {
+    total_violations: 3015,
+    borough: 'Brooklyn',
+    month: '2024-08'
+  },
+  {
+    total_violations: 2941,
+    borough: 'Brooklyn',
+    month: '2024-07'
+  },
+  {
+    total_violations: 2818,
+    borough: 'Brooklyn',
+    month: '2024-01'
+  },
+  {
+    total_violations: 2767,
+    borough: 'Queens',
+    month: '2023-12'
+  }
+]
+===== Q4 Performance: 100k =====
+{
+  query: 'Q4 - Borough and Monthly Analysis',
+  dataset: '100k',
+  mode: 'Centralized - No Additional Index',
+  latencyMillis: 77,
+  serverExecutionTimeMillis: 73,
+  totalDocsExamined: 100000,
+  totalKeysExamined: 0,
+  recordsReturned: 10
+}
+===== Q4 Results: 500k =====
+[
+  {
+    total_violations: 22947,
+    borough: 'Queens',
+    month: '2023-10'
+  },
+  {
+    total_violations: 22701,
+    borough: 'Queens',
+    month: '2024-08'
+  },
+  {
+    total_violations: 21898,
+    borough: 'Queens',
+    month: '2024-07'
+  },
+  {
+    total_violations: 18632,
+    borough: 'Queens',
+    month: '2023-09'
+  },
+  {
+    total_violations: 18571,
+    borough: 'Queens',
+    month: '2024-01'
+  },
+  {
+    total_violations: 16091,
+    borough: 'Brooklyn',
+    month: '2023-10'
+  },
+  {
+    total_violations: 15134,
+    borough: 'Brooklyn',
+    month: '2024-07'
+  },
+  {
+    total_violations: 14867,
+    borough: 'Brooklyn',
+    month: '2024-08'
+  },
+  {
+    total_violations: 14135,
+    borough: 'Brooklyn',
+    month: '2024-01'
+  },
+  {
+    total_violations: 13614,
+    borough: 'Queens',
+    month: '2024-03'
+  }
+]
+===== Q4 Performance: 500k =====
+{
+  query: 'Q4 - Borough and Monthly Analysis',
+  dataset: '500k',
+  mode: 'Centralized - No Additional Index',
+  latencyMillis: 361,
+  serverExecutionTimeMillis: 357,
+  totalDocsExamined: 500000,
+  totalKeysExamined: 0,
+  recordsReturned: 10
+}
+===== Q4 Results: 1m =====
+[
+  {
+    total_violations: 45739,
+    borough: 'Queens',
+    month: '2023-10'
+  },
+  {
+    total_violations: 45516,
+    borough: 'Queens',
+    month: '2024-08'
+  },
+  {
+    total_violations: 43676,
+    borough: 'Queens',
+    month: '2024-07'
+  },
+  {
+    total_violations: 37398,
+    borough: 'Queens',
+    month: '2024-01'
+  },
+  {
+    total_violations: 37145,
+    borough: 'Queens',
+    month: '2023-09'
+  },
+  {
+    total_violations: 32023,
+    borough: 'Brooklyn',
+    month: '2023-10'
+  },
+  {
+    total_violations: 30351,
+    borough: 'Brooklyn',
+    month: '2024-07'
+  },
+  {
+    total_violations: 29506,
+    borough: 'Brooklyn',
+    month: '2024-08'
+  },
+  {
+    total_violations: 28240,
+    borough: 'Brooklyn',
+    month: '2024-01'
+  },
+  {
+    total_violations: 27594,
+    borough: 'Queens',
+    month: '2023-12'
+  }
+]
+===== Q4 Performance: 1m =====
+{
+  query: 'Q4 - Borough and Monthly Analysis',
+  dataset: '1m',
+  mode: 'Centralized - No Additional Index',
+  latencyMillis: 699,
+  serverExecutionTimeMillis: 697,
+  totalDocsExamined: 1000000,
+  totalKeysExamined: 0,
+  recordsReturned: 10
+}

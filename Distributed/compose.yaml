@@ -1,0 +1,113 @@
+
+name: nyc-mongo-distributed
+
+services:
+  cfg:
+    image: mongo:8.0
+    command:
+      - mongod
+      - --configsvr
+      - --replSet
+      - cfgRS
+      - --port
+      - "27017"
+      - --dbpath
+      - /data/db
+      - --bind_ip_all
+      - --wiredTigerCacheSizeGB
+      - "0.256"
+    volumes:
+      - cfg_data:/data/db
+    mem_limit: 512m
+    restart: "no"
+
+  shard1:
+    image: mongo:8.0
+    command:
+      - mongod
+      - --shardsvr
+      - --replSet
+      - shard1RS
+      - --port
+      - "27017"
+      - --bind_ip_all
+      - --wiredTigerCacheSizeGB
+      - "0.256"
+    volumes:
+      - shard1_data:/data/db
+    mem_limit: 512m
+    restart: "no"
+
+  shard2:
+    image: mongo:8.0
+    command:
+      - mongod
+      - --shardsvr
+      - --replSet
+      - shard2RS
+      - --port
+      - "27017"
+      - --bind_ip_all
+      - --wiredTigerCacheSizeGB
+      - "0.256"
+    volumes:
+      - shard2_data:/data/db
+    mem_limit: 512m
+    restart: "no"
+
+  shard3:
+    image: mongo:8.0
+    command:
+      - mongod
+      - --shardsvr
+      - --replSet
+      - shard3RS
+      - --port
+      - "27017"
+      - --bind_ip_all
+      - --wiredTigerCacheSizeGB
+      - "0.256"
+    volumes:
+      - shard3_data:/data/db
+    mem_limit: 512m
+    restart: "no"
+
+  shard4:
+    image: mongo:8.0
+    command:
+      - mongod
+      - --shardsvr
+      - --replSet
+      - shard4RS
+      - --port
+      - "27017"
+      - --bind_ip_all
+      - --wiredTigerCacheSizeGB
+      - "0.256"
+    volumes:
+      - shard4_data:/data/db
+    mem_limit: 512m
+    restart: "no"
+
+  mongos:
+    image: mongo:8.0
+    command:
+      - mongos
+      - --configdb
+      - cfgRS/cfg:27017
+      - --port
+      - "27017"
+      - --bind_ip_all
+    ports:
+      - "127.0.0.1:27019:27017"
+    depends_on:
+      - cfg
+    mem_limit: 256m
+    restart: "no"
+
+volumes:
+  cfg_data:
+  shard1_data:
+  shard2_data:
+  shard3_data:
+  shard4_data:

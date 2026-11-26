@@ -1,0 +1,222 @@
+===== Q5 Results: 100k =====
+[
+  {
+    repeat_offender_vehicles: 173,
+    repeat_violations: 362,
+    max_violations_per_vehicle: 4,
+    month: '2024-07'
+  },
+  {
+    repeat_offender_vehicles: 159,
+    repeat_violations: 334,
+    max_violations_per_vehicle: 6,
+    month: '2023-10'
+  },
+  {
+    repeat_offender_vehicles: 152,
+    repeat_violations: 332,
+    max_violations_per_vehicle: 7,
+    month: '2024-08'
+  },
+  {
+    repeat_offender_vehicles: 149,
+    repeat_violations: 334,
+    max_violations_per_vehicle: 8,
+    month: '2024-01'
+  },
+  {
+    repeat_offender_vehicles: 115,
+    repeat_violations: 243,
+    max_violations_per_vehicle: 5,
+    month: '2023-09'
+  },
+  {
+    repeat_offender_vehicles: 85,
+    repeat_violations: 177,
+    max_violations_per_vehicle: 5,
+    month: '2024-03'
+  },
+  {
+    repeat_offender_vehicles: 81,
+    repeat_violations: 168,
+    max_violations_per_vehicle: 3,
+    month: '2024-09'
+  },
+  {
+    repeat_offender_vehicles: 79,
+    repeat_violations: 165,
+    max_violations_per_vehicle: 4,
+    month: '2023-12'
+  },
+  {
+    repeat_offender_vehicles: 61,
+    repeat_violations: 124,
+    max_violations_per_vehicle: 4,
+    month: '2024-04'
+  },
+  {
+    repeat_offender_vehicles: 59,
+    repeat_violations: 124,
+    max_violations_per_vehicle: 7,
+    month: '2023-11'
+  }
+]
+===== Q5 Performance: 100k =====
+{
+  query: 'Q5 - Monthly Repeat-Offender Analysis',
+  dataset: '100k',
+  mode: 'Centralized - No Additional Index',
+  latencyMillis: 411,
+  serverExecutionTimeMillis: 404,
+  totalDocsExamined: 100000,
+  totalKeysExamined: 0,
+  recordsReturned: 10
+}
+===== Q5 Results: 500k =====
+[
+  {
+    repeat_offender_vehicles: 3323,
+    repeat_violations: 7415,
+    max_violations_per_vehicle: 12,
+    month: '2024-07'
+  },
+  {
+    repeat_offender_vehicles: 2999,
+    repeat_violations: 6736,
+    max_violations_per_vehicle: 15,
+    month: '2024-08'
+  },
+  {
+    repeat_offender_vehicles: 2863,
+    repeat_violations: 6427,
+    max_violations_per_vehicle: 18,
+    month: '2023-10'
+  },
+  {
+    repeat_offender_vehicles: 2586,
+    repeat_violations: 6015,
+    max_violations_per_vehicle: 33,
+    month: '2024-01'
+  },
+  {
+    repeat_offender_vehicles: 1903,
+    repeat_violations: 4177,
+    max_violations_per_vehicle: 12,
+    month: '2023-09'
+  },
+  {
+    repeat_offender_vehicles: 1551,
+    repeat_violations: 3433,
+    max_violations_per_vehicle: 12,
+    month: '2024-09'
+  },
+  {
+    repeat_offender_vehicles: 1441,
+    repeat_violations: 3233,
+    max_violations_per_vehicle: 13,
+    month: '2023-12'
+  },
+  {
+    repeat_offender_vehicles: 1434,
+    repeat_violations: 3201,
+    max_violations_per_vehicle: 36,
+    month: '2024-03'
+  },
+  {
+    repeat_offender_vehicles: 1054,
+    repeat_violations: 2315,
+    max_violations_per_vehicle: 12,
+    month: '2024-04'
+  },
+  {
+    repeat_offender_vehicles: 1006,
+    repeat_violations: 2214,
+    max_violations_per_vehicle: 22,
+    month: '2024-02'
+  }
+]
+===== Q5 Performance: 500k =====
+{
+  query: 'Q5 - Monthly Repeat-Offender Analysis',
+  dataset: '500k',
+  mode: 'Centralized - No Additional Index',
+  latencyMillis: 1578,
+  serverExecutionTimeMillis: 1574,
+  totalDocsExamined: 500000,
+  totalKeysExamined: 0,
+  recordsReturned: 10
+}
+===== Q5 Results: 1m =====
+[
+  {
+    repeat_offender_vehicles: 10312,
+    repeat_violations: 24344,
+    max_violations_per_vehicle: 28,
+    month: '2024-07'
+  },
+  {
+    repeat_offender_vehicles: 9355,
+    repeat_violations: 22020,
+    max_violations_per_vehicle: 26,
+    month: '2024-08'
+  },
+  {
+    repeat_offender_vehicles: 9069,
+    repeat_violations: 21232,
+    max_violations_per_vehicle: 37,
+    month: '2023-10'
+  },
+  {
+    repeat_offender_vehicles: 7979,
+    repeat_violations: 19379,
+    max_violations_per_vehicle: 64,
+    month: '2024-01'
+  },
+  {
+    repeat_offender_vehicles: 5987,
+    repeat_violations: 13808,
+    max_violations_per_vehicle: 25,
+    month: '2023-09'
+  },
+  {
+    repeat_offender_vehicles: 5341,
+    repeat_violations: 12310,
+    max_violations_per_vehicle: 19,
+    month: '2024-09'
+  },
+  {
+    repeat_offender_vehicles: 4677,
+    repeat_violations: 10793,
+    max_violations_per_vehicle: 69,
+    month: '2024-03'
+  },
+  {
+    repeat_offender_vehicles: 4663,
+    repeat_violations: 10997,
+    max_violations_per_vehicle: 24,
+    month: '2023-12'
+  },
+  {
+    repeat_offender_vehicles: 3486,
+    repeat_violations: 7983,
+    max_violations_per_vehicle: 23,
+    month: '2024-04'
+  },
+  {
+    repeat_offender_vehicles: 3327,
+    repeat_violations: 7600,
+    max_violations_per_vehicle: 42,
+    month: '2024-02'
+  }
+]
+===== Q5 Performance: 1m =====
+{
+  query: 'Q5 - Monthly Repeat-Offender Analysis',
+  dataset: '1m',
+  mode: 'Centralized - No Additional Index',
+  latencyMillis: 6569,
+  serverExecutionTimeMillis: 6564,
+  totalDocsExamined: 1000000,
+  totalKeysExamined: 0,
+  recordsReturned: 10
+}

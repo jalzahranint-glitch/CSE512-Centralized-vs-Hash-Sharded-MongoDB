@@ -1,0 +1,125 @@
+Q3 Actual Query Results
+Dataset: 1M
+Results returned: 10
+[
+  {
+    _id: '01b3866c6beba600319b0933c56490e89b31270c1a3e43dfad06b380d561afde',
+    boroughs: [
+      'Staten Island',
+      'Brooklyn',
+      'Queens',
+      'Bronx',
+      'Manhattan'
+    ],
+    total_violations: 54,
+    borough_count: 5
+  },
+  {
+    _id: '95083fb211a2b78597bff294f693d6f0cfe814799dedeb2f7f5e73d538de09bf',
+    boroughs: [
+      'Staten Island',
+      'Brooklyn',
+      'Bronx',
+      'Manhattan',
+      'Queens'
+    ],
+    total_violations: 50,
+    borough_count: 5
+  },
+  {
+    _id: 'ac3a86ff6bd0bebf750d299aa612edc3c83e08e3f02bafd3e7a654f6a80e9c41',
+    boroughs: [
+      'Manhattan',
+      'Brooklyn',
+      'Bronx',
+      'Queens',
+      'Staten Island'
+    ],
+    total_violations: 40,
+    borough_count: 5
+  },
+  {
+    _id: '2856bb1c616e428346e752630e444388b93af47f45e714705108c2a0eb4adebd',
+    boroughs: [
+      'Staten Island',
+      'Brooklyn',
+      'Queens',
+      'Manhattan',
+      'Bronx'
+    ],
+    total_violations: 30,
+    borough_count: 5
+  },
+  {
+    _id: 'be44006f396a6e60695a857cd7458de76cfb3ecbc4f637a6a79228e505c062bc',
+    boroughs: [
+      'Queens',
+      'Brooklyn',
+      'Bronx',
+      'Manhattan',
+      'Staten Island'
+    ],
+    total_violations: 25,
+    borough_count: 5
+  },
+  {
+    _id: '3b29ae1c9c3329addde8c8a0ce97f6ce3dbe3120f16425620e6ad61e0d9aa6dc',
+    boroughs: [
+      'Queens',
+      'Brooklyn',
+      'Staten Island',
+      'Manhattan',
+      'Bronx'
+    ],
+    total_violations: 21,
+    borough_count: 5
+  },
+  {
+    _id: '6be08a6959b4f318e7cb2c42e73264f68c13ca161495c7e84c05debbf1dc88ff',
+    boroughs: [
+      'Bronx',
+      'Brooklyn',
+      'Queens',
+      'Staten Island',
+      'Manhattan'
+    ],
+    total_violations: 19,
+    borough_count: 5
+  },
+  {
+    _id: '270a4a6fa02fa917a06c9c27f034ad0e3d19efb2c56581aaff739e8d0516e09b',
+    boroughs: [
+      'Queens',
+      'Brooklyn',
+      'Staten Island',
+      'Bronx',
+      'Manhattan'
+    ],
+    total_violations: 18,
+    borough_count: 5
+  },
+  {
+    _id: 'a6ddc4939ded360e1599a975d3c45ea61bfcdddf968cd59cc8af2b9d958c535d',
+    boroughs: [
+      'Bronx',
+      'Brooklyn',
+      'Queens',
+      'Manhattan',
+      'Staten Island'
+    ],
+    total_violations: 17,
+    borough_count: 5
+  },
+  {
+    _id: '5a8387d32ff615eaa0f357922a314d967e69931db43c908e3c6bc81a568f4e37',
+    boroughs: [
+      'Staten Island',
+      'Brooklyn',
+      'Queens',
+      'Manhattan',
+      'Bronx'
+    ],
+    total_violations: 12,
+    borough_count: 5
+  }
+]

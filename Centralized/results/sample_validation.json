@@ -1,0 +1,7 @@
+{
+  "sample_100k": 100000,
+  "sample_500k": 500000,
+  "sample_1m": 1000000,
+  "nested_samples": true,
+  "vehicle_hash_consistency": "PASS"
+}

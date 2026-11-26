@@ -1,0 +1,16 @@
+Query,Dataset,Distributed Median Change (%),Faster System
+Q1,100K,0.0,Equal
+Q1,500K,0.0,Equal
+Q1,1M,0.0,Equal
+Q2,100K,-0.68,Distributed
+Q2,500K,3.88,Centralized
+Q2,1M,188.87,Centralized
+Q3,100K,-23.79,Distributed
+Q3,500K,72.08,Centralized
+Q3,1M,-10.14,Distributed
+Q4,100K,-43.33,Distributed
+Q4,500K,-47.24,Distributed
+Q4,1M,-47.59,Distributed
+Q5,100K,-7.12,Distributed
+Q5,500K,243.74,Centralized
+Q5,1M,65.48,Centralized

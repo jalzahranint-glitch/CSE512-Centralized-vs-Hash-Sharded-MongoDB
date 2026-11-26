@@ -1,0 +1,5 @@
+Ad Hoc Query After Replication
+Query: Count violations in Queens
+100k: 39859 violations
+500k: 199896 violations
+1m: 400652 violations

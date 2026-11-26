@@ -1,0 +1,1147 @@
+{
+  "serverInfo": {
+    "host": "3c181f8cb02f",
+    "port": 27017,
+    "version": "8.0.34",
+    "gitVersion": "51db4515a6597aedcf6188ee4e48a27e65b065ae"
+  },
+  "serverParameters": {
+    "internalQueryFacetBufferSizeBytes": 104857600,
+    "internalQueryFacetMaxOutputDocSizeBytes": 104857600,
+    "internalLookupStageIntermediateDocumentMaxSizeBytes": 104857600,
+    "internalDocumentSourceGroupMaxMemoryBytes": 104857600,
+    "internalQueryMaxBlockingSortMemoryUsageBytes": 104857600,
+    "internalQueryProhibitBlockingMergeOnMongoS": 0,
+    "internalQueryMaxAddToSetBytes": 104857600,
+    "internalDocumentSourceSetWindowFieldsMaxMemoryBytes": 104857600,
+    "internalQueryFrameworkControl": "trySbeRestricted",
+    "internalQueryPlannerIgnoreIndexWithCollationForRegex": 1
+  },
+  "mergeType": "anyShard",
+  "splitPipeline": {
+    "shardsPart": [
+      {
+        "$match": {
+          "$and": [
+            {
+              "vehicle_hash": {
+                "$type": [
+                  2
+                ]
+              }
+            },
+            {
+              "vehicle_hash": {
+                "$not": {
+                  "$eq": ""
+                }
+              }
+            },
+            {
+              "zone": {
+                "$type": [
+                  2
+                ]
+              }
+            },
+            {
+              "zone": {
+                "$not": {
+                  "$eq": ""
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "$group": {
+          "_id": "$vehicle_hash",
+          "boroughs": {
+            "$addToSet": "$zone"
+          },
+          "total_violations": {
+            "$sum": {
+              "$const": 1
+            }
+          }
+        }
+      }
+    ],
+    "mergerPart": [
+      {
+        "$mergeCursors": {
+          "lsid": {
+            "id": {
+              "$binary": {
+                "base64": "qbcAhAMvTYy8fcKeaEb9fg==",
+                "subType": "04"
+              }
+            },
+            "uid": {
+              "$binary": {
+                "base64": "47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=",
+                "subType": "00"
+              }
+            }
+          },
+          "compareWholeSortKey": false,
+          "tailableMode": "normal",
+          "nss": "nyc_traffic.violations_1m",
+          "allowPartialResults": false,
+          "recordRemoteOpWaitTime": false,
+          "requestQueryStatsFromRemotes": false
+        }
+      },
+      {
+        "$group": {
+          "_id": "$$ROOT._id",
+          "boroughs": {
+            "$addToSet": "$$ROOT.boroughs"
+          },
+          "total_violations": {
+            "$sum": "$$ROOT.total_violations"
+          },
+          "$doingMerge": true
+        }
+      },
+      {
+        "$project": {
+          "_id": true,
+          "boroughs": true,
+          "total_violations": true,
+          "borough_count": {
+            "$size": [
+              "$boroughs"
+            ]
+          }
+        }
+      },
+      {
+        "$match": {
+          "borough_count": {
+            "$gte": 2
+          }
+        }
+      },
+      {
+        "$sort": {
+          "sortKey": {
+            "borough_count": -1,
+            "total_violations": -1,
+            "_id": 1
+          },
+          "limit": 10
+        }
+      }
+    ]
+  },
+  "shards": {
+    "shard4RS": {
+      "host": "shard4b:27017",
+      "explainVersion": "2",
+      "queryPlanner": {
+        "namespace": "nyc_traffic.violations_1m",
+        "parsedQuery": {
+          "$and": [
+            {
+              "vehicle_hash": {
+                "$not": {
+                  "$eq": ""
+                }
+              }
+            },
+            {
+              "zone": {
+                "$not": {
+                  "$eq": ""
+                }
+              }
+            },
+            {
+              "vehicle_hash": {
+                "$type": [
+                  2
+                ]
+              }
+            },
+            {
+              "zone": {
+                "$type": [
+                  2
+                ]
+              }
+            }
+          ]
+        },
+        "indexFilterSet": false,
+        "queryHash": "383C8EBB",
+        "planCacheShapeHash": "383C8EBB",
+        "planCacheKey": "231FF1FB",
+        "optimizationTimeMillis": 1,
+        "optimizedPipeline": true,
+        "maxIndexedOrSolutionsReached": false,
+        "maxIndexedAndSolutionsReached": false,
+        "maxScansToExplodeReached": false,
+        "prunedSimilarIndexes": false,
+        "winningPlan": {
+          "isCached": false,
+          "queryPlan": {
+            "stage": "GROUP",
+            "planNodeId": 4,
+            "inputStage": {
+              "stage": "SHARDING_FILTER",
+              "planNodeId": 2,
+              "inputStage": {
+                "stage": "COLLSCAN",
+                "planNodeId": 1,
+                "filter": {
+                  "$and": [
+                    {
+                      "vehicle_hash": {
+                        "$not": {
+                          "$eq": ""
+                        }
+                      }
+                    },
+                    {
+                      "zone": {
+                        "$not": {
+                          "$eq": ""
+                        }
+                      }
+                    },
+                    {
+                      "vehicle_hash": {
+                        "$type": [
+                          2
+                        ]
+                      }
+                    },
+                    {
+                      "zone": {
+                        "$type": [
+                          2
+                        ]
+                      }
+                    }
+                  ]
+                },
+                "direction": "forward"
+              }
+            }
+          },
+          "slotBasedPlan": {
+            "slots": "$$RESULT=s13 env: { s1 = ShardFilterer (shardFilterer) }",
+            "stages": "[4] project [s13 = newBsonObj(\"_id\", s8, \"boroughs\", s11, \"total_violations\", s12)] \n[4] project [s11 = getElement(s9, 0), s12 = doubleDoublePartialSumFinalize(convertSimpleSumToDoubleDoubleSum((convert ( s10, int32) ?: s10)))] \n[4] group [s8] [s9 = addToSetCapped(s3, 104857600), s10 = count()] spillSlots[s6, s7] mergingExprs[aggSetUnionCapped(s6, 104857600), sum(s7)] \n[4] project [s8 = (s2 ?: null)] \n[2] filter {shardFilter(s1, makeBsonObj(MakeObjSpec([vehicle_hash = Add(0)], Open), Nothing, false, shardHash((s2 ?: null))))} \n[1] filter {((!(traverseF(s2, lambda(l5.0) { ((move(l5.0) == \"\") ?: false) }, false)) && !(traverseF(s3, lambda(l6.0) { ((move(l6.0) == \"\") ?: false) }, false))) && (traverseF(s2, lambda(l7.0) { (typeMatch(move(l7.0), 4) ?: false) }, false) && traverseF(s3, lambda(l8.0) { (typeMatch(move(l8.0), 4) ?: false) }, false)))} \n[1] scan s4 s5 none none none none none none lowPriority [s2 = vehicle_hash, s3 = zone] @\"9e5e2852-a7cf-4220-b9e0-503821da93e9\" true false "
+          }
+        },
+        "rejectedPlans": []
+      },
+      "executionStats": {
+        "executionSuccess": true,
+        "nReturned": 179202,
+        "executionTimeMillis": 1012,
+        "totalKeysExamined": 0,
+        "totalDocsExamined": 249737,
+        "executionStages": {
+          "stage": "project",
+          "planNodeId": 4,
+          "nReturned": 179202,
+          "executionTimeMillisEstimate": 991,
+          "opens": 1,
+          "closes": 1,
+          "saveState": 58,
+          "restoreState": 58,
+          "isEOF": 1,
+          "projections": {
+            "13": "newBsonObj(\"_id\", s8, \"boroughs\", s11, \"total_violations\", s12) "
+          },
+          "inputStage": {
+            "stage": "project",
+            "planNodeId": 4,
+            "nReturned": 179202,
+            "executionTimeMillisEstimate": 906,
+            "opens": 1,
+            "closes": 1,
+            "saveState": 58,
+            "restoreState": 58,
+            "isEOF": 1,
+            "projections": {
+              "11": "getElement(s9, 0) ",
+              "12": "doubleDoublePartialSumFinalize(convertSimpleSumToDoubleDoubleSum((convert ( s10, int32) ?: s10))) "
+            },
+            "inputStage": {
+              "stage": "group",
+              "planNodeId": 4,
+              "nReturned": 179202,
+              "executionTimeMillisEstimate": 882,
+              "opens": 1,
+              "closes": 1,
+              "saveState": 58,
+              "restoreState": 58,
+              "isEOF": 1,
+              "groupBySlots": [
+                8
+              ],
+              "expressions": {
+                "9": "addToSetCapped(s3, 104857600) ",
+                "10": "count() ",
+                "initExprs": {
+                  "9": null,
+                  "10": null
+                }
+              },
+              "mergingExprs": {
+                "6": "aggSetUnionCapped(s6, 104857600) ",
+                "7": "sum(s7) "
+              },
+              "usedDisk": false,
+              "spills": 0,
+              "spilledBytes": 0,
+              "spilledRecords": 0,
+              "spilledDataStorageSize": 0,
+              "inputStage": {
+                "stage": "project",
+                "planNodeId": 4,
+                "nReturned": 249737,
+                "executionTimeMillisEstimate": 327,
+                "opens": 1,
+                "closes": 1,
+                "saveState": 58,
+                "restoreState": 58,
+                "isEOF": 1,
+                "projections": {
+                  "8": "(s2 ?: null) "
+                },
+                "inputStage": {
+                  "stage": "filter",
+                  "planNodeId": 2,
+                  "nReturned": 249737,
+                  "executionTimeMillisEstimate": 327,
+                  "opens": 1,
+                  "closes": 1,
+                  "saveState": 58,
+                  "restoreState": 58,
+                  "isEOF": 1,
+                  "numTested": 249737,
+                  "filter": "shardFilter(s1, makeBsonObj(MakeObjSpec([vehicle_hash = Add(0)], Open), Nothing, false, shardHash((s2 ?: null)))) ",
+                  "inputStage": {
+                    "stage": "filter",
+                    "planNodeId": 1,
+                    "nReturned": 249737,
+                    "executionTimeMillisEstimate": 210,
+                    "opens": 1,
+                    "closes": 1,
+                    "saveState": 58,
+                    "restoreState": 58,
+                    "isEOF": 1,
+                    "numTested": 249737,
+                    "filter": "((!(traverseF(s2, lambda(l5.0) { ((move(l5.0) == \"\") ?: false) }, false)) && !(traverseF(s3, lambda(l6.0) { ((move(l6.0) == \"\") ?: false) }, false))) && (traverseF(s2, lambda(l7.0) { (typeMatch(move(l7.0), 4) ?: false) }, false) && traverseF(s3, lambda(l8.0) { (typeMatch(move(l8.0), 4) ?: false) }, false))) ",
+                    "inputStage": {
+                      "stage": "scan",
+                      "planNodeId": 1,
+                      "nReturned": 249737,
+                      "executionTimeMillisEstimate": 111,
+                      "opens": 1,
+                      "closes": 1,
+                      "saveState": 58,
+                      "restoreState": 58,
+                      "isEOF": 1,
+                      "numReads": 249737,
+                      "recordSlot": 4,
+                      "recordIdSlot": 5,
+                      "scanFieldNames": [
+                        "vehicle_hash",
+                        "zone"
+                      ],
+                      "scanFieldSlots": [
+                        2,
+                        3
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "shard1RS": {
+      "host": "shard1:27017",
+      "explainVersion": "2",
+      "queryPlanner": {
+        "namespace": "nyc_traffic.violations_1m",
+        "parsedQuery": {
+          "$and": [
+            {
+              "vehicle_hash": {
+                "$not": {
+                  "$eq": ""
+                }
+              }
+            },
+            {
+              "zone": {
+                "$not": {
+                  "$eq": ""
+                }
+              }
+            },
+            {
+              "vehicle_hash": {
+                "$type": [
+                  2
+                ]
+              }
+            },
+            {
+              "zone": {
+                "$type": [
+                  2
+                ]
+              }
+            }
+          ]
+        },
+        "indexFilterSet": false,
+        "queryHash": "383C8EBB",
+        "planCacheShapeHash": "383C8EBB",
+        "planCacheKey": "231FF1FB",
+        "optimizationTimeMillis": 1,
+        "optimizedPipeline": true,
+        "maxIndexedOrSolutionsReached": false,
+        "maxIndexedAndSolutionsReached": false,
+        "maxScansToExplodeReached": false,
+        "prunedSimilarIndexes": false,
+        "winningPlan": {
+          "isCached": false,
+          "queryPlan": {
+            "stage": "GROUP",
+            "planNodeId": 4,
+            "inputStage": {
+              "stage": "SHARDING_FILTER",
+              "planNodeId": 2,
+              "inputStage": {
+                "stage": "COLLSCAN",
+                "planNodeId": 1,
+                "filter": {
+                  "$and": [
+                    {
+                      "vehicle_hash": {
+                        "$not": {
+                          "$eq": ""
+                        }
+                      }
+                    },
+                    {
+                      "zone": {
+                        "$not": {
+                          "$eq": ""
+                        }
+                      }
+                    },
+                    {
+                      "vehicle_hash": {
+                        "$type": [
+                          2
+                        ]
+                      }
+                    },
+                    {
+                      "zone": {
+                        "$type": [
+                          2
+                        ]
+                      }
+                    }
+                  ]
+                },
+                "direction": "forward"
+              }
+            }
+          },
+          "slotBasedPlan": {
+            "slots": "$$RESULT=s13 env: { s1 = ShardFilterer (shardFilterer) }",
+            "stages": "[4] project [s13 = newBsonObj(\"_id\", s8, \"boroughs\", s11, \"total_violations\", s12)] \n[4] project [s11 = getElement(s9, 0), s12 = doubleDoublePartialSumFinalize(convertSimpleSumToDoubleDoubleSum((convert ( s10, int32) ?: s10)))] \n[4] group [s8] [s9 = addToSetCapped(s3, 104857600), s10 = count()] spillSlots[s6, s7] mergingExprs[aggSetUnionCapped(s6, 104857600), sum(s7)] \n[4] project [s8 = (s2 ?: null)] \n[2] filter {shardFilter(s1, makeBsonObj(MakeObjSpec([vehicle_hash = Add(0)], Open), Nothing, false, shardHash((s2 ?: null))))} \n[1] filter {((!(traverseF(s2, lambda(l5.0) { ((move(l5.0) == \"\") ?: false) }, false)) && !(traverseF(s3, lambda(l6.0) { ((move(l6.0) == \"\") ?: false) }, false))) && (traverseF(s2, lambda(l7.0) { (typeMatch(move(l7.0), 4) ?: false) }, false) && traverseF(s3, lambda(l8.0) { (typeMatch(move(l8.0), 4) ?: false) }, false)))} \n[1] scan s4 s5 none none none none none none lowPriority [s2 = vehicle_hash, s3 = zone] @\"9e5e2852-a7cf-4220-b9e0-503821da93e9\" true false "
+          }
+        },
+        "rejectedPlans": []
+      },
+      "executionStats": {
+        "executionSuccess": true,
+        "nReturned": 179668,
+        "executionTimeMillis": 1017,
+        "totalKeysExamined": 0,
+        "totalDocsExamined": 250608,
+        "executionStages": {
+          "stage": "project",
+          "planNodeId": 4,
+          "nReturned": 179668,
+          "executionTimeMillisEstimate": 997,
+          "opens": 1,
+          "closes": 1,
+          "saveState": 58,
+          "restoreState": 58,
+          "isEOF": 1,
+          "projections": {
+            "13": "newBsonObj(\"_id\", s8, \"boroughs\", s11, \"total_violations\", s12) "
+          },
+          "inputStage": {
+            "stage": "project",
+            "planNodeId": 4,
+            "nReturned": 179668,
+            "executionTimeMillisEstimate": 941,
+            "opens": 1,
+            "closes": 1,
+            "saveState": 58,
+            "restoreState": 58,
+            "isEOF": 1,
+            "projections": {
+              "11": "getElement(s9, 0) ",
+              "12": "doubleDoublePartialSumFinalize(convertSimpleSumToDoubleDoubleSum((convert ( s10, int32) ?: s10))) "
+            },
+            "inputStage": {
+              "stage": "group",
+              "planNodeId": 4,
+              "nReturned": 179668,
+              "executionTimeMillisEstimate": 891,
+              "opens": 1,
+              "closes": 1,
+              "saveState": 58,
+              "restoreState": 58,
+              "isEOF": 1,
+              "groupBySlots": [
+                8
+              ],
+              "expressions": {
+                "9": "addToSetCapped(s3, 104857600) ",
+                "10": "count() ",
+                "initExprs": {
+                  "9": null,
+                  "10": null
+                }
+              },
+              "mergingExprs": {
+                "6": "aggSetUnionCapped(s6, 104857600) ",
+                "7": "sum(s7) "
+              },
+              "usedDisk": false,
+              "spills": 0,
+              "spilledBytes": 0,
+              "spilledRecords": 0,
+              "spilledDataStorageSize": 0,
+              "inputStage": {
+                "stage": "project",
+                "planNodeId": 4,
+                "nReturned": 250608,
+                "executionTimeMillisEstimate": 297,
+                "opens": 1,
+                "closes": 1,
+                "saveState": 58,
+                "restoreState": 58,
+                "isEOF": 1,
+                "projections": {
+                  "8": "(s2 ?: null) "
+                },
+                "inputStage": {
+                  "stage": "filter",
+                  "planNodeId": 2,
+                  "nReturned": 250608,
+                  "executionTimeMillisEstimate": 276,
+                  "opens": 1,
+                  "closes": 1,
+                  "saveState": 58,
+                  "restoreState": 58,
+                  "isEOF": 1,
+                  "numTested": 250608,
+                  "filter": "shardFilter(s1, makeBsonObj(MakeObjSpec([vehicle_hash = Add(0)], Open), Nothing, false, shardHash((s2 ?: null)))) ",
+                  "inputStage": {
+                    "stage": "filter",
+                    "planNodeId": 1,
+                    "nReturned": 250608,
+                    "executionTimeMillisEstimate": 125,
+                    "opens": 1,
+                    "closes": 1,
+                    "saveState": 58,
+                    "restoreState": 58,
+                    "isEOF": 1,
+                    "numTested": 250608,
+                    "filter": "((!(traverseF(s2, lambda(l5.0) { ((move(l5.0) == \"\") ?: false) }, false)) && !(traverseF(s3, lambda(l6.0) { ((move(l6.0) == \"\") ?: false) }, false))) && (traverseF(s2, lambda(l7.0) { (typeMatch(move(l7.0), 4) ?: false) }, false) && traverseF(s3, lambda(l8.0) { (typeMatch(move(l8.0), 4) ?: false) }, false))) ",
+                    "inputStage": {
+                      "stage": "scan",
+                      "planNodeId": 1,
+                      "nReturned": 250608,
+                      "executionTimeMillisEstimate": 83,
+                      "opens": 1,
+                      "closes": 1,
+                      "saveState": 58,
+                      "restoreState": 58,
+                      "isEOF": 1,
+                      "numReads": 250608,
+                      "recordSlot": 4,
+                      "recordIdSlot": 5,
+                      "scanFieldNames": [
+                        "vehicle_hash",
+                        "zone"
+                      ],
+                      "scanFieldSlots": [
+                        2,
+                        3
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "shard3RS": {
+      "host": "shard3:27017",
+      "explainVersion": "2",
+      "queryPlanner": {
+        "namespace": "nyc_traffic.violations_1m",
+        "parsedQuery": {
+          "$and": [
+            {
+              "vehicle_hash": {
+                "$not": {
+                  "$eq": ""
+                }
+              }
+            },
+            {
+              "zone": {
+                "$not": {
+                  "$eq": ""
+                }
+              }
+            },
+            {
+              "vehicle_hash": {
+                "$type": [
+                  2
+                ]
+              }
+            },
+            {
+              "zone": {
+                "$type": [
+                  2
+                ]
+              }
+            }
+          ]
+        },
+        "indexFilterSet": false,
+        "queryHash": "383C8EBB",
+        "planCacheShapeHash": "383C8EBB",
+        "planCacheKey": "231FF1FB",
+        "optimizationTimeMillis": 1,
+        "optimizedPipeline": true,
+        "maxIndexedOrSolutionsReached": false,
+        "maxIndexedAndSolutionsReached": false,
+        "maxScansToExplodeReached": false,
+        "prunedSimilarIndexes": false,
+        "winningPlan": {
+          "isCached": false,
+          "queryPlan": {
+            "stage": "GROUP",
+            "planNodeId": 4,
+            "inputStage": {
+              "stage": "SHARDING_FILTER",
+              "planNodeId": 2,
+              "inputStage": {
+                "stage": "COLLSCAN",
+                "planNodeId": 1,
+                "filter": {
+                  "$and": [
+                    {
+                      "vehicle_hash": {
+                        "$not": {
+                          "$eq": ""
+                        }
+                      }
+                    },
+                    {
+                      "zone": {
+                        "$not": {
+                          "$eq": ""
+                        }
+                      }
+                    },
+                    {
+                      "vehicle_hash": {
+                        "$type": [
+                          2
+                        ]
+                      }
+                    },
+                    {
+                      "zone": {
+                        "$type": [
+                          2
+                        ]
+                      }
+                    }
+                  ]
+                },
+                "direction": "forward"
+              }
+            }
+          },
+          "slotBasedPlan": {
+            "slots": "$$RESULT=s13 env: { s1 = ShardFilterer (shardFilterer) }",
+            "stages": "[4] project [s13 = newBsonObj(\"_id\", s8, \"boroughs\", s11, \"total_violations\", s12)] \n[4] project [s11 = getElement(s9, 0), s12 = doubleDoublePartialSumFinalize(convertSimpleSumToDoubleDoubleSum((convert ( s10, int32) ?: s10)))] \n[4] group [s8] [s9 = addToSetCapped(s3, 104857600), s10 = count()] spillSlots[s6, s7] mergingExprs[aggSetUnionCapped(s6, 104857600), sum(s7)] \n[4] project [s8 = (s2 ?: null)] \n[2] filter {shardFilter(s1, makeBsonObj(MakeObjSpec([vehicle_hash = Add(0)], Open), Nothing, false, shardHash((s2 ?: null))))} \n[1] filter {((!(traverseF(s2, lambda(l5.0) { ((move(l5.0) == \"\") ?: false) }, false)) && !(traverseF(s3, lambda(l6.0) { ((move(l6.0) == \"\") ?: false) }, false))) && (traverseF(s2, lambda(l7.0) { (typeMatch(move(l7.0), 4) ?: false) }, false) && traverseF(s3, lambda(l8.0) { (typeMatch(move(l8.0), 4) ?: false) }, false)))} \n[1] scan s4 s5 none none none none none none lowPriority [s2 = vehicle_hash, s3 = zone] @\"9e5e2852-a7cf-4220-b9e0-503821da93e9\" true false "
+          }
+        },
+        "rejectedPlans": []
+      },
+      "executionStats": {
+        "executionSuccess": true,
+        "nReturned": 179399,
+        "executionTimeMillis": 1023,
+        "totalKeysExamined": 0,
+        "totalDocsExamined": 250148,
+        "executionStages": {
+          "stage": "project",
+          "planNodeId": 4,
+          "nReturned": 179399,
+          "executionTimeMillisEstimate": 1006,
+          "opens": 1,
+          "closes": 1,
+          "saveState": 58,
+          "restoreState": 58,
+          "isEOF": 1,
+          "projections": {
+            "13": "newBsonObj(\"_id\", s8, \"boroughs\", s11, \"total_violations\", s12) "
+          },
+          "inputStage": {
+            "stage": "project",
+            "planNodeId": 4,
+            "nReturned": 179399,
+            "executionTimeMillisEstimate": 945,
+            "opens": 1,
+            "closes": 1,
+            "saveState": 58,
+            "restoreState": 58,
+            "isEOF": 1,
+            "projections": {
+              "11": "getElement(s9, 0) ",
+              "12": "doubleDoublePartialSumFinalize(convertSimpleSumToDoubleDoubleSum((convert ( s10, int32) ?: s10))) "
+            },
+            "inputStage": {
+              "stage": "group",
+              "planNodeId": 4,
+              "nReturned": 179399,
+              "executionTimeMillisEstimate": 888,
+              "opens": 1,
+              "closes": 1,
+              "saveState": 58,
+              "restoreState": 58,
+              "isEOF": 1,
+              "groupBySlots": [
+                8
+              ],
+              "expressions": {
+                "9": "addToSetCapped(s3, 104857600) ",
+                "10": "count() ",
+                "initExprs": {
+                  "9": null,
+                  "10": null
+                }
+              },
+              "mergingExprs": {
+                "6": "aggSetUnionCapped(s6, 104857600) ",
+                "7": "sum(s7) "
+              },
+              "usedDisk": false,
+              "spills": 0,
+              "spilledBytes": 0,
+              "spilledRecords": 0,
+              "spilledDataStorageSize": 0,
+              "inputStage": {
+                "stage": "project",
+                "planNodeId": 4,
+                "nReturned": 250148,
+                "executionTimeMillisEstimate": 360,
+                "opens": 1,
+                "closes": 1,
+                "saveState": 58,
+                "restoreState": 58,
+                "isEOF": 1,
+                "projections": {
+                  "8": "(s2 ?: null) "
+                },
+                "inputStage": {
+                  "stage": "filter",
+                  "planNodeId": 2,
+                  "nReturned": 250148,
+                  "executionTimeMillisEstimate": 350,
+                  "opens": 1,
+                  "closes": 1,
+                  "saveState": 58,
+                  "restoreState": 58,
+                  "isEOF": 1,
+                  "numTested": 250148,
+                  "filter": "shardFilter(s1, makeBsonObj(MakeObjSpec([vehicle_hash = Add(0)], Open), Nothing, false, shardHash((s2 ?: null)))) ",
+                  "inputStage": {
+                    "stage": "filter",
+                    "planNodeId": 1,
+                    "nReturned": 250148,
+                    "executionTimeMillisEstimate": 149,
+                    "opens": 1,
+                    "closes": 1,
+                    "saveState": 58,
+                    "restoreState": 58,
+                    "isEOF": 1,
+                    "numTested": 250148,
+                    "filter": "((!(traverseF(s2, lambda(l5.0) { ((move(l5.0) == \"\") ?: false) }, false)) && !(traverseF(s3, lambda(l6.0) { ((move(l6.0) == \"\") ?: false) }, false))) && (traverseF(s2, lambda(l7.0) { (typeMatch(move(l7.0), 4) ?: false) }, false) && traverseF(s3, lambda(l8.0) { (typeMatch(move(l8.0), 4) ?: false) }, false))) ",
+                    "inputStage": {
+                      "stage": "scan",
+                      "planNodeId": 1,
+                      "nReturned": 250148,
+                      "executionTimeMillisEstimate": 75,
+                      "opens": 1,
+                      "closes": 1,
+                      "saveState": 58,
+                      "restoreState": 58,
+                      "isEOF": 1,
+                      "numReads": 250148,
+                      "recordSlot": 4,
+                      "recordIdSlot": 5,
+                      "scanFieldNames": [
+                        "vehicle_hash",
+                        "zone"
+                      ],
+                      "scanFieldSlots": [
+                        2,
+                        3
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "shard2RS": {
+      "host": "shard2:27017",
+      "explainVersion": "2",
+      "queryPlanner": {
+        "namespace": "nyc_traffic.violations_1m",
+        "parsedQuery": {
+          "$and": [
+            {
+              "vehicle_hash": {
+                "$not": {
+                  "$eq": ""
+                }
+              }
+            },
+            {
+              "zone": {
+                "$not": {
+                  "$eq": ""
+                }
+              }
+            },
+            {
+              "vehicle_hash": {
+                "$type": [
+                  2
+                ]
+              }
+            },
+            {
+              "zone": {
+                "$type": [
+                  2
+                ]
+              }
+            }
+          ]
+        },
+        "indexFilterSet": false,
+        "queryHash": "383C8EBB",
+        "planCacheShapeHash": "383C8EBB",
+        "planCacheKey": "231FF1FB",
+        "optimizationTimeMillis": 1,
+        "optimizedPipeline": true,
+        "maxIndexedOrSolutionsReached": false,
+        "maxIndexedAndSolutionsReached": false,
+        "maxScansToExplodeReached": false,
+        "prunedSimilarIndexes": false,
+        "winningPlan": {
+          "isCached": false,
+          "queryPlan": {
+            "stage": "GROUP",
+            "planNodeId": 4,
+            "inputStage": {
+              "stage": "SHARDING_FILTER",
+              "planNodeId": 2,
+              "inputStage": {
+                "stage": "COLLSCAN",
+                "planNodeId": 1,
+                "filter": {
+                  "$and": [
+                    {
+                      "vehicle_hash": {
+                        "$not": {
+                          "$eq": ""
+                        }
+                      }
+                    },
+                    {
+                      "zone": {
+                        "$not": {
+                          "$eq": ""
+                        }
+                      }
+                    },
+                    {
+                      "vehicle_hash": {
+                        "$type": [
+                          2
+                        ]
+                      }
+                    },
+                    {
+                      "zone": {
+                        "$type": [
+                          2
+                        ]
+                      }
+                    }
+                  ]
+                },
+                "direction": "forward"
+              }
+            }
+          },
+          "slotBasedPlan": {
+            "slots": "$$RESULT=s13 env: { s1 = ShardFilterer (shardFilterer) }",
+            "stages": "[4] project [s13 = newBsonObj(\"_id\", s8, \"boroughs\", s11, \"total_violations\", s12)] \n[4] project [s11 = getElement(s9, 0), s12 = doubleDoublePartialSumFinalize(convertSimpleSumToDoubleDoubleSum((convert ( s10, int32) ?: s10)))] \n[4] group [s8] [s9 = addToSetCapped(s3, 104857600), s10 = count()] spillSlots[s6, s7] mergingExprs[aggSetUnionCapped(s6, 104857600), sum(s7)] \n[4] project [s8 = (s2 ?: null)] \n[2] filter {shardFilter(s1, makeBsonObj(MakeObjSpec([vehicle_hash = Add(0)], Open), Nothing, false, shardHash((s2 ?: null))))} \n[1] filter {((!(traverseF(s2, lambda(l5.0) { ((move(l5.0) == \"\") ?: false) }, false)) && !(traverseF(s3, lambda(l6.0) { ((move(l6.0) == \"\") ?: false) }, false))) && (traverseF(s2, lambda(l7.0) { (typeMatch(move(l7.0), 4) ?: false) }, false) && traverseF(s3, lambda(l8.0) { (typeMatch(move(l8.0), 4) ?: false) }, false)))} \n[1] scan s4 s5 none none none none none none lowPriority [s2 = vehicle_hash, s3 = zone] @\"9e5e2852-a7cf-4220-b9e0-503821da93e9\" true false "
+          }
+        },
+        "rejectedPlans": []
+      },
+      "executionStats": {
+        "executionSuccess": true,
+        "nReturned": 179363,
+        "executionTimeMillis": 1057,
+        "totalKeysExamined": 0,
+        "totalDocsExamined": 249507,
+        "executionStages": {
+          "stage": "project",
+          "planNodeId": 4,
+          "nReturned": 179363,
+          "executionTimeMillisEstimate": 1013,
+          "opens": 1,
+          "closes": 1,
+          "saveState": 60,
+          "restoreState": 60,
+          "isEOF": 1,
+          "projections": {
+            "13": "newBsonObj(\"_id\", s8, \"boroughs\", s11, \"total_violations\", s12) "
+          },
+          "inputStage": {
+            "stage": "project",
+            "planNodeId": 4,
+            "nReturned": 179363,
+            "executionTimeMillisEstimate": 981,
+            "opens": 1,
+            "closes": 1,
+            "saveState": 60,
+            "restoreState": 60,
+            "isEOF": 1,
+            "projections": {
+              "11": "getElement(s9, 0) ",
+              "12": "doubleDoublePartialSumFinalize(convertSimpleSumToDoubleDoubleSum((convert ( s10, int32) ?: s10))) "
+            },
+            "inputStage": {
+              "stage": "group",
+              "planNodeId": 4,
+              "nReturned": 179363,
+              "executionTimeMillisEstimate": 927,
+              "opens": 1,
+              "closes": 1,
+              "saveState": 60,
+              "restoreState": 60,
+              "isEOF": 1,
+              "groupBySlots": [
+                8
+              ],
+              "expressions": {
+                "9": "addToSetCapped(s3, 104857600) ",
+                "10": "count() ",
+                "initExprs": {
+                  "9": null,
+                  "10": null
+                }
+              },
+              "mergingExprs": {
+                "6": "aggSetUnionCapped(s6, 104857600) ",
+                "7": "sum(s7) "
+              },
+              "usedDisk": false,
+              "spills": 0,
+              "spilledBytes": 0,
+              "spilledRecords": 0,
+              "spilledDataStorageSize": 0,
+              "inputStage": {
+                "stage": "project",
+                "planNodeId": 4,
+                "nReturned": 249507,
+                "executionTimeMillisEstimate": 360,
+                "opens": 1,
+                "closes": 1,
+                "saveState": 60,
+                "restoreState": 60,
+                "isEOF": 1,
+                "projections": {
+                  "8": "(s2 ?: null) "
+                },
+                "inputStage": {
+                  "stage": "filter",
+                  "planNodeId": 2,
+                  "nReturned": 249507,
+                  "executionTimeMillisEstimate": 360,
+                  "opens": 1,
+                  "closes": 1,
+                  "saveState": 60,
+                  "restoreState": 60,
+                  "isEOF": 1,
+                  "numTested": 249507,
+                  "filter": "shardFilter(s1, makeBsonObj(MakeObjSpec([vehicle_hash = Add(0)], Open), Nothing, false, shardHash((s2 ?: null)))) ",
+                  "inputStage": {
+                    "stage": "filter",
+                    "planNodeId": 1,
+                    "nReturned": 249507,
+                    "executionTimeMillisEstimate": 157,
+                    "opens": 1,
+                    "closes": 1,
+                    "saveState": 60,
+                    "restoreState": 60,
+                    "isEOF": 1,
+                    "numTested": 249507,
+                    "filter": "((!(traverseF(s2, lambda(l5.0) { ((move(l5.0) == \"\") ?: false) }, false)) && !(traverseF(s3, lambda(l6.0) { ((move(l6.0) == \"\") ?: false) }, false))) && (traverseF(s2, lambda(l7.0) { (typeMatch(move(l7.0), 4) ?: false) }, false) && traverseF(s3, lambda(l8.0) { (typeMatch(move(l8.0), 4) ?: false) }, false))) ",
+                    "inputStage": {
+                      "stage": "scan",
+                      "planNodeId": 1,
+                      "nReturned": 249507,
+                      "executionTimeMillisEstimate": 105,
+                      "opens": 1,
+                      "closes": 1,
+                      "saveState": 60,
+                      "restoreState": 60,
+                      "isEOF": 1,
+                      "numReads": 249507,
+                      "recordSlot": 4,
+                      "recordIdSlot": 5,
+                      "scanFieldNames": [
+                        "vehicle_hash",
+                        "zone"
+                      ],
+                      "scanFieldSlots": [
+                        2,
+                        3
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "queryShapeHash": "B9B1FBE40C342FD7EBB49ED1B92289EFA761B15956421E5F0478427E650F623A",
+  "command": {
+    "aggregate": "violations_1m",
+    "pipeline": [
+      {
+        "$match": {
+          "vehicle_hash": {
+            "$type": "string",
+            "$ne": ""
+          },
+          "zone": {
+            "$type": "string",
+            "$ne": ""
+          }
+        }
+      },
+      {
+        "$group": {
+          "_id": "$vehicle_hash",
+          "boroughs": {
+            "$addToSet": "$zone"
+          },
+          "total_violations": {
+            "$sum": 1
+          }
+        }
+      },
+      {
+        "$project": {
+          "boroughs": 1,
+          "borough_count": {
+            "$size": "$boroughs"
+          },
+          "total_violations": 1
+        }
+      },
+      {
+        "$match": {
+          "borough_count": {
+            "$gte": 2
+          }
+        }
+      },
+      {
+        "$sort": {
+          "borough_count": -1,
+          "total_violations": -1,
+          "_id": 1
+        }
+      },
+      {
+        "$limit": 10
+      }
+    ],
+    "cursor": {},
+    "allowDiskUse": true,
+    "maxTimeMS": 120000
+  },
+  "ok": 1,
+  "$clusterTime": {
+    "clusterTime": {
+      "$timestamp": {
+        "t": 1795605832,
+        "i": 1
+      }
+    },
+    "signature": {
+      "hash": {
+        "$binary": {
+          "base64": "AAAAAAAAAAAAAAAAAAAAAAAAAAA=",
+          "subType": "00"
+        }
+      },
+      "keyId": 0
+    }
+  },
+  "operationTime": {
+    "$timestamp": {
+      "t": 1795605832,
+      "i": 1
+    }
+  }
+}

@@ -1,0 +1,33 @@
+Q4 Execution Plan Comparison
+Dataset: 1M records
+
+Centralized MongoDB
+Stages: COLLSCAN, GROUP, filter, group, project, scan
+Split Pipeline: No
+
+Distributed MongoDB
+Stages: COLLSCAN, GROUP, SHARDING_FILTER, filter, group, project, scan
+Participating Shards: 4
+Split Pipeline: Yes
+
+Shard Operations:
+$match
+$group
+
+Merge Operations:
+$mergeCursors
+$group
+$sort
+$project
+
+Original Median Latency
+Centralized: 582 ms
+Distributed: 305 ms
+Distributed Latency Reduction: 47.59%
+
+The distributed plan performs partial aggregation
+on four shards and merges the intermediate results.
+This supports, but does not prove, the explanation
+for the observed performance improvement.
+The performance measurements were collected
+before replication was added to Shard 4.

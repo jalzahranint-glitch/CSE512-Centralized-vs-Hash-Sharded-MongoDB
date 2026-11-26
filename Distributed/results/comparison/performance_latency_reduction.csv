@@ -1,0 +1,16 @@
+Query,Dataset,Faster System,Latency Reduction (%)
+Q1,100K,Equal,0.0
+Q1,500K,Equal,0.0
+Q1,1M,Equal,0.0
+Q2,100K,Distributed,0.68
+Q2,500K,Centralized,3.74
+Q2,1M,Centralized,65.38
+Q3,100K,Distributed,23.79
+Q3,500K,Centralized,41.89
+Q3,1M,Distributed,10.14
+Q4,100K,Distributed,43.33
+Q4,500K,Distributed,47.24
+Q4,1M,Distributed,47.59
+Q5,100K,Distributed,7.12
+Q5,500K,Centralized,70.91
+Q5,1M,Centralized,39.57

@@ -1,0 +1,17 @@
+Replica Set Configuration
+Replica Set: shard4RS
+Host: shard4:27017
+Votes: 1
+Priority: 1
+State: PRIMARY
+Health: 1
+Host: shard4b:27017
+Votes: 0
+Priority: 0
+State: SECONDARY
+Health: 1
+Host: shard4c:27017
+Votes: 0
+Priority: 0
+State: SECONDARY
+Health: 1

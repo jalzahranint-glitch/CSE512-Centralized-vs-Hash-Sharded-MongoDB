@@ -1,0 +1,1055 @@
+{
+  "serverInfo": {
+    "host": "3c181f8cb02f",
+    "port": 27017,
+    "version": "8.0.34",
+    "gitVersion": "51db4515a6597aedcf6188ee4e48a27e65b065ae"
+  },
+  "serverParameters": {
+    "internalQueryFacetBufferSizeBytes": 104857600,
+    "internalQueryFacetMaxOutputDocSizeBytes": 104857600,
+    "internalLookupStageIntermediateDocumentMaxSizeBytes": 104857600,
+    "internalDocumentSourceGroupMaxMemoryBytes": 104857600,
+    "internalQueryMaxBlockingSortMemoryUsageBytes": 104857600,
+    "internalQueryProhibitBlockingMergeOnMongoS": 0,
+    "internalQueryMaxAddToSetBytes": 104857600,
+    "internalDocumentSourceSetWindowFieldsMaxMemoryBytes": 104857600,
+    "internalQueryFrameworkControl": "trySbeRestricted",
+    "internalQueryPlannerIgnoreIndexWithCollationForRegex": 1
+  },
+  "mergeType": "anyShard",
+  "splitPipeline": {
+    "shardsPart": [
+      {
+        "$match": {
+          "$and": [
+            {
+              "issue_date": {
+                "$type": [
+                  9
+                ]
+              }
+            },
+            {
+              "zone": {
+                "$in": [
+                  "Bronx",
+                  "Brooklyn",
+                  "Manhattan",
+                  "Queens",
+                  "Staten Island"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "$group": {
+          "_id": {
+            "borough": "$zone",
+            "month": {
+              "$dateToString": {
+                "date": "$issue_date",
+                "format": {
+                  "$const": "%Y-%m"
+                },
+                "timezone": {
+                  "$const": "UTC"
+                }
+              }
+            }
+          },
+          "total_violations": {
+            "$sum": {
+              "$const": 1
+            }
+          }
+        }
+      }
+    ],
+    "mergerPart": [
+      {
+        "$mergeCursors": {
+          "lsid": {
+            "id": {
+              "$binary": {
+                "base64": "owQmKvJkQwKHHsV5OWB3Rg==",
+                "subType": "04"
+              }
+            },
+            "uid": {
+              "$binary": {
+                "base64": "47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=",
+                "subType": "00"
+              }
+            }
+          },
+          "compareWholeSortKey": false,
+          "tailableMode": "normal",
+          "nss": "nyc_traffic.violations_1m",
+          "allowPartialResults": false,
+          "recordRemoteOpWaitTime": false,
+          "requestQueryStatsFromRemotes": false
+        }
+      },
+      {
+        "$group": {
+          "_id": "$$ROOT._id",
+          "total_violations": {
+            "$sum": "$$ROOT.total_violations"
+          },
+          "$doingMerge": true
+        }
+      },
+      {
+        "$sort": {
+          "sortKey": {
+            "total_violations": -1,
+            "_id.borough": 1,
+            "_id.month": 1
+          },
+          "limit": 10
+        }
+      },
+      {
+        "$project": {
+          "total_violations": true,
+          "borough": "$_id.borough",
+          "month": "$_id.month",
+          "_id": false
+        }
+      }
+    ]
+  },
+  "shards": {
+    "shard2RS": {
+      "host": "shard2:27017",
+      "explainVersion": "2",
+      "queryPlanner": {
+        "namespace": "nyc_traffic.violations_1m",
+        "parsedQuery": {
+          "$and": [
+            {
+              "zone": {
+                "$in": [
+                  "Bronx",
+                  "Brooklyn",
+                  "Manhattan",
+                  "Queens",
+                  "Staten Island"
+                ]
+              }
+            },
+            {
+              "issue_date": {
+                "$type": [
+                  9
+                ]
+              }
+            }
+          ]
+        },
+        "indexFilterSet": false,
+        "queryHash": "C4E32C40",
+        "planCacheShapeHash": "C4E32C40",
+        "planCacheKey": "2DE70EA0",
+        "optimizationTimeMillis": 1,
+        "optimizedPipeline": true,
+        "maxIndexedOrSolutionsReached": false,
+        "maxIndexedAndSolutionsReached": false,
+        "maxScansToExplodeReached": false,
+        "prunedSimilarIndexes": false,
+        "winningPlan": {
+          "isCached": false,
+          "queryPlan": {
+            "stage": "GROUP",
+            "planNodeId": 4,
+            "inputStage": {
+              "stage": "SHARDING_FILTER",
+              "planNodeId": 2,
+              "inputStage": {
+                "stage": "COLLSCAN",
+                "planNodeId": 1,
+                "filter": {
+                  "$and": [
+                    {
+                      "zone": {
+                        "$in": [
+                          "Bronx",
+                          "Brooklyn",
+                          "Manhattan",
+                          "Queens",
+                          "Staten Island"
+                        ]
+                      }
+                    },
+                    {
+                      "issue_date": {
+                        "$type": [
+                          9
+                        ]
+                      }
+                    }
+                  ]
+                },
+                "direction": "forward"
+              }
+            }
+          },
+          "slotBasedPlan": {
+            "slots": "$$RESULT=s14 env: { s1 = ShardFilterer (shardFilterer), s7 = InList(\"Bronx\" \"Brooklyn\" \"Manhattan\" \"Queens\" \"Staten Island\"), s8 = TimeZoneDatabase(America/Argentina/Tucuman...Europe/Vilnius) (timeZoneDB) }",
+            "stages": "[4] project [s14 = newBsonObj(\"_id\", s12, \"total_violations\", s13)] \n[4] project [s12 = newObj(\"borough\", s4, \"month\", s10), s13 = doubleDoublePartialSumFinalize(convertSimpleSumToDoubleDoubleSum((convert ( s11, int32) ?: s11)))] \n[4] group [s4, s10] [s11 = count()] spillSlots[s9] mergingExprs[sum(s9)] \n[4] project [s10 = \n    let [\n        l9.0 = dateToString(s8, s2, \"%Y-%m\", \"UTC\") \n    ] \n    in \n        if exists(l9.0) \n        then makeOwn(move(l9.0)) \n        else \n            if (typeMatch(s2, 1088) ?: true) \n            then null \n            else \n                if typeMatch(s2, 131712) \n                then Nothing \n                else fail(4997901, \"$dateToString parameter 'date' must be coercible to date\") \n] \n[2] filter {shardFilter(s1, makeBsonObj(MakeObjSpec([vehicle_hash = Add(0)], Open), Nothing, false, shardHash((s3 ?: null))))} \n[1] filter {(traverseF(s4, lambda(l3.0) { isMember(move(l3.0), s7) }, false) && traverseF(s2, lambda(l4.0) { (typeMatch(move(l4.0), 512) ?: false) }, false))} \n[1] scan s5 s6 none none none none none none lowPriority [s2 = issue_date, s3 = vehicle_hash, s4 = zone] @\"9e5e2852-a7cf-4220-b9e0-503821da93e9\" true false "
+          }
+        },
+        "rejectedPlans": []
+      },
+      "executionStats": {
+        "executionSuccess": true,
+        "nReturned": 272,
+        "executionTimeMillis": 360,
+        "totalKeysExamined": 0,
+        "totalDocsExamined": 249507,
+        "executionStages": {
+          "stage": "project",
+          "planNodeId": 4,
+          "nReturned": 272,
+          "executionTimeMillisEstimate": 355,
+          "opens": 1,
+          "closes": 1,
+          "saveState": 22,
+          "restoreState": 22,
+          "isEOF": 1,
+          "projections": {
+            "14": "newBsonObj(\"_id\", s12, \"total_violations\", s13) "
+          },
+          "inputStage": {
+            "stage": "project",
+            "planNodeId": 4,
+            "nReturned": 272,
+            "executionTimeMillisEstimate": 355,
+            "opens": 1,
+            "closes": 1,
+            "saveState": 22,
+            "restoreState": 22,
+            "isEOF": 1,
+            "projections": {
+              "12": "newObj(\"borough\", s4, \"month\", s10) ",
+              "13": "doubleDoublePartialSumFinalize(convertSimpleSumToDoubleDoubleSum((convert ( s11, int32) ?: s11))) "
+            },
+            "inputStage": {
+              "stage": "group",
+              "planNodeId": 4,
+              "nReturned": 272,
+              "executionTimeMillisEstimate": 355,
+              "opens": 1,
+              "closes": 1,
+              "saveState": 22,
+              "restoreState": 22,
+              "isEOF": 1,
+              "groupBySlots": [
+                4,
+                10
+              ],
+              "expressions": {
+                "11": "count() ",
+                "initExprs": {
+                  "11": null
+                }
+              },
+              "mergingExprs": {
+                "9": "sum(s9) "
+              },
+              "usedDisk": false,
+              "spills": 0,
+              "spilledBytes": 0,
+              "spilledRecords": 0,
+              "spilledDataStorageSize": 0,
+              "inputStage": {
+                "stage": "project",
+                "planNodeId": 4,
+                "nReturned": 249506,
+                "executionTimeMillisEstimate": 344,
+                "opens": 1,
+                "closes": 1,
+                "saveState": 22,
+                "restoreState": 22,
+                "isEOF": 1,
+                "projections": {
+                  "10": "\n    let [\n        l9.0 = dateToString(s8, s2, \"%Y-%m\", \"UTC\") \n    ] \n    in \n        if exists(l9.0) \n        then makeOwn(move(l9.0)) \n        else \n            if (typeMatch(s2, 1088) ?: true) \n            then null \n            else \n                if typeMatch(s2, 131712) \n                then Nothing \n                else fail(4997901, \"$dateToString parameter 'date' must be coercible to date\") \n"
+                },
+                "inputStage": {
+                  "stage": "filter",
+                  "planNodeId": 2,
+                  "nReturned": 249506,
+                  "executionTimeMillisEstimate": 311,
+                  "opens": 1,
+                  "closes": 1,
+                  "saveState": 22,
+                  "restoreState": 22,
+                  "isEOF": 1,
+                  "numTested": 249506,
+                  "filter": "shardFilter(s1, makeBsonObj(MakeObjSpec([vehicle_hash = Add(0)], Open), Nothing, false, shardHash((s3 ?: null)))) ",
+                  "inputStage": {
+                    "stage": "filter",
+                    "planNodeId": 1,
+                    "nReturned": 249506,
+                    "executionTimeMillisEstimate": 152,
+                    "opens": 1,
+                    "closes": 1,
+                    "saveState": 22,
+                    "restoreState": 22,
+                    "isEOF": 1,
+                    "numTested": 249507,
+                    "filter": "(traverseF(s4, lambda(l3.0) { isMember(move(l3.0), s7) }, false) && traverseF(s2, lambda(l4.0) { (typeMatch(move(l4.0), 512) ?: false) }, false)) ",
+                    "inputStage": {
+                      "stage": "scan",
+                      "planNodeId": 1,
+                      "nReturned": 249507,
+                      "executionTimeMillisEstimate": 113,
+                      "opens": 1,
+                      "closes": 1,
+                      "saveState": 22,
+                      "restoreState": 22,
+                      "isEOF": 1,
+                      "numReads": 249507,
+                      "recordSlot": 5,
+                      "recordIdSlot": 6,
+                      "scanFieldNames": [
+                        "issue_date",
+                        "vehicle_hash",
+                        "zone"
+                      ],
+                      "scanFieldSlots": [
+                        2,
+                        3,
+                        4
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "shard1RS": {
+      "host": "shard1:27017",
+      "explainVersion": "2",
+      "queryPlanner": {
+        "namespace": "nyc_traffic.violations_1m",
+        "parsedQuery": {
+          "$and": [
+            {
+              "zone": {
+                "$in": [
+                  "Bronx",
+                  "Brooklyn",
+                  "Manhattan",
+                  "Queens",
+                  "Staten Island"
+                ]
+              }
+            },
+            {
+              "issue_date": {
+                "$type": [
+                  9
+                ]
+              }
+            }
+          ]
+        },
+        "indexFilterSet": false,
+        "queryHash": "C4E32C40",
+        "planCacheShapeHash": "C4E32C40",
+        "planCacheKey": "2DE70EA0",
+        "optimizationTimeMillis": 1,
+        "optimizedPipeline": true,
+        "maxIndexedOrSolutionsReached": false,
+        "maxIndexedAndSolutionsReached": false,
+        "maxScansToExplodeReached": false,
+        "prunedSimilarIndexes": false,
+        "winningPlan": {
+          "isCached": false,
+          "queryPlan": {
+            "stage": "GROUP",
+            "planNodeId": 4,
+            "inputStage": {
+              "stage": "SHARDING_FILTER",
+              "planNodeId": 2,
+              "inputStage": {
+                "stage": "COLLSCAN",
+                "planNodeId": 1,
+                "filter": {
+                  "$and": [
+                    {
+                      "zone": {
+                        "$in": [
+                          "Bronx",
+                          "Brooklyn",
+                          "Manhattan",
+                          "Queens",
+                          "Staten Island"
+                        ]
+                      }
+                    },
+                    {
+                      "issue_date": {
+                        "$type": [
+                          9
+                        ]
+                      }
+                    }
+                  ]
+                },
+                "direction": "forward"
+              }
+            }
+          },
+          "slotBasedPlan": {
+            "slots": "$$RESULT=s14 env: { s1 = ShardFilterer (shardFilterer), s7 = InList(\"Bronx\" \"Brooklyn\" \"Manhattan\" \"Queens\" \"Staten Island\"), s8 = TimeZoneDatabase(America/Dawson_Creek...America/Curacao) (timeZoneDB) }",
+            "stages": "[4] project [s14 = newBsonObj(\"_id\", s12, \"total_violations\", s13)] \n[4] project [s12 = newObj(\"borough\", s4, \"month\", s10), s13 = doubleDoublePartialSumFinalize(convertSimpleSumToDoubleDoubleSum((convert ( s11, int32) ?: s11)))] \n[4] group [s4, s10] [s11 = count()] spillSlots[s9] mergingExprs[sum(s9)] \n[4] project [s10 = \n    let [\n        l9.0 = dateToString(s8, s2, \"%Y-%m\", \"UTC\") \n    ] \n    in \n        if exists(l9.0) \n        then makeOwn(move(l9.0)) \n        else \n            if (typeMatch(s2, 1088) ?: true) \n            then null \n            else \n                if typeMatch(s2, 131712) \n                then Nothing \n                else fail(4997901, \"$dateToString parameter 'date' must be coercible to date\") \n] \n[2] filter {shardFilter(s1, makeBsonObj(MakeObjSpec([vehicle_hash = Add(0)], Open), Nothing, false, shardHash((s3 ?: null))))} \n[1] filter {(traverseF(s4, lambda(l3.0) { isMember(move(l3.0), s7) }, false) && traverseF(s2, lambda(l4.0) { (typeMatch(move(l4.0), 512) ?: false) }, false))} \n[1] scan s5 s6 none none none none none none lowPriority [s2 = issue_date, s3 = vehicle_hash, s4 = zone] @\"9e5e2852-a7cf-4220-b9e0-503821da93e9\" true false "
+          }
+        },
+        "rejectedPlans": []
+      },
+      "executionStats": {
+        "executionSuccess": true,
+        "nReturned": 303,
+        "executionTimeMillis": 361,
+        "totalKeysExamined": 0,
+        "totalDocsExamined": 250608,
+        "executionStages": {
+          "stage": "project",
+          "planNodeId": 4,
+          "nReturned": 303,
+          "executionTimeMillisEstimate": 355,
+          "opens": 1,
+          "closes": 1,
+          "saveState": 21,
+          "restoreState": 21,
+          "isEOF": 1,
+          "projections": {
+            "14": "newBsonObj(\"_id\", s12, \"total_violations\", s13) "
+          },
+          "inputStage": {
+            "stage": "project",
+            "planNodeId": 4,
+            "nReturned": 303,
+            "executionTimeMillisEstimate": 355,
+            "opens": 1,
+            "closes": 1,
+            "saveState": 21,
+            "restoreState": 21,
+            "isEOF": 1,
+            "projections": {
+              "12": "newObj(\"borough\", s4, \"month\", s10) ",
+              "13": "doubleDoublePartialSumFinalize(convertSimpleSumToDoubleDoubleSum((convert ( s11, int32) ?: s11))) "
+            },
+            "inputStage": {
+              "stage": "group",
+              "planNodeId": 4,
+              "nReturned": 303,
+              "executionTimeMillisEstimate": 355,
+              "opens": 1,
+              "closes": 1,
+              "saveState": 21,
+              "restoreState": 21,
+              "isEOF": 1,
+              "groupBySlots": [
+                4,
+                10
+              ],
+              "expressions": {
+                "11": "count() ",
+                "initExprs": {
+                  "11": null
+                }
+              },
+              "mergingExprs": {
+                "9": "sum(s9) "
+              },
+              "usedDisk": false,
+              "spills": 0,
+              "spilledBytes": 0,
+              "spilledRecords": 0,
+              "spilledDataStorageSize": 0,
+              "inputStage": {
+                "stage": "project",
+                "planNodeId": 4,
+                "nReturned": 250607,
+                "executionTimeMillisEstimate": 330,
+                "opens": 1,
+                "closes": 1,
+                "saveState": 21,
+                "restoreState": 21,
+                "isEOF": 1,
+                "projections": {
+                  "10": "\n    let [\n        l9.0 = dateToString(s8, s2, \"%Y-%m\", \"UTC\") \n    ] \n    in \n        if exists(l9.0) \n        then makeOwn(move(l9.0)) \n        else \n            if (typeMatch(s2, 1088) ?: true) \n            then null \n            else \n                if typeMatch(s2, 131712) \n                then Nothing \n                else fail(4997901, \"$dateToString parameter 'date' must be coercible to date\") \n"
+                },
+                "inputStage": {
+                  "stage": "filter",
+                  "planNodeId": 2,
+                  "nReturned": 250607,
+                  "executionTimeMillisEstimate": 273,
+                  "opens": 1,
+                  "closes": 1,
+                  "saveState": 21,
+                  "restoreState": 21,
+                  "isEOF": 1,
+                  "numTested": 250607,
+                  "filter": "shardFilter(s1, makeBsonObj(MakeObjSpec([vehicle_hash = Add(0)], Open), Nothing, false, shardHash((s3 ?: null)))) ",
+                  "inputStage": {
+                    "stage": "filter",
+                    "planNodeId": 1,
+                    "nReturned": 250607,
+                    "executionTimeMillisEstimate": 118,
+                    "opens": 1,
+                    "closes": 1,
+                    "saveState": 21,
+                    "restoreState": 21,
+                    "isEOF": 1,
+                    "numTested": 250608,
+                    "filter": "(traverseF(s4, lambda(l3.0) { isMember(move(l3.0), s7) }, false) && traverseF(s2, lambda(l4.0) { (typeMatch(move(l4.0), 512) ?: false) }, false)) ",
+                    "inputStage": {
+                      "stage": "scan",
+                      "planNodeId": 1,
+                      "nReturned": 250608,
+                      "executionTimeMillisEstimate": 53,
+                      "opens": 1,
+                      "closes": 1,
+                      "saveState": 21,
+                      "restoreState": 21,
+                      "isEOF": 1,
+                      "numReads": 250608,
+                      "recordSlot": 5,
+                      "recordIdSlot": 6,
+                      "scanFieldNames": [
+                        "issue_date",
+                        "vehicle_hash",
+                        "zone"
+                      ],
+                      "scanFieldSlots": [
+                        2,
+                        3,
+                        4
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "shard3RS": {
+      "host": "shard3:27017",
+      "explainVersion": "2",
+      "queryPlanner": {
+        "namespace": "nyc_traffic.violations_1m",
+        "parsedQuery": {
+          "$and": [
+            {
+              "zone": {
+                "$in": [
+                  "Bronx",
+                  "Brooklyn",
+                  "Manhattan",
+                  "Queens",
+                  "Staten Island"
+                ]
+              }
+            },
+            {
+              "issue_date": {
+                "$type": [
+                  9
+                ]
+              }
+            }
+          ]
+        },
+        "indexFilterSet": false,
+        "queryHash": "C4E32C40",
+        "planCacheShapeHash": "C4E32C40",
+        "planCacheKey": "2DE70EA0",
+        "optimizationTimeMillis": 1,
+        "optimizedPipeline": true,
+        "maxIndexedOrSolutionsReached": false,
+        "maxIndexedAndSolutionsReached": false,
+        "maxScansToExplodeReached": false,
+        "prunedSimilarIndexes": false,
+        "winningPlan": {
+          "isCached": false,
+          "queryPlan": {
+            "stage": "GROUP",
+            "planNodeId": 4,
+            "inputStage": {
+              "stage": "SHARDING_FILTER",
+              "planNodeId": 2,
+              "inputStage": {
+                "stage": "COLLSCAN",
+                "planNodeId": 1,
+                "filter": {
+                  "$and": [
+                    {
+                      "zone": {
+                        "$in": [
+                          "Bronx",
+                          "Brooklyn",
+                          "Manhattan",
+                          "Queens",
+                          "Staten Island"
+                        ]
+                      }
+                    },
+                    {
+                      "issue_date": {
+                        "$type": [
+                          9
+                        ]
+                      }
+                    }
+                  ]
+                },
+                "direction": "forward"
+              }
+            }
+          },
+          "slotBasedPlan": {
+            "slots": "$$RESULT=s14 env: { s1 = ShardFilterer (shardFilterer), s7 = InList(\"Bronx\" \"Brooklyn\" \"Manhattan\" \"Queens\" \"Staten Island\"), s8 = TimeZoneDatabase(Atlantic/Canary...PRC) (timeZoneDB) }",
+            "stages": "[4] project [s14 = newBsonObj(\"_id\", s12, \"total_violations\", s13)] \n[4] project [s12 = newObj(\"borough\", s4, \"month\", s10), s13 = doubleDoublePartialSumFinalize(convertSimpleSumToDoubleDoubleSum((convert ( s11, int32) ?: s11)))] \n[4] group [s4, s10] [s11 = count()] spillSlots[s9] mergingExprs[sum(s9)] \n[4] project [s10 = \n    let [\n        l9.0 = dateToString(s8, s2, \"%Y-%m\", \"UTC\") \n    ] \n    in \n        if exists(l9.0) \n        then makeOwn(move(l9.0)) \n        else \n            if (typeMatch(s2, 1088) ?: true) \n            then null \n            else \n                if typeMatch(s2, 131712) \n                then Nothing \n                else fail(4997901, \"$dateToString parameter 'date' must be coercible to date\") \n] \n[2] filter {shardFilter(s1, makeBsonObj(MakeObjSpec([vehicle_hash = Add(0)], Open), Nothing, false, shardHash((s3 ?: null))))} \n[1] filter {(traverseF(s4, lambda(l3.0) { isMember(move(l3.0), s7) }, false) && traverseF(s2, lambda(l4.0) { (typeMatch(move(l4.0), 512) ?: false) }, false))} \n[1] scan s5 s6 none none none none none none lowPriority [s2 = issue_date, s3 = vehicle_hash, s4 = zone] @\"9e5e2852-a7cf-4220-b9e0-503821da93e9\" true false "
+          }
+        },
+        "rejectedPlans": []
+      },
+      "executionStats": {
+        "executionSuccess": true,
+        "nReturned": 285,
+        "executionTimeMillis": 365,
+        "totalKeysExamined": 0,
+        "totalDocsExamined": 250148,
+        "executionStages": {
+          "stage": "project",
+          "planNodeId": 4,
+          "nReturned": 285,
+          "executionTimeMillisEstimate": 360,
+          "opens": 1,
+          "closes": 1,
+          "saveState": 19,
+          "restoreState": 19,
+          "isEOF": 1,
+          "projections": {
+            "14": "newBsonObj(\"_id\", s12, \"total_violations\", s13) "
+          },
+          "inputStage": {
+            "stage": "project",
+            "planNodeId": 4,
+            "nReturned": 285,
+            "executionTimeMillisEstimate": 360,
+            "opens": 1,
+            "closes": 1,
+            "saveState": 19,
+            "restoreState": 19,
+            "isEOF": 1,
+            "projections": {
+              "12": "newObj(\"borough\", s4, \"month\", s10) ",
+              "13": "doubleDoublePartialSumFinalize(convertSimpleSumToDoubleDoubleSum((convert ( s11, int32) ?: s11))) "
+            },
+            "inputStage": {
+              "stage": "group",
+              "planNodeId": 4,
+              "nReturned": 285,
+              "executionTimeMillisEstimate": 360,
+              "opens": 1,
+              "closes": 1,
+              "saveState": 19,
+              "restoreState": 19,
+              "isEOF": 1,
+              "groupBySlots": [
+                4,
+                10
+              ],
+              "expressions": {
+                "11": "count() ",
+                "initExprs": {
+                  "11": null
+                }
+              },
+              "mergingExprs": {
+                "9": "sum(s9) "
+              },
+              "usedDisk": false,
+              "spills": 0,
+              "spilledBytes": 0,
+              "spilledRecords": 0,
+              "spilledDataStorageSize": 0,
+              "inputStage": {
+                "stage": "project",
+                "planNodeId": 4,
+                "nReturned": 250148,
+                "executionTimeMillisEstimate": 329,
+                "opens": 1,
+                "closes": 1,
+                "saveState": 19,
+                "restoreState": 19,
+                "isEOF": 1,
+                "projections": {
+                  "10": "\n    let [\n        l9.0 = dateToString(s8, s2, \"%Y-%m\", \"UTC\") \n    ] \n    in \n        if exists(l9.0) \n        then makeOwn(move(l9.0)) \n        else \n            if (typeMatch(s2, 1088) ?: true) \n            then null \n            else \n                if typeMatch(s2, 131712) \n                then Nothing \n                else fail(4997901, \"$dateToString parameter 'date' must be coercible to date\") \n"
+                },
+                "inputStage": {
+                  "stage": "filter",
+                  "planNodeId": 2,
+                  "nReturned": 250148,
+                  "executionTimeMillisEstimate": 267,
+                  "opens": 1,
+                  "closes": 1,
+                  "saveState": 19,
+                  "restoreState": 19,
+                  "isEOF": 1,
+                  "numTested": 250148,
+                  "filter": "shardFilter(s1, makeBsonObj(MakeObjSpec([vehicle_hash = Add(0)], Open), Nothing, false, shardHash((s3 ?: null)))) ",
+                  "inputStage": {
+                    "stage": "filter",
+                    "planNodeId": 1,
+                    "nReturned": 250148,
+                    "executionTimeMillisEstimate": 120,
+                    "opens": 1,
+                    "closes": 1,
+                    "saveState": 19,
+                    "restoreState": 19,
+                    "isEOF": 1,
+                    "numTested": 250148,
+                    "filter": "(traverseF(s4, lambda(l3.0) { isMember(move(l3.0), s7) }, false) && traverseF(s2, lambda(l4.0) { (typeMatch(move(l4.0), 512) ?: false) }, false)) ",
+                    "inputStage": {
+                      "stage": "scan",
+                      "planNodeId": 1,
+                      "nReturned": 250148,
+                      "executionTimeMillisEstimate": 89,
+                      "opens": 1,
+                      "closes": 1,
+                      "saveState": 19,
+                      "restoreState": 19,
+                      "isEOF": 1,
+                      "numReads": 250148,
+                      "recordSlot": 5,
+                      "recordIdSlot": 6,
+                      "scanFieldNames": [
+                        "issue_date",
+                        "vehicle_hash",
+                        "zone"
+                      ],
+                      "scanFieldSlots": [
+                        2,
+                        3,
+                        4
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "shard4RS": {
+      "host": "shard4b:27017",
+      "explainVersion": "2",
+      "queryPlanner": {
+        "namespace": "nyc_traffic.violations_1m",
+        "parsedQuery": {
+          "$and": [
+            {
+              "zone": {
+                "$in": [
+                  "Bronx",
+                  "Brooklyn",
+                  "Manhattan",
+                  "Queens",
+                  "Staten Island"
+                ]
+              }
+            },
+            {
+              "issue_date": {
+                "$type": [
+                  9
+                ]
+              }
+            }
+          ]
+        },
+        "indexFilterSet": false,
+        "queryHash": "C4E32C40",
+        "planCacheShapeHash": "C4E32C40",
+        "planCacheKey": "2DE70EA0",
+        "optimizationTimeMillis": 0,
+        "optimizedPipeline": true,
+        "maxIndexedOrSolutionsReached": false,
+        "maxIndexedAndSolutionsReached": false,
+        "maxScansToExplodeReached": false,
+        "prunedSimilarIndexes": false,
+        "winningPlan": {
+          "isCached": false,
+          "queryPlan": {
+            "stage": "GROUP",
+            "planNodeId": 4,
+            "inputStage": {
+              "stage": "SHARDING_FILTER",
+              "planNodeId": 2,
+              "inputStage": {
+                "stage": "COLLSCAN",
+                "planNodeId": 1,
+                "filter": {
+                  "$and": [
+                    {
+                      "zone": {
+                        "$in": [
+                          "Bronx",
+                          "Brooklyn",
+                          "Manhattan",
+                          "Queens",
+                          "Staten Island"
+                        ]
+                      }
+                    },
+                    {
+                      "issue_date": {
+                        "$type": [
+                          9
+                        ]
+                      }
+                    }
+                  ]
+                },
+                "direction": "forward"
+              }
+            }
+          },
+          "slotBasedPlan": {
+            "slots": "$$RESULT=s14 env: { s1 = ShardFilterer (shardFilterer), s7 = InList(\"Bronx\" \"Brooklyn\" \"Manhattan\" \"Queens\" \"Staten Island\"), s8 = TimeZoneDatabase(Africa/Addis_Ababa...America/Mexico_City) (timeZoneDB) }",
+            "stages": "[4] project [s14 = newBsonObj(\"_id\", s12, \"total_violations\", s13)] \n[4] project [s12 = newObj(\"borough\", s4, \"month\", s10), s13 = doubleDoublePartialSumFinalize(convertSimpleSumToDoubleDoubleSum((convert ( s11, int32) ?: s11)))] \n[4] group [s4, s10] [s11 = count()] spillSlots[s9] mergingExprs[sum(s9)] \n[4] project [s10 = \n    let [\n        l9.0 = dateToString(s8, s2, \"%Y-%m\", \"UTC\") \n    ] \n    in \n        if exists(l9.0) \n        then makeOwn(move(l9.0)) \n        else \n            if (typeMatch(s2, 1088) ?: true) \n            then null \n            else \n                if typeMatch(s2, 131712) \n                then Nothing \n                else fail(4997901, \"$dateToString parameter 'date' must be coercible to date\") \n] \n[2] filter {shardFilter(s1, makeBsonObj(MakeObjSpec([vehicle_hash = Add(0)], Open), Nothing, false, shardHash((s3 ?: null))))} \n[1] filter {(traverseF(s4, lambda(l3.0) { isMember(move(l3.0), s7) }, false) && traverseF(s2, lambda(l4.0) { (typeMatch(move(l4.0), 512) ?: false) }, false))} \n[1] scan s5 s6 none none none none none none lowPriority [s2 = issue_date, s3 = vehicle_hash, s4 = zone] @\"9e5e2852-a7cf-4220-b9e0-503821da93e9\" true false "
+          }
+        },
+        "rejectedPlans": []
+      },
+      "executionStats": {
+        "executionSuccess": true,
+        "nReturned": 304,
+        "executionTimeMillis": 368,
+        "totalKeysExamined": 0,
+        "totalDocsExamined": 249737,
+        "executionStages": {
+          "stage": "project",
+          "planNodeId": 4,
+          "nReturned": 304,
+          "executionTimeMillisEstimate": 365,
+          "opens": 1,
+          "closes": 1,
+          "saveState": 18,
+          "restoreState": 18,
+          "isEOF": 1,
+          "projections": {
+            "14": "newBsonObj(\"_id\", s12, \"total_violations\", s13) "
+          },
+          "inputStage": {
+            "stage": "project",
+            "planNodeId": 4,
+            "nReturned": 304,
+            "executionTimeMillisEstimate": 365,
+            "opens": 1,
+            "closes": 1,
+            "saveState": 18,
+            "restoreState": 18,
+            "isEOF": 1,
+            "projections": {
+              "12": "newObj(\"borough\", s4, \"month\", s10) ",
+              "13": "doubleDoublePartialSumFinalize(convertSimpleSumToDoubleDoubleSum((convert ( s11, int32) ?: s11))) "
+            },
+            "inputStage": {
+              "stage": "group",
+              "planNodeId": 4,
+              "nReturned": 304,
+              "executionTimeMillisEstimate": 365,
+              "opens": 1,
+              "closes": 1,
+              "saveState": 18,
+              "restoreState": 18,
+              "isEOF": 1,
+              "groupBySlots": [
+                4,
+                10
+              ],
+              "expressions": {
+                "11": "count() ",
+                "initExprs": {
+                  "11": null
+                }
+              },
+              "mergingExprs": {
+                "9": "sum(s9) "
+              },
+              "usedDisk": false,
+              "spills": 0,
+              "spilledBytes": 0,
+              "spilledRecords": 0,
+              "spilledDataStorageSize": 0,
+              "inputStage": {
+                "stage": "project",
+                "planNodeId": 4,
+                "nReturned": 249737,
+                "executionTimeMillisEstimate": 332,
+                "opens": 1,
+                "closes": 1,
+                "saveState": 18,
+                "restoreState": 18,
+                "isEOF": 1,
+                "projections": {
+                  "10": "\n    let [\n        l9.0 = dateToString(s8, s2, \"%Y-%m\", \"UTC\") \n    ] \n    in \n        if exists(l9.0) \n        then makeOwn(move(l9.0)) \n        else \n            if (typeMatch(s2, 1088) ?: true) \n            then null \n            else \n                if typeMatch(s2, 131712) \n                then Nothing \n                else fail(4997901, \"$dateToString parameter 'date' must be coercible to date\") \n"
+                },
+                "inputStage": {
+                  "stage": "filter",
+                  "planNodeId": 2,
+                  "nReturned": 249737,
+                  "executionTimeMillisEstimate": 244,
+                  "opens": 1,
+                  "closes": 1,
+                  "saveState": 18,
+                  "restoreState": 18,
+                  "isEOF": 1,
+                  "numTested": 249737,
+                  "filter": "shardFilter(s1, makeBsonObj(MakeObjSpec([vehicle_hash = Add(0)], Open), Nothing, false, shardHash((s3 ?: null)))) ",
+                  "inputStage": {
+                    "stage": "filter",
+                    "planNodeId": 1,
+                    "nReturned": 249737,
+                    "executionTimeMillisEstimate": 108,
+                    "opens": 1,
+                    "closes": 1,
+                    "saveState": 18,
+                    "restoreState": 18,
+                    "isEOF": 1,
+                    "numTested": 249737,
+                    "filter": "(traverseF(s4, lambda(l3.0) { isMember(move(l3.0), s7) }, false) && traverseF(s2, lambda(l4.0) { (typeMatch(move(l4.0), 512) ?: false) }, false)) ",
+                    "inputStage": {
+                      "stage": "scan",
+                      "planNodeId": 1,
+                      "nReturned": 249737,
+                      "executionTimeMillisEstimate": 88,
+                      "opens": 1,
+                      "closes": 1,
+                      "saveState": 18,
+                      "restoreState": 18,
+                      "isEOF": 1,
+                      "numReads": 249737,
+                      "recordSlot": 5,
+                      "recordIdSlot": 6,
+                      "scanFieldNames": [
+                        "issue_date",
+                        "vehicle_hash",
+                        "zone"
+                      ],
+                      "scanFieldSlots": [
+                        2,
+                        3,
+                        4
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "queryShapeHash": "91859D713BB7A22F52BD87256DECABEBD8F401C9E9E123161B056C7E45C702AD",
+  "command": {
+    "aggregate": "violations_1m",
+    "pipeline": [
+      {
+        "$match": {
+          "issue_date": {
+            "$type": "date"
+          },
+          "zone": {
+            "$in": [
+              "Bronx",
+              "Brooklyn",
+              "Manhattan",
+              "Queens",
+              "Staten Island"
+            ]
+          }
+        }
+      },
+      {
+        "$group": {
+          "_id": {
+            "borough": "$zone",
+            "month": {
+              "$dateToString": {
+                "format": "%Y-%m",
+                "date": "$issue_date",
+                "timezone": "UTC"
+              }
+            }
+          },
+          "total_violations": {
+            "$sum": 1
+          }
+        }
+      },
+      {
+        "$sort": {
+          "total_violations": -1,
+          "_id.borough": 1,
+          "_id.month": 1
+        }
+      },
+      {
+        "$limit": 10
+      },
+      {
+        "$project": {
+          "_id": 0,
+          "borough": "$_id.borough",
+          "month": "$_id.month",
+          "total_violations": 1
+        }
+      }
+    ],
+    "cursor": {},
+    "allowDiskUse": true,
+    "maxTimeMS": 120000
+  },
+  "ok": 1,
+  "$clusterTime": {
+    "clusterTime": {
+      "$timestamp": {
+        "t": 1795604958,
+        "i": 1
+      }
+    },
+    "signature": {
+      "hash": {
+        "$binary": {
+          "base64": "AAAAAAAAAAAAAAAAAAAAAAAAAAA=",
+          "subType": "00"
+        }
+      },
+      "keyId": 0
+    }
+  },
+  "operationTime": {
+    "$timestamp": {
+      "t": 1795604956,
+      "i": 1
+    }
+  }
+}

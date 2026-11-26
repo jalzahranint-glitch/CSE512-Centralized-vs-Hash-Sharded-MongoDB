@@ -1,0 +1,41 @@
+{
+  shards: [
+    {
+      _id: 'shard1RS',
+      host: 'shard1RS/shard1:27017',
+      state: 1,
+      topologyTime: Timestamp({ t: 1794306691, i: 11 }),
+      replSetConfigVersion: Long('-1')
+    },
+    {
+      _id: 'shard2RS',
+      host: 'shard2RS/shard2:27017',
+      state: 1,
+      topologyTime: Timestamp({ t: 1794306732, i: 5 }),
+      replSetConfigVersion: Long('-1')
+    },
+    {
+      _id: 'shard3RS',
+      host: 'shard3RS/shard3:27017',
+      state: 1,
+      topologyTime: Timestamp({ t: 1794306760, i: 9 }),
+      replSetConfigVersion: Long('-1')
+    },
+    {
+      _id: 'shard4RS',
+      host: 'shard4RS/shard4:27017',
+      state: 1,
+      topologyTime: Timestamp({ t: 1794306790, i: 9 }),
+      replSetConfigVersion: Long('-1')
+    }
+  ],
+  ok: 1,
+  '$clusterTime': {
+    clusterTime: Timestamp({ t: 1794307071, i: 1 }),
+    signature: {
+      hash: Binary.createFromBase64('AAAAAAAAAAAAAAAAAAAAAAAAAAA=', 0),
+      keyId: Long('0')
+    }
+  },
+  operationTime: Timestamp({ t: 1794307071, i: 1 })
+}

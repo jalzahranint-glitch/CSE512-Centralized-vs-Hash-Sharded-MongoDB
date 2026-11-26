@@ -1,0 +1,13 @@
+Setting up hash sharding for: nyc_traffic.violations_1m
+{
+  collectionsharded: 'nyc_traffic.violations_1m',
+  ok: 1,
+  '$clusterTime': {
+    clusterTime: Timestamp({ t: 1794308789, i: 43 }),
+    signature: {
+      hash: Binary.createFromBase64('AAAAAAAAAAAAAAAAAAAAAAAAAAA=', 0),
+      keyId: Long('0')
+    }
+  },
+  operationTime: Timestamp({ t: 1794308789, i: 43 })
+}

@@ -1,0 +1,12 @@
+services:
+  mongo:
+    image: mongo:8.0
+    container_name: nyc-mongo-central
+    ports:
+      - "127.0.0.1:27017:27017"
+    volumes:
+      - central_data:/data/db
+    restart: unless-stopped
+
+volumes:
+  central_data:

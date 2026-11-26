@@ -1,0 +1,38 @@
+services:
+  shard4b:
+    image: mongo:8.0
+    command:
+      - mongod
+      - --shardsvr
+      - --replSet
+      - shard4RS
+      - --port
+      - "27017"
+      - --bind_ip_all
+      - --wiredTigerCacheSizeGB
+      - "0.25"
+    volumes:
+      - shard4b_data:/data/db
+    mem_limit: 512m
+    restart: "no"
+
+  shard4c:
+    image: mongo:8.0
+    command:
+      - mongod
+      - --shardsvr
+      - --replSet
+      - shard4RS
+      - --port
+      - "27017"
+      - --bind_ip_all
+      - --wiredTigerCacheSizeGB
+      - "0.25"
+    volumes:
+      - shard4c_data:/data/db
+    mem_limit: 512m
+    restart: "no"
+
+volumes:
+  shard4b_data:
+  shard4c_data:

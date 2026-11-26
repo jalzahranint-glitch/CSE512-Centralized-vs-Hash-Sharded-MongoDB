@@ -1,0 +1,19 @@
+Q1 Actual Query Results
+Dataset: 1M
+Records returned: 2
+[
+  {
+    _id: '4773112712',
+    vehicle_hash: 'e1b3dc8fd32093207a7a965292593e4601fe2825d72d02e58f37d0d438e84dd2',
+    issue_date: ISODate('2022-03-29T00:00:00.000Z'),
+    zone: 'Queens',
+    violation: 'PHTO SCHOOL ZN SPEED VIOLATION'
+  },
+  {
+    _id: '4775688753',
+    vehicle_hash: 'e1b3dc8fd32093207a7a965292593e4601fe2825d72d02e58f37d0d438e84dd2',
+    issue_date: ISODate('2022-04-19T00:00:00.000Z'),
+    zone: 'Brooklyn',
+    violation: 'PHTO SCHOOL ZN SPEED VIOLATION'
+  }
+]

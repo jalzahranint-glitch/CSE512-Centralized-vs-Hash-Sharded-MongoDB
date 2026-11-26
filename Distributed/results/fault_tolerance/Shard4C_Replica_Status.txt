@@ -1,0 +1,5 @@
+Shard 4c voting enabled
+Replica Set Voting Configuration
+shard4:27017 | votes: 1 | priority: 1
+shard4b:27017 | votes: 1 | priority: 1
+shard4c:27017 | votes: 1 | priority: 1

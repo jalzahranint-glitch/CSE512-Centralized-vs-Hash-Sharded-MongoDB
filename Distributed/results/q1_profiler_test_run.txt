@@ -1,0 +1,5 @@
+{
+  tag: 'CSE512_Q1_100K_PROFILE_TEST',
+  recordsReturned: 1,
+  clientLatencyMs: 9
+}

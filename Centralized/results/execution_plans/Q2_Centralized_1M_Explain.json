@@ -1,0 +1,200 @@
+{
+  "explainVersion": "2",
+  "stages": [
+    {
+      "$cursor": {
+        "queryPlanner": {
+          "namespace": "nyc_traffic.violations_1m",
+          "parsedQuery": {},
+          "indexFilterSet": false,
+          "queryHash": "C5968731",
+          "planCacheShapeHash": "C5968731",
+          "planCacheKey": "2FD517E5",
+          "optimizationTimeMillis": 1,
+          "maxIndexedOrSolutionsReached": false,
+          "maxIndexedAndSolutionsReached": false,
+          "maxScansToExplodeReached": false,
+          "prunedSimilarIndexes": false,
+          "winningPlan": {
+            "isCached": false,
+            "queryPlan": {
+              "stage": "GROUP",
+              "planNodeId": 3,
+              "inputStage": {
+                "stage": "COLLSCAN",
+                "planNodeId": 1,
+                "filter": {},
+                "direction": "forward"
+              }
+            },
+            "slotBasedPlan": {
+              "slots": "$$RESULT=s8 env: {  }",
+              "stages": "[3] project [s8 = newObj(\"_id\", s5, \"violation_count\", s7)] \n[3] project [s7 = (convert ( s6, int32) ?: s6)] \n[3] group [s5] [s6 = count()] spillSlots[s4] mergingExprs[sum(s4)] \n[3] project [s5 = (s1 ?: null)] \n[1] scan s2 s3 none none none none none none lowPriority [s1 = vehicle_hash] @\"dddfa053-e5c9-4e82-abe5-4f6bb56cf2a3\" true false "
+            }
+          },
+          "rejectedPlans": []
+        },
+        "executionStats": {
+          "executionSuccess": true,
+          "nReturned": 717632,
+          "executionTimeMillis": 3146,
+          "totalKeysExamined": 0,
+          "totalDocsExamined": 1000000,
+          "executionStages": {
+            "stage": "project",
+            "planNodeId": 3,
+            "nReturned": 717632,
+            "executionTimeMillisEstimate": 2569,
+            "opens": 1,
+            "closes": 1,
+            "saveState": 232,
+            "restoreState": 232,
+            "isEOF": 1,
+            "projections": {
+              "8": "newObj(\"_id\", s5, \"violation_count\", s7) "
+            },
+            "inputStage": {
+              "stage": "project",
+              "planNodeId": 3,
+              "nReturned": 717632,
+              "executionTimeMillisEstimate": 2445,
+              "opens": 1,
+              "closes": 1,
+              "saveState": 232,
+              "restoreState": 232,
+              "isEOF": 1,
+              "projections": {
+                "7": "(convert ( s6, int32) ?: s6) "
+              },
+              "inputStage": {
+                "stage": "group",
+                "planNodeId": 3,
+                "nReturned": 717632,
+                "executionTimeMillisEstimate": 2333,
+                "opens": 1,
+                "closes": 1,
+                "saveState": 232,
+                "restoreState": 232,
+                "isEOF": 1,
+                "groupBySlots": [
+                  5
+                ],
+                "expressions": {
+                  "6": "count() ",
+                  "initExprs": {
+                    "6": null
+                  }
+                },
+                "mergingExprs": {
+                  "4": "sum(s4) "
+                },
+                "usedDisk": false,
+                "spills": 0,
+                "spilledBytes": 0,
+                "spilledRecords": 0,
+                "spilledDataStorageSize": 0,
+                "inputStage": {
+                  "stage": "project",
+                  "planNodeId": 3,
+                  "nReturned": 1000000,
+                  "executionTimeMillisEstimate": 284,
+                  "opens": 1,
+                  "closes": 1,
+                  "saveState": 232,
+                  "restoreState": 232,
+                  "isEOF": 1,
+                  "projections": {
+                    "5": "(s1 ?: null) "
+                  },
+                  "inputStage": {
+                    "stage": "scan",
+                    "planNodeId": 1,
+                    "nReturned": 1000000,
+                    "executionTimeMillisEstimate": 251,
+                    "opens": 1,
+                    "closes": 1,
+                    "saveState": 232,
+                    "restoreState": 232,
+                    "isEOF": 1,
+                    "numReads": 1000000,
+                    "recordSlot": 2,
+                    "recordIdSlot": 3,
+                    "scanFieldNames": [
+                      "vehicle_hash"
+                    ],
+                    "scanFieldSlots": [
+                      1
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "nReturned": 717632,
+      "executionTimeMillisEstimate": 2972
+    },
+    {
+      "$sort": {
+        "sortKey": {
+          "violation_count": -1,
+          "_id": 1
+        },
+        "limit": 10
+      },
+      "totalDataSizeSortedBytesEstimate": 5010,
+      "usedDisk": false,
+      "spills": 0,
+      "spilledDataStorageSize": 0,
+      "nReturned": 10,
+      "executionTimeMillisEstimate": 3144
+    }
+  ],
+  "queryShapeHash": "0705A906CF7BFF85FD5104006BE8C01A4E6358E44BC12E9EC821800153E58D1A",
+  "serverInfo": {
+    "host": "6dcc8e22ff36",
+    "port": 27017,
+    "version": "8.0.34",
+    "gitVersion": "51db4515a6597aedcf6188ee4e48a27e65b065ae"
+  },
+  "serverParameters": {
+    "internalQueryFacetBufferSizeBytes": 104857600,
+    "internalQueryFacetMaxOutputDocSizeBytes": 104857600,
+    "internalLookupStageIntermediateDocumentMaxSizeBytes": 104857600,
+    "internalDocumentSourceGroupMaxMemoryBytes": 104857600,
+    "internalQueryMaxBlockingSortMemoryUsageBytes": 104857600,
+    "internalQueryProhibitBlockingMergeOnMongoS": 0,
+    "internalQueryMaxAddToSetBytes": 104857600,
+    "internalDocumentSourceSetWindowFieldsMaxMemoryBytes": 104857600,
+    "internalQueryFrameworkControl": "trySbeRestricted",
+    "internalQueryPlannerIgnoreIndexWithCollationForRegex": 1
+  },
+  "command": {
+    "aggregate": "violations_1m",
+    "pipeline": [
+      {
+        "$group": {
+          "_id": "$vehicle_hash",
+          "violation_count": {
+            "$sum": 1
+          }
+        }
+      },
+      {
+        "$sort": {
+          "violation_count": -1,
+          "_id": 1
+        }
+      },
+      {
+        "$limit": 10
+      }
+    ],
+    "allowDiskUse": true,
+    "cursor": {},
+    "maxTimeMS": 120000,
+    "$db": "nyc_traffic"
+  },
+  "ok": 1
+}

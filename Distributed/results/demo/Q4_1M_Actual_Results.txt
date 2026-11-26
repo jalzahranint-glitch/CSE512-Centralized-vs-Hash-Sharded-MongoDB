@@ -1,0 +1,55 @@
+Q4 Actual Query Results
+Dataset: 1M records
+Results returned: 10
+[
+  {
+    total_violations: 45739,
+    borough: 'Queens',
+    month: '2023-10'
+  },
+  {
+    total_violations: 45516,
+    borough: 'Queens',
+    month: '2024-08'
+  },
+  {
+    total_violations: 43676,
+    borough: 'Queens',
+    month: '2024-07'
+  },
+  {
+    total_violations: 37398,
+    borough: 'Queens',
+    month: '2024-01'
+  },
+  {
+    total_violations: 37145,
+    borough: 'Queens',
+    month: '2023-09'
+  },
+  {
+    total_violations: 32023,
+    borough: 'Brooklyn',
+    month: '2023-10'
+  },
+  {
+    total_violations: 30351,
+    borough: 'Brooklyn',
+    month: '2024-07'
+  },
+  {
+    total_violations: 29506,
+    borough: 'Brooklyn',
+    month: '2024-08'
+  },
+  {
+    total_violations: 28240,
+    borough: 'Brooklyn',
+    month: '2024-01'
+  },
+  {
+    total_violations: 27594,
+    borough: 'Queens',
+    month: '2023-12'
+  }
+]

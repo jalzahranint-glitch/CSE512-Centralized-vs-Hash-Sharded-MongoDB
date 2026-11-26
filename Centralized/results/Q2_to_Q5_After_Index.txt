@@ -1,0 +1,975 @@
+===== Performance: Q2 | 100k =====
+{
+  query: 'Repeat Offenders',
+  dataset: '100k',
+  mode: 'Centralized - Hashed Index Present',
+  latencyMillis: 306,
+  serverExecutionTimeMillis: 299,
+  totalDocsExamined: 100000,
+  totalKeysExamined: 0,
+  recordsReturned: 10,
+  queryPlan: [
+    'COLLSCAN'
+  ],
+  results: [
+    {
+      _id: '19326c93adf46c461d9e7c3b741866facc8cb7a9b4d7115d1a8745e45a5737b8',
+      violation_count: 12
+    },
+    {
+      _id: '3d926cb4e82eb6346144303c88cb7eb15fedb83140b8963e353fe2bed6570e7f',
+      violation_count: 8
+    },
+    {
+      _id: '516db70d5cc57f091724efdde8bf390a1af447a8a7653b51c3661c4877967394',
+      violation_count: 8
+    },
+    {
+      _id: '6f7e635ee16bbb7da6ee271b8b5a9cc3d13e1f3691f199dc40bcfab5a88bdb2f',
+      violation_count: 8
+    },
+    {
+      _id: '7cee4fd280d39efd93ecedaee2ff4160dbe5b4ae2df23f7b369c9e3c55725a5d',
+      violation_count: 8
+    },
+    {
+      _id: '5ee505c9c732e1f360f6aeefbec158c8926b4b6348862092e9fb62d29dd40d19',
+      violation_count: 7
+    },
+    {
+      _id: '6c14a85a3a3bd5f01a1d2660dd930ec2b94c7fca4ede1124b868f6095bfdd4b6',
+      violation_count: 7
+    },
+    {
+      _id: '73c073cbaa0ce1cc07bfd49220b8a729e92022a79c6d7eed5be1dc5787e614b4',
+      violation_count: 7
+    },
+    {
+      _id: 'ace49669a59d636a6ef59aac50bfb2e0877f55c48fca220175c26bf8036cf1d5',
+      violation_count: 7
+    },
+    {
+      _id: 'd75622eb18b9049e1e4a28e9f682040296583c335593311804149b14c32a25e8',
+      violation_count: 7
+    }
+  ]
+}
+===== Performance: Q2 | 500k =====
+{
+  query: 'Repeat Offenders',
+  dataset: '500k',
+  mode: 'Centralized - Hashed Index Present',
+  latencyMillis: 1108,
+  serverExecutionTimeMillis: 1106,
+  totalDocsExamined: 500000,
+  totalKeysExamined: 0,
+  recordsReturned: 10,
+  queryPlan: [
+    'COLLSCAN'
+  ],
+  results: [
+    {
+      _id: '19326c93adf46c461d9e7c3b741866facc8cb7a9b4d7115d1a8745e45a5737b8',
+      violation_count: 58
+    },
+    {
+      _id: '516db70d5cc57f091724efdde8bf390a1af447a8a7653b51c3661c4877967394',
+      violation_count: 48
+    },
+    {
+      _id: 'd75622eb18b9049e1e4a28e9f682040296583c335593311804149b14c32a25e8',
+      violation_count: 36
+    },
+    {
+      _id: '6f7e635ee16bbb7da6ee271b8b5a9cc3d13e1f3691f199dc40bcfab5a88bdb2f',
+      violation_count: 29
+    },
+    {
+      _id: '01b3866c6beba600319b0933c56490e89b31270c1a3e43dfad06b380d561afde',
+      violation_count: 28
+    },
+    {
+      _id: '40c4aa8c2fb3461c2cf40884081655424384e340129d9c21541948f6ecf55f85',
+      violation_count: 27
+    },
+    {
+      _id: '7cee4fd280d39efd93ecedaee2ff4160dbe5b4ae2df23f7b369c9e3c55725a5d',
+      violation_count: 27
+    },
+    {
+      _id: '9b898357ab7e291fe32845c6c78344ff2f2731352c6f7beb07e79a540d8c0a91',
+      violation_count: 27
+    },
+    {
+      _id: '13244e672d6fd759020dc6a39de4903c3a769f86c05bbda223e78fb6d2072af2',
+      violation_count: 25
+    },
+    {
+      _id: '39d0160aa277991030cce177f1f5877e5824e6858a39fecfc2dd635559af32bc',
+      violation_count: 25
+    }
+  ]
+}
+===== Performance: Q2 | 1m =====
+{
+  query: 'Repeat Offenders',
+  dataset: '1m',
+  mode: 'Centralized - Hashed Index Present',
+  latencyMillis: 1914,
+  serverExecutionTimeMillis: 1910,
+  totalDocsExamined: 1000000,
+  totalKeysExamined: 0,
+  recordsReturned: 10,
+  queryPlan: [
+    'COLLSCAN'
+  ],
+  results: [
+    {
+      _id: '516db70d5cc57f091724efdde8bf390a1af447a8a7653b51c3661c4877967394',
+      violation_count: 113
+    },
+    {
+      _id: '19326c93adf46c461d9e7c3b741866facc8cb7a9b4d7115d1a8745e45a5737b8',
+      violation_count: 111
+    },
+    {
+      _id: '6f7e635ee16bbb7da6ee271b8b5a9cc3d13e1f3691f199dc40bcfab5a88bdb2f',
+      violation_count: 73
+    },
+    {
+      _id: 'd75622eb18b9049e1e4a28e9f682040296583c335593311804149b14c32a25e8',
+      violation_count: 69
+    },
+    {
+      _id: '9b898357ab7e291fe32845c6c78344ff2f2731352c6f7beb07e79a540d8c0a91',
+      violation_count: 56
+    },
+    {
+      _id: '01b3866c6beba600319b0933c56490e89b31270c1a3e43dfad06b380d561afde',
+      violation_count: 54
+    },
+    {
+      _id: '7cee4fd280d39efd93ecedaee2ff4160dbe5b4ae2df23f7b369c9e3c55725a5d',
+      violation_count: 54
+    },
+    {
+      _id: '08d401e769c757618c59052db9216d63caa1ac76cd0d9fbf5fc9a14e353bd785',
+      violation_count: 51
+    },
+    {
+      _id: '95083fb211a2b78597bff294f693d6f0cfe814799dedeb2f7f5e73d538de09bf',
+      violation_count: 50
+    },
+    {
+      _id: '39d0160aa277991030cce177f1f5877e5824e6858a39fecfc2dd635559af32bc',
+      violation_count: 49
+    }
+  ]
+}
+===== Performance: Q3 | 100k =====
+{
+  query: 'Cross-Borough Detection',
+  dataset: '100k',
+  mode: 'Centralized - Hashed Index Present',
+  latencyMillis: 357,
+  serverExecutionTimeMillis: 353,
+  totalDocsExamined: 100000,
+  totalKeysExamined: 0,
+  recordsReturned: 10,
+  queryPlan: [
+    'COLLSCAN'
+  ],
+  results: [
+    {
+      _id: '6f7e635ee16bbb7da6ee271b8b5a9cc3d13e1f3691f199dc40bcfab5a88bdb2f',
+      boroughs: [
+        'Brooklyn',
+        'Bronx',
+        'Queens'
+      ],
+      total_violations: 8,
+      borough_count: 3
+    },
+    {
+      _id: '7cee4fd280d39efd93ecedaee2ff4160dbe5b4ae2df23f7b369c9e3c55725a5d',
+      boroughs: [
+        'Queens',
+        'Brooklyn',
+        'Bronx'
+      ],
+      total_violations: 8,
+      borough_count: 3
+    },
+    {
+      _id: '73c073cbaa0ce1cc07bfd49220b8a729e92022a79c6d7eed5be1dc5787e614b4',
+      boroughs: [
+        'Staten Island',
+        'Brooklyn',
+        'Queens'
+      ],
+      total_violations: 7,
+      borough_count: 3
+    },
+    {
+      _id: '1c989983cb7e825fd6fe7d0383c6a266bd0213b8f4af8f22ba5294bd4791f664',
+      boroughs: [
+        'Queens',
+        'Brooklyn',
+        'Manhattan'
+      ],
+      total_violations: 4,
+      borough_count: 3
+    },
+    {
+      _id: '31c367320d8d1c61419a3307d46e1c31b5e618f58f7c5d464a7a5e2bdaadd14a',
+      boroughs: [
+        'Manhattan',
+        'Brooklyn',
+        'Queens'
+      ],
+      total_violations: 4,
+      borough_count: 3
+    },
+    {
+      _id: '593ec16509696ccdf28c6d3b3892692377b4cfa9bde3e614679e2d0a0848ff0e',
+      boroughs: [
+        'Brooklyn',
+        'Manhattan',
+        'Bronx'
+      ],
+      total_violations: 4,
+      borough_count: 3
+    },
+    {
+      _id: '8ca831fd1e223add2ddc787dc9eb3a65d8f965eefd7a9316f7f7819206e3dafc',
+      boroughs: [
+        'Staten Island',
+        'Bronx',
+        'Brooklyn'
+      ],
+      total_violations: 4,
+      borough_count: 3
+    },
+    {
+      _id: '0924927d1a38117d18e6b756be65131c3c3ee29150a235dd083aa29590450048',
+      boroughs: [
+        'Brooklyn',
+        'Staten Island',
+        'Queens'
+      ],
+      total_violations: 3,
+      borough_count: 3
+    },
+    {
+      _id: '0fd911606fec4b15fe9146abd958dc42e0ba1b8e7cf52160a79d18a0e6fc58a4',
+      boroughs: [
+        'Bronx',
+        'Brooklyn',
+        'Staten Island'
+      ],
+      total_violations: 3,
+      borough_count: 3
+    },
+    {
+      _id: '1bb84edb7744847f6befd2ae8825f099634961f86667c0023faed76ccf52a987',
+      boroughs: [
+        'Manhattan',
+        'Bronx',
+        'Brooklyn'
+      ],
+      total_violations: 3,
+      borough_count: 3
+    }
+  ]
+}
+===== Performance: Q3 | 500k =====
+{
+  query: 'Cross-Borough Detection',
+  dataset: '500k',
+  mode: 'Centralized - Hashed Index Present',
+  latencyMillis: 1651,
+  serverExecutionTimeMillis: 1648,
+  totalDocsExamined: 500000,
+  totalKeysExamined: 0,
+  recordsReturned: 10,
+  queryPlan: [
+    'COLLSCAN'
+  ],
+  results: [
+    {
+      _id: '95083fb211a2b78597bff294f693d6f0cfe814799dedeb2f7f5e73d538de09bf',
+      boroughs: [
+        'Manhattan',
+        'Queens',
+        'Brooklyn',
+        'Staten Island',
+        'Bronx'
+      ],
+      total_violations: 21,
+      borough_count: 5
+    },
+    {
+      _id: '3b29ae1c9c3329addde8c8a0ce97f6ce3dbe3120f16425620e6ad61e0d9aa6dc',
+      boroughs: [
+        'Manhattan',
+        'Queens',
+        'Brooklyn',
+        'Staten Island',
+        'Bronx'
+      ],
+      total_violations: 10,
+      borough_count: 5
+    },
+    {
+      _id: '16e1b4e5c65160ba54253df5c3b4afae9931fe8d8d594ca375798a08d6b3c20b',
+      boroughs: [
+        'Manhattan',
+        'Queens',
+        'Brooklyn',
+        'Bronx',
+        'Staten Island'
+      ],
+      total_violations: 6,
+      borough_count: 5
+    },
+    {
+      _id: '6f7e635ee16bbb7da6ee271b8b5a9cc3d13e1f3691f199dc40bcfab5a88bdb2f',
+      boroughs: [
+        'Manhattan',
+        'Queens',
+        'Brooklyn',
+        'Bronx'
+      ],
+      total_violations: 29,
+      borough_count: 4
+    },
+    {
+      _id: '13244e672d6fd759020dc6a39de4903c3a769f86c05bbda223e78fb6d2072af2',
+      boroughs: [
+        'Manhattan',
+        'Queens',
+        'Brooklyn',
+        'Bronx'
+      ],
+      total_violations: 25,
+      borough_count: 4
+    },
+    {
+      _id: '47afd2bb85528e7b6a9fe6a75190f027e1765589d555342dc23b49d8897d455b',
+      boroughs: [
+        'Queens',
+        'Brooklyn',
+        'Bronx',
+        'Staten Island'
+      ],
+      total_violations: 20,
+      borough_count: 4
+    },
+    {
+      _id: 'ace49669a59d636a6ef59aac50bfb2e0877f55c48fca220175c26bf8036cf1d5',
+      boroughs: [
+        'Manhattan',
+        'Queens',
+        'Brooklyn',
+        'Bronx'
+      ],
+      total_violations: 18,
+      borough_count: 4
+    },
+    {
+      _id: 'babdaa35624c25366166cd00016e263f271c231dfd70cbe628f9cf1af9c219e4',
+      boroughs: [
+        'Manhattan',
+        'Queens',
+        'Staten Island',
+        'Brooklyn'
+      ],
+      total_violations: 15,
+      borough_count: 4
+    },
+    {
+      _id: 'c8b89d10254fb18aeabd1921aa192151b2964ba950ad993cfad7bc3c849298fd',
+      boroughs: [
+        'Manhattan',
+        'Queens',
+        'Brooklyn',
+        'Bronx'
+      ],
+      total_violations: 14,
+      borough_count: 4
+    },
+    {
+      _id: '540c6a7aa4c35801905e02700e2f41b1208bb5ee001e9bef5bf86470fddae8d3',
+      boroughs: [
+        'Queens',
+        'Brooklyn',
+        'Staten Island',
+        'Bronx'
+      ],
+      total_violations: 13,
+      borough_count: 4
+    }
+  ]
+}
+===== Performance: Q3 | 1m =====
+{
+  query: 'Cross-Borough Detection',
+  dataset: '1m',
+  mode: 'Centralized - Hashed Index Present',
+  latencyMillis: 7499,
+  serverExecutionTimeMillis: 7487,
+  totalDocsExamined: 1000000,
+  totalKeysExamined: 0,
+  recordsReturned: 10,
+  queryPlan: [
+    'COLLSCAN'
+  ],
+  results: [
+    {
+      _id: '01b3866c6beba600319b0933c56490e89b31270c1a3e43dfad06b380d561afde',
+      boroughs: [
+        'Bronx',
+        'Brooklyn',
+        'Staten Island',
+        'Manhattan',
+        'Queens'
+      ],
+      total_violations: 54,
+      borough_count: 5
+    },
+    {
+      _id: '95083fb211a2b78597bff294f693d6f0cfe814799dedeb2f7f5e73d538de09bf',
+      boroughs: [
+        'Bronx',
+        'Brooklyn',
+        'Staten Island',
+        'Manhattan',
+        'Queens'
+      ],
+      total_violations: 50,
+      borough_count: 5
+    },
+    {
+      _id: 'ac3a86ff6bd0bebf750d299aa612edc3c83e08e3f02bafd3e7a654f6a80e9c41',
+      boroughs: [
+        'Staten Island',
+        'Queens',
+        'Bronx',
+        'Brooklyn',
+        'Manhattan'
+      ],
+      total_violations: 40,
+      borough_count: 5
+    },
+    {
+      _id: '2856bb1c616e428346e752630e444388b93af47f45e714705108c2a0eb4adebd',
+      boroughs: [
+        'Bronx',
+        'Brooklyn',
+        'Staten Island',
+        'Manhattan',
+        'Queens'
+      ],
+      total_violations: 30,
+      borough_count: 5
+    },
+    {
+      _id: 'be44006f396a6e60695a857cd7458de76cfb3ecbc4f637a6a79228e505c062bc',
+      boroughs: [
+        'Staten Island',
+        'Bronx',
+        'Brooklyn',
+        'Manhattan',
+        'Queens'
+      ],
+      total_violations: 25,
+      borough_count: 5
+    },
+    {
+      _id: '3b29ae1c9c3329addde8c8a0ce97f6ce3dbe3120f16425620e6ad61e0d9aa6dc',
+      boroughs: [
+        'Brooklyn',
+        'Staten Island',
+        'Bronx',
+        'Manhattan',
+        'Queens'
+      ],
+      total_violations: 21,
+      borough_count: 5
+    },
+    {
+      _id: '6be08a6959b4f318e7cb2c42e73264f68c13ca161495c7e84c05debbf1dc88ff',
+      boroughs: [
+        'Queens',
+        'Brooklyn',
+        'Bronx',
+        'Staten Island',
+        'Manhattan'
+      ],
+      total_violations: 19,
+      borough_count: 5
+    },
+    {
+      _id: '270a4a6fa02fa917a06c9c27f034ad0e3d19efb2c56581aaff739e8d0516e09b',
+      boroughs: [
+        'Brooklyn',
+        'Bronx',
+        'Staten Island',
+        'Manhattan',
+        'Queens'
+      ],
+      total_violations: 18,
+      borough_count: 5
+    },
+    {
+      _id: 'a6ddc4939ded360e1599a975d3c45ea61bfcdddf968cd59cc8af2b9d958c535d',
+      boroughs: [
+        'Queens',
+        'Bronx',
+        'Manhattan',
+        'Brooklyn',
+        'Staten Island'
+      ],
+      total_violations: 17,
+      borough_count: 5
+    },
+    {
+      _id: '5a8387d32ff615eaa0f357922a314d967e69931db43c908e3c6bc81a568f4e37',
+      boroughs: [
+        'Bronx',
+        'Staten Island',
+        'Brooklyn',
+        'Manhattan',
+        'Queens'
+      ],
+      total_violations: 12,
+      borough_count: 5
+    }
+  ]
+}
+===== Performance: Q4 | 100k =====
+{
+  query: 'Borough and Monthly Analysis',
+  dataset: '100k',
+  mode: 'Centralized - Hashed Index Present',
+  latencyMillis: 93,
+  serverExecutionTimeMillis: 90,
+  totalDocsExamined: 100000,
+  totalKeysExamined: 0,
+  recordsReturned: 10,
+  queryPlan: [
+    'COLLSCAN'
+  ],
+  results: [
+    {
+      total_violations: 4567,
+      borough: 'Queens',
+      month: '2023-10'
+    },
+    {
+      total_violations: 4411,
+      borough: 'Queens',
+      month: '2024-08'
+    },
+    {
+      total_violations: 4349,
+      borough: 'Queens',
+      month: '2024-07'
+    },
+    {
+      total_violations: 3765,
+      borough: 'Queens',
+      month: '2024-01'
+    },
+    {
+      total_violations: 3663,
+      borough: 'Queens',
+      month: '2023-09'
+    },
+    {
+      total_violations: 3120,
+      borough: 'Brooklyn',
+      month: '2023-10'
+    },
+    {
+      total_violations: 3015,
+      borough: 'Brooklyn',
+      month: '2024-08'
+    },
+    {
+      total_violations: 2941,
+      borough: 'Brooklyn',
+      month: '2024-07'
+    },
+    {
+      total_violations: 2818,
+      borough: 'Brooklyn',
+      month: '2024-01'
+    },
+    {
+      total_violations: 2767,
+      borough: 'Queens',
+      month: '2023-12'
+    }
+  ]
+}
+===== Performance: Q4 | 500k =====
+{
+  query: 'Borough and Monthly Analysis',
+  dataset: '500k',
+  mode: 'Centralized - Hashed Index Present',
+  latencyMillis: 380,
+  serverExecutionTimeMillis: 373,
+  totalDocsExamined: 500000,
+  totalKeysExamined: 0,
+  recordsReturned: 10,
+  queryPlan: [
+    'COLLSCAN'
+  ],
+  results: [
+    {
+      total_violations: 22947,
+      borough: 'Queens',
+      month: '2023-10'
+    },
+    {
+      total_violations: 22701,
+      borough: 'Queens',
+      month: '2024-08'
+    },
+    {
+      total_violations: 21898,
+      borough: 'Queens',
+      month: '2024-07'
+    },
+    {
+      total_violations: 18632,
+      borough: 'Queens',
+      month: '2023-09'
+    },
+    {
+      total_violations: 18571,
+      borough: 'Queens',
+      month: '2024-01'
+    },
+    {
+      total_violations: 16091,
+      borough: 'Brooklyn',
+      month: '2023-10'
+    },
+    {
+      total_violations: 15134,
+      borough: 'Brooklyn',
+      month: '2024-07'
+    },
+    {
+      total_violations: 14867,
+      borough: 'Brooklyn',
+      month: '2024-08'
+    },
+    {
+      total_violations: 14135,
+      borough: 'Brooklyn',
+      month: '2024-01'
+    },
+    {
+      total_violations: 13614,
+      borough: 'Queens',
+      month: '2024-03'
+    }
+  ]
+}
+===== Performance: Q4 | 1m =====
+{
+  query: 'Borough and Monthly Analysis',
+  dataset: '1m',
+  mode: 'Centralized - Hashed Index Present',
+  latencyMillis: 913,
+  serverExecutionTimeMillis: 909,
+  totalDocsExamined: 1000000,
+  totalKeysExamined: 0,
+  recordsReturned: 10,
+  queryPlan: [
+    'COLLSCAN'
+  ],
+  results: [
+    {
+      total_violations: 45739,
+      borough: 'Queens',
+      month: '2023-10'
+    },
+    {
+      total_violations: 45516,
+      borough: 'Queens',
+      month: '2024-08'
+    },
+    {
+      total_violations: 43676,
+      borough: 'Queens',
+      month: '2024-07'
+    },
+    {
+      total_violations: 37398,
+      borough: 'Queens',
+      month: '2024-01'
+    },
+    {
+      total_violations: 37145,
+      borough: 'Queens',
+      month: '2023-09'
+    },
+    {
+      total_violations: 32023,
+      borough: 'Brooklyn',
+      month: '2023-10'
+    },
+    {
+      total_violations: 30351,
+      borough: 'Brooklyn',
+      month: '2024-07'
+    },
+    {
+      total_violations: 29506,
+      borough: 'Brooklyn',
+      month: '2024-08'
+    },
+    {
+      total_violations: 28240,
+      borough: 'Brooklyn',
+      month: '2024-01'
+    },
+    {
+      total_violations: 27594,
+      borough: 'Queens',
+      month: '2023-12'
+    }
+  ]
+}
+===== Performance: Q5 | 100k =====
+{
+  query: 'Monthly Repeat-Offender Analysis',
+  dataset: '100k',
+  mode: 'Centralized - Hashed Index Present',
+  latencyMillis: 816,
+  serverExecutionTimeMillis: 804,
+  totalDocsExamined: 100000,
+  totalKeysExamined: 0,
+  recordsReturned: 10,
+  queryPlan: [
+    'COLLSCAN'
+  ],
+  results: [
+    {
+      repeat_offender_vehicles: 173,
+      repeat_violations: 362,
+      max_violations_per_vehicle: 4,
+      month: '2024-07'
+    },
+    {
+      repeat_offender_vehicles: 159,
+      repeat_violations: 334,
+      max_violations_per_vehicle: 6,
+      month: '2023-10'
+    },
+    {
+      repeat_offender_vehicles: 152,
+      repeat_violations: 332,
+      max_violations_per_vehicle: 7,
+      month: '2024-08'
+    },
+    {
+      repeat_offender_vehicles: 149,
+      repeat_violations: 334,
+      max_violations_per_vehicle: 8,
+      month: '2024-01'
+    },
+    {
+      repeat_offender_vehicles: 115,
+      repeat_violations: 243,
+      max_violations_per_vehicle: 5,
+      month: '2023-09'
+    },
+    {
+      repeat_offender_vehicles: 85,
+      repeat_violations: 177,
+      max_violations_per_vehicle: 5,
+      month: '2024-03'
+    },
+    {
+      repeat_offender_vehicles: 81,
+      repeat_violations: 168,
+      max_violations_per_vehicle: 3,
+      month: '2024-09'
+    },
+    {
+      repeat_offender_vehicles: 79,
+      repeat_violations: 165,
+      max_violations_per_vehicle: 4,
+      month: '2023-12'
+    },
+    {
+      repeat_offender_vehicles: 61,
+      repeat_violations: 124,
+      max_violations_per_vehicle: 4,
+      month: '2024-04'
+    },
+    {
+      repeat_offender_vehicles: 59,
+      repeat_violations: 124,
+      max_violations_per_vehicle: 7,
+      month: '2023-11'
+    }
+  ]
+}
+===== Performance: Q5 | 500k =====
+{
+  query: 'Monthly Repeat-Offender Analysis',
+  dataset: '500k',
+  mode: 'Centralized - Hashed Index Present',
+  latencyMillis: 1686,
+  serverExecutionTimeMillis: 1683,
+  totalDocsExamined: 500000,
+  totalKeysExamined: 0,
+  recordsReturned: 10,
+  queryPlan: [
+    'COLLSCAN'
+  ],
+  results: [
+    {
+      repeat_offender_vehicles: 3323,
+      repeat_violations: 7415,
+      max_violations_per_vehicle: 12,
+      month: '2024-07'
+    },
+    {
+      repeat_offender_vehicles: 2999,
+      repeat_violations: 6736,
+      max_violations_per_vehicle: 15,
+      month: '2024-08'
+    },
+    {
+      repeat_offender_vehicles: 2863,
+      repeat_violations: 6427,
+      max_violations_per_vehicle: 18,
+      month: '2023-10'
+    },
+    {
+      repeat_offender_vehicles: 2586,
+      repeat_violations: 6015,
+      max_violations_per_vehicle: 33,
+      month: '2024-01'
+    },
+    {
+      repeat_offender_vehicles: 1903,
+      repeat_violations: 4177,
+      max_violations_per_vehicle: 12,
+      month: '2023-09'
+    },
+    {
+      repeat_offender_vehicles: 1551,
+      repeat_violations: 3433,
+      max_violations_per_vehicle: 12,
+      month: '2024-09'
+    },
+    {
+      repeat_offender_vehicles: 1441,
+      repeat_violations: 3233,
+      max_violations_per_vehicle: 13,
+      month: '2023-12'
+    },
+    {
+      repeat_offender_vehicles: 1434,
+      repeat_violations: 3201,
+      max_violations_per_vehicle: 36,
+      month: '2024-03'
+    },
+    {
+      repeat_offender_vehicles: 1054,
+      repeat_violations: 2315,
+      max_violations_per_vehicle: 12,
+      month: '2024-04'
+    },
+    {
+      repeat_offender_vehicles: 1006,
+      repeat_violations: 2214,
+      max_violations_per_vehicle: 22,
+      month: '2024-02'
+    }
+  ]
+}
+===== Performance: Q5 | 1m =====
+{
+  query: 'Monthly Repeat-Offender Analysis',
+  dataset: '1m',
+  mode: 'Centralized - Hashed Index Present',
+  latencyMillis: 6289,
+  serverExecutionTimeMillis: 6281,
+  totalDocsExamined: 1000000,
+  totalKeysExamined: 0,
+  recordsReturned: 10,
+  queryPlan: [
+    'COLLSCAN'
+  ],
+  results: [
+    {
+      repeat_offender_vehicles: 10312,
+      repeat_violations: 24344,
+      max_violations_per_vehicle: 28,
+      month: '2024-07'
+    },
+    {
+      repeat_offender_vehicles: 9355,
+      repeat_violations: 22020,
+      max_violations_per_vehicle: 26,
+      month: '2024-08'
+    },
+    {
+      repeat_offender_vehicles: 9069,
+      repeat_violations: 21232,
+      max_violations_per_vehicle: 37,
+      month: '2023-10'
+    },
+    {
+      repeat_offender_vehicles: 7979,
+      repeat_violations: 19379,
+      max_violations_per_vehicle: 64,
+      month: '2024-01'
+    },
+    {
+      repeat_offender_vehicles: 5987,
+      repeat_violations: 13808,
+      max_violations_per_vehicle: 25,
+      month: '2023-09'
+    },
+    {
+      repeat_offender_vehicles: 5341,
+      repeat_violations: 12310,
+      max_violations_per_vehicle: 19,
+      month: '2024-09'
+    },
+    {
+      repeat_offender_vehicles: 4677,
+      repeat_violations: 10793,
+      max_violations_per_vehicle: 69,
+      month: '2024-03'
+    },
+    {
+      repeat_offender_vehicles: 4663,
+      repeat_violations: 10997,
+      max_violations_per_vehicle: 24,
+      month: '2023-12'
+    },
+    {
+      repeat_offender_vehicles: 3486,
+      repeat_violations: 7983,
+      max_violations_per_vehicle: 23,
+      month: '2024-04'
+    },
+    {
+      repeat_offender_vehicles: 3327,
+      repeat_violations: 7600,
+      max_violations_per_vehicle: 42,
+      month: '2024-02'
+    }
+  ]
+}

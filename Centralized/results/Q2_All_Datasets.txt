@@ -1,0 +1,162 @@
+===== Q2 Results: 100k =====
+[
+  {
+    _id: '19326c93adf46c461d9e7c3b741866facc8cb7a9b4d7115d1a8745e45a5737b8',
+    violation_count: 12
+  },
+  {
+    _id: '3d926cb4e82eb6346144303c88cb7eb15fedb83140b8963e353fe2bed6570e7f',
+    violation_count: 8
+  },
+  {
+    _id: '516db70d5cc57f091724efdde8bf390a1af447a8a7653b51c3661c4877967394',
+    violation_count: 8
+  },
+  {
+    _id: '6f7e635ee16bbb7da6ee271b8b5a9cc3d13e1f3691f199dc40bcfab5a88bdb2f',
+    violation_count: 8
+  },
+  {
+    _id: '7cee4fd280d39efd93ecedaee2ff4160dbe5b4ae2df23f7b369c9e3c55725a5d',
+    violation_count: 8
+  },
+  {
+    _id: '5ee505c9c732e1f360f6aeefbec158c8926b4b6348862092e9fb62d29dd40d19',
+    violation_count: 7
+  },
+  {
+    _id: '6c14a85a3a3bd5f01a1d2660dd930ec2b94c7fca4ede1124b868f6095bfdd4b6',
+    violation_count: 7
+  },
+  {
+    _id: '73c073cbaa0ce1cc07bfd49220b8a729e92022a79c6d7eed5be1dc5787e614b4',
+    violation_count: 7
+  },
+  {
+    _id: 'ace49669a59d636a6ef59aac50bfb2e0877f55c48fca220175c26bf8036cf1d5',
+    violation_count: 7
+  },
+  {
+    _id: 'd75622eb18b9049e1e4a28e9f682040296583c335593311804149b14c32a25e8',
+    violation_count: 7
+  }
+]
+===== Q2 Performance: 100k =====
+{
+  query: 'Q2 - Repeat Offender Detection',
+  dataset: '100k',
+  mode: 'Centralized - No Additional Index',
+  latencyMillis: 225,
+  serverExecutionTimeMillis: 222,
+  totalDocsExamined: 100000,
+  totalKeysExamined: 0,
+  recordsReturned: 10
+}
+===== Q2 Results: 500k =====
+[
+  {
+    _id: '19326c93adf46c461d9e7c3b741866facc8cb7a9b4d7115d1a8745e45a5737b8',
+    violation_count: 58
+  },
+  {
+    _id: '516db70d5cc57f091724efdde8bf390a1af447a8a7653b51c3661c4877967394',
+    violation_count: 48
+  },
+  {
+    _id: 'd75622eb18b9049e1e4a28e9f682040296583c335593311804149b14c32a25e8',
+    violation_count: 36
+  },
+  {
+    _id: '6f7e635ee16bbb7da6ee271b8b5a9cc3d13e1f3691f199dc40bcfab5a88bdb2f',
+    violation_count: 29
+  },
+  {
+    _id: '01b3866c6beba600319b0933c56490e89b31270c1a3e43dfad06b380d561afde',
+    violation_count: 28
+  },
+  {
+    _id: '40c4aa8c2fb3461c2cf40884081655424384e340129d9c21541948f6ecf55f85',
+    violation_count: 27
+  },
+  {
+    _id: '7cee4fd280d39efd93ecedaee2ff4160dbe5b4ae2df23f7b369c9e3c55725a5d',
+    violation_count: 27
+  },
+  {
+    _id: '9b898357ab7e291fe32845c6c78344ff2f2731352c6f7beb07e79a540d8c0a91',
+    violation_count: 27
+  },
+  {
+    _id: '13244e672d6fd759020dc6a39de4903c3a769f86c05bbda223e78fb6d2072af2',
+    violation_count: 25
+  },
+  {
+    _id: '39d0160aa277991030cce177f1f5877e5824e6858a39fecfc2dd635559af32bc',
+    violation_count: 25
+  }
+]
+===== Q2 Performance: 500k =====
+{
+  query: 'Q2 - Repeat Offender Detection',
+  dataset: '500k',
+  mode: 'Centralized - No Additional Index',
+  latencyMillis: 949,
+  serverExecutionTimeMillis: 946,
+  totalDocsExamined: 500000,
+  totalKeysExamined: 0,
+  recordsReturned: 10
+}
+===== Q2 Results: 1m =====
+[
+  {
+    _id: '516db70d5cc57f091724efdde8bf390a1af447a8a7653b51c3661c4877967394',
+    violation_count: 113
+  },
+  {
+    _id: '19326c93adf46c461d9e7c3b741866facc8cb7a9b4d7115d1a8745e45a5737b8',
+    violation_count: 111
+  },
+  {
+    _id: '6f7e635ee16bbb7da6ee271b8b5a9cc3d13e1f3691f199dc40bcfab5a88bdb2f',
+    violation_count: 73
+  },
+  {
+    _id: 'd75622eb18b9049e1e4a28e9f682040296583c335593311804149b14c32a25e8',
+    violation_count: 69
+  },
+  {
+    _id: '9b898357ab7e291fe32845c6c78344ff2f2731352c6f7beb07e79a540d8c0a91',
+    violation_count: 56
+  },
+  {
+    _id: '01b3866c6beba600319b0933c56490e89b31270c1a3e43dfad06b380d561afde',
+    violation_count: 54
+  },
+  {
+    _id: '7cee4fd280d39efd93ecedaee2ff4160dbe5b4ae2df23f7b369c9e3c55725a5d',
+    violation_count: 54
+  },
+  {
+    _id: '08d401e769c757618c59052db9216d63caa1ac76cd0d9fbf5fc9a14e353bd785',
+    violation_count: 51
+  },
+  {
+    _id: '95083fb211a2b78597bff294f693d6f0cfe814799dedeb2f7f5e73d538de09bf',
+    violation_count: 50
+  },
+  {
+    _id: '39d0160aa277991030cce177f1f5877e5824e6858a39fecfc2dd635559af32bc',
+    violation_count: 49
+  }
+]
+===== Q2 Performance: 1m =====
+{
+  query: 'Q2 - Repeat Offender Detection',
+  dataset: '1m',
+  mode: 'Centralized - No Additional Index',
+  latencyMillis: 2156,
+  serverExecutionTimeMillis: 2145,
+  totalDocsExamined: 1000000,
+  totalKeysExamined: 0,
+  recordsReturned: 10
+}

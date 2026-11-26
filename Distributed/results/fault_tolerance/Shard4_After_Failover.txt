@@ -1,0 +1,15 @@
+Replica Set: shard4RS
+Post Failover Recovery Status
+Host: shard4:27017
+State: SECONDARY
+Health: 1
+Last Applied: Wed Nov 25 2026 10:29:11 GMT+0000 (Coordinated Universal Time)
+Host: shard4b:27017
+State: PRIMARY
+Health: 1
+Last Applied: Wed Nov 25 2026 10:29:11 GMT+0000 (Coordinated Universal Time)
+Host: shard4c:27017
+State: SECONDARY
+Health: 1
+Last Applied: Wed Nov 25 2026 10:29:11 GMT+0000 (Coordinated Universal Time)
+ALL THREE MEMBERS HEALTHY

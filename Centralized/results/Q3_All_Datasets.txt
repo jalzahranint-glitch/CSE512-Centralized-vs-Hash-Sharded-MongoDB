@@ -1,0 +1,375 @@
+===== Q3 Results: 100k =====
+[
+  {
+    _id: '6f7e635ee16bbb7da6ee271b8b5a9cc3d13e1f3691f199dc40bcfab5a88bdb2f',
+    boroughs: [
+      'Queens',
+      'Bronx',
+      'Brooklyn'
+    ],
+    total_violations: 8,
+    borough_count: 3
+  },
+  {
+    _id: '7cee4fd280d39efd93ecedaee2ff4160dbe5b4ae2df23f7b369c9e3c55725a5d',
+    boroughs: [
+      'Queens',
+      'Bronx',
+      'Brooklyn'
+    ],
+    total_violations: 8,
+    borough_count: 3
+  },
+  {
+    _id: '73c073cbaa0ce1cc07bfd49220b8a729e92022a79c6d7eed5be1dc5787e614b4',
+    boroughs: [
+      'Queens',
+      'Staten Island',
+      'Brooklyn'
+    ],
+    total_violations: 7,
+    borough_count: 3
+  },
+  {
+    _id: '1c989983cb7e825fd6fe7d0383c6a266bd0213b8f4af8f22ba5294bd4791f664',
+    boroughs: [
+      'Queens',
+      'Manhattan',
+      'Brooklyn'
+    ],
+    total_violations: 4,
+    borough_count: 3
+  },
+  {
+    _id: '31c367320d8d1c61419a3307d46e1c31b5e618f58f7c5d464a7a5e2bdaadd14a',
+    boroughs: [
+      'Manhattan',
+      'Brooklyn',
+      'Queens'
+    ],
+    total_violations: 4,
+    borough_count: 3
+  },
+  {
+    _id: '593ec16509696ccdf28c6d3b3892692377b4cfa9bde3e614679e2d0a0848ff0e',
+    boroughs: [
+      'Bronx',
+      'Manhattan',
+      'Brooklyn'
+    ],
+    total_violations: 4,
+    borough_count: 3
+  },
+  {
+    _id: '8ca831fd1e223add2ddc787dc9eb3a65d8f965eefd7a9316f7f7819206e3dafc',
+    boroughs: [
+      'Brooklyn',
+      'Bronx',
+      'Staten Island'
+    ],
+    total_violations: 4,
+    borough_count: 3
+  },
+  {
+    _id: '0924927d1a38117d18e6b756be65131c3c3ee29150a235dd083aa29590450048',
+    boroughs: [
+      'Queens',
+      'Staten Island',
+      'Brooklyn'
+    ],
+    total_violations: 3,
+    borough_count: 3
+  },
+  {
+    _id: '0fd911606fec4b15fe9146abd958dc42e0ba1b8e7cf52160a79d18a0e6fc58a4',
+    boroughs: [
+      'Bronx',
+      'Staten Island',
+      'Brooklyn'
+    ],
+    total_violations: 3,
+    borough_count: 3
+  },
+  {
+    _id: '1bb84edb7744847f6befd2ae8825f099634961f86667c0023faed76ccf52a987',
+    boroughs: [
+      'Bronx',
+      'Manhattan',
+      'Brooklyn'
+    ],
+    total_violations: 3,
+    borough_count: 3
+  }
+]
+===== Q3 Performance: 100k =====
+{
+  query: 'Q3 - Cross-Borough Vehicle Detection',
+  dataset: '100k',
+  mode: 'Centralized - No Additional Index',
+  latencyMillis: 386,
+  serverExecutionTimeMillis: 382,
+  totalDocsExamined: 100000,
+  totalKeysExamined: 0,
+  recordsReturned: 10
+}
+===== Q3 Results: 500k =====
+[
+  {
+    _id: '95083fb211a2b78597bff294f693d6f0cfe814799dedeb2f7f5e73d538de09bf',
+    boroughs: [
+      'Staten Island',
+      'Bronx',
+      'Brooklyn',
+      'Manhattan',
+      'Queens'
+    ],
+    total_violations: 21,
+    borough_count: 5
+  },
+  {
+    _id: '3b29ae1c9c3329addde8c8a0ce97f6ce3dbe3120f16425620e6ad61e0d9aa6dc',
+    boroughs: [
+      'Staten Island',
+      'Bronx',
+      'Brooklyn',
+      'Manhattan',
+      'Queens'
+    ],
+    total_violations: 10,
+    borough_count: 5
+  },
+  {
+    _id: '16e1b4e5c65160ba54253df5c3b4afae9931fe8d8d594ca375798a08d6b3c20b',
+    boroughs: [
+      'Staten Island',
+      'Bronx',
+      'Brooklyn',
+      'Manhattan',
+      'Queens'
+    ],
+    total_violations: 6,
+    borough_count: 5
+  },
+  {
+    _id: '6f7e635ee16bbb7da6ee271b8b5a9cc3d13e1f3691f199dc40bcfab5a88bdb2f',
+    boroughs: [
+      'Brooklyn',
+      'Bronx',
+      'Manhattan',
+      'Queens'
+    ],
+    total_violations: 29,
+    borough_count: 4
+  },
+  {
+    _id: '13244e672d6fd759020dc6a39de4903c3a769f86c05bbda223e78fb6d2072af2',
+    boroughs: [
+      'Brooklyn',
+      'Bronx',
+      'Manhattan',
+      'Queens'
+    ],
+    total_violations: 25,
+    borough_count: 4
+  },
+  {
+    _id: '47afd2bb85528e7b6a9fe6a75190f027e1765589d555342dc23b49d8897d455b',
+    boroughs: [
+      'Staten Island',
+      'Bronx',
+      'Brooklyn',
+      'Queens'
+    ],
+    total_violations: 20,
+    borough_count: 4
+  },
+  {
+    _id: 'ace49669a59d636a6ef59aac50bfb2e0877f55c48fca220175c26bf8036cf1d5',
+    boroughs: [
+      'Brooklyn',
+      'Bronx',
+      'Manhattan',
+      'Queens'
+    ],
+    total_violations: 18,
+    borough_count: 4
+  },
+  {
+    _id: 'babdaa35624c25366166cd00016e263f271c231dfd70cbe628f9cf1af9c219e4',
+    boroughs: [
+      'Staten Island',
+      'Brooklyn',
+      'Manhattan',
+      'Queens'
+    ],
+    total_violations: 15,
+    borough_count: 4
+  },
+  {
+    _id: 'c8b89d10254fb18aeabd1921aa192151b2964ba950ad993cfad7bc3c849298fd',
+    boroughs: [
+      'Brooklyn',
+      'Bronx',
+      'Manhattan',
+      'Queens'
+    ],
+    total_violations: 14,
+    borough_count: 4
+  },
+  {
+    _id: '540c6a7aa4c35801905e02700e2f41b1208bb5ee001e9bef5bf86470fddae8d3',
+    boroughs: [
+      'Staten Island',
+      'Bronx',
+      'Brooklyn',
+      'Queens'
+    ],
+    total_violations: 13,
+    borough_count: 4
+  }
+]
+===== Q3 Performance: 500k =====
+{
+  query: 'Q3 - Cross-Borough Vehicle Detection',
+  dataset: '500k',
+  mode: 'Centralized - No Additional Index',
+  latencyMillis: 1700,
+  serverExecutionTimeMillis: 1697,
+  totalDocsExamined: 500000,
+  totalKeysExamined: 0,
+  recordsReturned: 10
+}
+===== Q3 Results: 1m =====
+[
+  {
+    _id: '01b3866c6beba600319b0933c56490e89b31270c1a3e43dfad06b380d561afde',
+    boroughs: [
+      'Staten Island',
+      'Bronx',
+      'Brooklyn',
+      'Manhattan',
+      'Queens'
+    ],
+    total_violations: 54,
+    borough_count: 5
+  },
+  {
+    _id: '95083fb211a2b78597bff294f693d6f0cfe814799dedeb2f7f5e73d538de09bf',
+    boroughs: [
+      'Staten Island',
+      'Queens',
+      'Brooklyn',
+      'Manhattan',
+      'Bronx'
+    ],
+    total_violations: 50,
+    borough_count: 5
+  },
+  {
+    _id: 'ac3a86ff6bd0bebf750d299aa612edc3c83e08e3f02bafd3e7a654f6a80e9c41',
+    boroughs: [
+      'Brooklyn',
+      'Bronx',
+      'Staten Island',
+      'Manhattan',
+      'Queens'
+    ],
+    total_violations: 40,
+    borough_count: 5
+  },
+  {
+    _id: '2856bb1c616e428346e752630e444388b93af47f45e714705108c2a0eb4adebd',
+    boroughs: [
+      'Brooklyn',
+      'Bronx',
+      'Staten Island',
+      'Manhattan',
+      'Queens'
+    ],
+    total_violations: 30,
+    borough_count: 5
+  },
+  {
+    _id: 'be44006f396a6e60695a857cd7458de76cfb3ecbc4f637a6a79228e505c062bc',
+    boroughs: [
+      'Staten Island',
+      'Bronx',
+      'Brooklyn',
+      'Manhattan',
+      'Queens'
+    ],
+    total_violations: 25,
+    borough_count: 5
+  },
+  {
+    _id: '3b29ae1c9c3329addde8c8a0ce97f6ce3dbe3120f16425620e6ad61e0d9aa6dc',
+    boroughs: [
+      'Bronx',
+      'Staten Island',
+      'Queens',
+      'Manhattan',
+      'Brooklyn'
+    ],
+    total_violations: 21,
+    borough_count: 5
+  },
+  {
+    _id: '6be08a6959b4f318e7cb2c42e73264f68c13ca161495c7e84c05debbf1dc88ff',
+    boroughs: [
+      'Brooklyn',
+      'Staten Island',
+      'Bronx',
+      'Manhattan',
+      'Queens'
+    ],
+    total_violations: 19,
+    borough_count: 5
+  },
+  {
+    _id: '270a4a6fa02fa917a06c9c27f034ad0e3d19efb2c56581aaff739e8d0516e09b',
+    boroughs: [
+      'Staten Island',
+      'Queens',
+      'Bronx',
+      'Manhattan',
+      'Brooklyn'
+    ],
+    total_violations: 18,
+    borough_count: 5
+  },
+  {
+    _id: 'a6ddc4939ded360e1599a975d3c45ea61bfcdddf968cd59cc8af2b9d958c535d',
+    boroughs: [
+      'Bronx',
+      'Brooklyn',
+      'Staten Island',
+      'Manhattan',
+      'Queens'
+    ],
+    total_violations: 17,
+    borough_count: 5
+  },
+  {
+    _id: '5a8387d32ff615eaa0f357922a314d967e69931db43c908e3c6bc81a568f4e37',
+    boroughs: [
+      'Staten Island',
+      'Bronx',
+      'Brooklyn',
+      'Manhattan',
+      'Queens'
+    ],
+    total_violations: 12,
+    borough_count: 5
+  }
+]
+===== Q3 Performance: 1m =====
+{
+  query: 'Q3 - Cross-Borough Vehicle Detection',
+  dataset: '1m',
+  mode: 'Centralized - No Additional Index',
+  latencyMillis: 6390,
+  serverExecutionTimeMillis: 6385,
+  totalDocsExamined: 1000000,
+  totalKeysExamined: 0,
+  recordsReturned: 10
+}

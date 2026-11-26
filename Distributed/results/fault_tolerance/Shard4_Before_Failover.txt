@@ -1,0 +1,20 @@
+Replica Set: shard4RS
+Host: shard4:27017
+State: PRIMARY
+Health: 1
+Votes: 1
+Priority: 1
+Replication Lag: 0 seconds
+Host: shard4b:27017
+State: SECONDARY
+Health: 1
+Votes: 1
+Priority: 1
+Replication Lag: 0 seconds
+Host: shard4c:27017
+State: SECONDARY
+Health: 1
+Votes: 1
+Priority: 1
+Replication Lag: 0 seconds
+READY FOR FAILOVER

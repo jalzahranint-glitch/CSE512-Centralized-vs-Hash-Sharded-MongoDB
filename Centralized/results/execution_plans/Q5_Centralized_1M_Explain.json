@@ -1,0 +1,364 @@
+{
+  "explainVersion": "2",
+  "stages": [
+    {
+      "$cursor": {
+        "queryPlanner": {
+          "namespace": "nyc_traffic.violations_1m",
+          "parsedQuery": {
+            "$and": [
+              {
+                "vehicle_hash": {
+                  "$not": {
+                    "$eq": ""
+                  }
+                }
+              },
+              {
+                "issue_date": {
+                  "$type": [
+                    9
+                  ]
+                }
+              },
+              {
+                "vehicle_hash": {
+                  "$type": [
+                    2
+                  ]
+                }
+              }
+            ]
+          },
+          "indexFilterSet": false,
+          "queryHash": "807FD70E",
+          "planCacheShapeHash": "807FD70E",
+          "planCacheKey": "73CEB7F6",
+          "optimizationTimeMillis": 2,
+          "maxIndexedOrSolutionsReached": false,
+          "maxIndexedAndSolutionsReached": false,
+          "maxScansToExplodeReached": false,
+          "prunedSimilarIndexes": false,
+          "winningPlan": {
+            "isCached": false,
+            "queryPlan": {
+              "stage": "GROUP",
+              "planNodeId": 3,
+              "inputStage": {
+                "stage": "COLLSCAN",
+                "planNodeId": 1,
+                "filter": {
+                  "$and": [
+                    {
+                      "vehicle_hash": {
+                        "$not": {
+                          "$eq": ""
+                        }
+                      }
+                    },
+                    {
+                      "issue_date": {
+                        "$type": [
+                          9
+                        ]
+                      }
+                    },
+                    {
+                      "vehicle_hash": {
+                        "$type": [
+                          2
+                        ]
+                      }
+                    }
+                  ]
+                },
+                "direction": "forward"
+              }
+            },
+            "slotBasedPlan": {
+              "slots": "$$RESULT=s11 env: { s5 = TimeZoneDatabase(Africa/Monrovia...America/Curacao) (timeZoneDB) }",
+              "stages": "[3] project [s11 = newObj(\"_id\", s9, \"violation_count\", s10)] \n[3] project [s9 = newObj(\"vehicle\", s2, \"month\", s7), s10 = (convert ( s8, int32) ?: s8)] \n[3] group [s2, s7] [s8 = count()] spillSlots[s6] mergingExprs[sum(s6)] \n[3] project [s7 = \n    let [\n        l11.0 = dateToString(s5, s1, \"%Y-%m\", \"UTC\") \n    ] \n    in \n        if exists(l11.0) \n        then makeOwn(move(l11.0)) \n        else \n            if (typeMatch(s1, 1088) ?: true) \n            then null \n            else \n                if typeMatch(s1, 131712) \n                then Nothing \n                else fail(4997901, \"$dateToString parameter 'date' must be coercible to date\") \n] \n[1] filter {(!(traverseF(s2, lambda(l4.0) { ((move(l4.0) == \"\") ?: false) }, false)) && (traverseF(s1, lambda(l5.0) { (typeMatch(move(l5.0), 512) ?: false) }, false) && traverseF(s2, lambda(l6.0) { (typeMatch(move(l6.0), 4) ?: false) }, false)))} \n[1] scan s3 s4 none none none none none none lowPriority [s1 = issue_date, s2 = vehicle_hash] @\"dddfa053-e5c9-4e82-abe5-4f6bb56cf2a3\" true false "
+            }
+          },
+          "rejectedPlans": []
+        },
+        "executionStats": {
+          "executionSuccess": true,
+          "nReturned": 896654,
+          "executionTimeMillis": 8801,
+          "totalKeysExamined": 0,
+          "totalDocsExamined": 1000000,
+          "executionStages": {
+            "stage": "project",
+            "planNodeId": 3,
+            "nReturned": 896654,
+            "executionTimeMillisEstimate": 7553,
+            "opens": 1,
+            "closes": 1,
+            "saveState": 405,
+            "restoreState": 405,
+            "isEOF": 1,
+            "projections": {
+              "11": "newObj(\"_id\", s9, \"violation_count\", s10) "
+            },
+            "inputStage": {
+              "stage": "project",
+              "planNodeId": 3,
+              "nReturned": 896654,
+              "executionTimeMillisEstimate": 7144,
+              "opens": 1,
+              "closes": 1,
+              "saveState": 405,
+              "restoreState": 405,
+              "isEOF": 1,
+              "projections": {
+                "9": "newObj(\"vehicle\", s2, \"month\", s7) ",
+                "10": "(convert ( s8, int32) ?: s8) "
+              },
+              "inputStage": {
+                "stage": "group",
+                "planNodeId": 3,
+                "nReturned": 896654,
+                "executionTimeMillisEstimate": 6763,
+                "opens": 1,
+                "closes": 1,
+                "saveState": 405,
+                "restoreState": 405,
+                "isEOF": 1,
+                "groupBySlots": [
+                  2,
+                  7
+                ],
+                "expressions": {
+                  "8": "count() ",
+                  "initExprs": {
+                    "8": null
+                  }
+                },
+                "mergingExprs": {
+                  "6": "sum(s6) "
+                },
+                "usedDisk": true,
+                "spills": 2,
+                "spilledBytes": 16275978,
+                "spilledRecords": 904221,
+                "spilledDataStorageSize": 58335232,
+                "inputStage": {
+                  "stage": "project",
+                  "planNodeId": 3,
+                  "nReturned": 1000000,
+                  "executionTimeMillisEstimate": 775,
+                  "opens": 1,
+                  "closes": 1,
+                  "saveState": 405,
+                  "restoreState": 405,
+                  "isEOF": 1,
+                  "projections": {
+                    "7": "\n    let [\n        l11.0 = dateToString(s5, s1, \"%Y-%m\", \"UTC\") \n    ] \n    in \n        if exists(l11.0) \n        then makeOwn(move(l11.0)) \n        else \n            if (typeMatch(s1, 1088) ?: true) \n            then null \n            else \n                if typeMatch(s1, 131712) \n                then Nothing \n                else fail(4997901, \"$dateToString parameter 'date' must be coercible to date\") \n"
+                  },
+                  "inputStage": {
+                    "stage": "filter",
+                    "planNodeId": 1,
+                    "nReturned": 1000000,
+                    "executionTimeMillisEstimate": 503,
+                    "opens": 1,
+                    "closes": 1,
+                    "saveState": 405,
+                    "restoreState": 405,
+                    "isEOF": 1,
+                    "numTested": 1000000,
+                    "filter": "(!(traverseF(s2, lambda(l4.0) { ((move(l4.0) == \"\") ?: false) }, false)) && (traverseF(s1, lambda(l5.0) { (typeMatch(move(l5.0), 512) ?: false) }, false) && traverseF(s2, lambda(l6.0) { (typeMatch(move(l6.0), 4) ?: false) }, false))) ",
+                    "inputStage": {
+                      "stage": "scan",
+                      "planNodeId": 1,
+                      "nReturned": 1000000,
+                      "executionTimeMillisEstimate": 356,
+                      "opens": 1,
+                      "closes": 1,
+                      "saveState": 405,
+                      "restoreState": 405,
+                      "isEOF": 1,
+                      "numReads": 1000000,
+                      "recordSlot": 3,
+                      "recordIdSlot": 4,
+                      "scanFieldNames": [
+                        "issue_date",
+                        "vehicle_hash"
+                      ],
+                      "scanFieldSlots": [
+                        1,
+                        2
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "nReturned": 896654,
+      "executionTimeMillisEstimate": 8360
+    },
+    {
+      "$match": {
+        "violation_count": {
+          "$gte": 2
+        }
+      },
+      "nReturned": 76665,
+      "executionTimeMillisEstimate": 8761
+    },
+    {
+      "$group": {
+        "_id": "$_id.month",
+        "repeat_offender_vehicles": {
+          "$sum": {
+            "$const": 1
+          }
+        },
+        "repeat_violations": {
+          "$sum": "$violation_count"
+        },
+        "max_violations_per_vehicle": {
+          "$max": "$violation_count"
+        }
+      },
+      "maxAccumulatorMemoryUsageBytes": {
+        "repeat_offender_vehicles": 8704,
+        "repeat_violations": 8704,
+        "max_violations_per_vehicle": 4896
+      },
+      "totalOutputDataSizeBytes": 25364,
+      "usedDisk": false,
+      "spills": 0,
+      "spilledDataStorageSize": 0,
+      "numBytesSpilledEstimate": 0,
+      "spilledRecords": 0,
+      "nReturned": 68,
+      "executionTimeMillisEstimate": 8787
+    },
+    {
+      "$sort": {
+        "sortKey": {
+          "repeat_offender_vehicles": -1,
+          "_id": 1
+        },
+        "limit": 10
+      },
+      "totalDataSizeSortedBytesEstimate": 4530,
+      "usedDisk": false,
+      "spills": 0,
+      "spilledDataStorageSize": 0,
+      "nReturned": 10,
+      "executionTimeMillisEstimate": 8787
+    },
+    {
+      "$project": {
+        "repeat_offender_vehicles": true,
+        "repeat_violations": true,
+        "max_violations_per_vehicle": true,
+        "month": "$_id",
+        "_id": false
+      },
+      "nReturned": 10,
+      "executionTimeMillisEstimate": 8787
+    }
+  ],
+  "queryShapeHash": "AC74803D226305AA046B326BEA745B762E62DB744C165011950C1EF9D3E024D7",
+  "serverInfo": {
+    "host": "6dcc8e22ff36",
+    "port": 27017,
+    "version": "8.0.34",
+    "gitVersion": "51db4515a6597aedcf6188ee4e48a27e65b065ae"
+  },
+  "serverParameters": {
+    "internalQueryFacetBufferSizeBytes": 104857600,
+    "internalQueryFacetMaxOutputDocSizeBytes": 104857600,
+    "internalLookupStageIntermediateDocumentMaxSizeBytes": 104857600,
+    "internalDocumentSourceGroupMaxMemoryBytes": 104857600,
+    "internalQueryMaxBlockingSortMemoryUsageBytes": 104857600,
+    "internalQueryProhibitBlockingMergeOnMongoS": 0,
+    "internalQueryMaxAddToSetBytes": 104857600,
+    "internalDocumentSourceSetWindowFieldsMaxMemoryBytes": 104857600,
+    "internalQueryFrameworkControl": "trySbeRestricted",
+    "internalQueryPlannerIgnoreIndexWithCollationForRegex": 1
+  },
+  "command": {
+    "aggregate": "violations_1m",
+    "pipeline": [
+      {
+        "$match": {
+          "vehicle_hash": {
+            "$type": "string",
+            "$ne": ""
+          },
+          "issue_date": {
+            "$type": "date"
+          }
+        }
+      },
+      {
+        "$group": {
+          "_id": {
+            "vehicle": "$vehicle_hash",
+            "month": {
+              "$dateToString": {
+                "format": "%Y-%m",
+                "date": "$issue_date",
+                "timezone": "UTC"
+              }
+            }
+          },
+          "violation_count": {
+            "$sum": 1
+          }
+        }
+      },
+      {
+        "$match": {
+          "violation_count": {
+            "$gte": 2
+          }
+        }
+      },
+      {
+        "$group": {
+          "_id": "$_id.month",
+          "repeat_offender_vehicles": {
+            "$sum": 1
+          },
+          "repeat_violations": {
+            "$sum": "$violation_count"
+          },
+          "max_violations_per_vehicle": {
+            "$max": "$violation_count"
+          }
+        }
+      },
+      {
+        "$sort": {
+          "repeat_offender_vehicles": -1,
+          "_id": 1
+        }
+      },
+      {
+        "$limit": 10
+      },
+      {
+        "$project": {
+          "_id": 0,
+          "month": "$_id",
+          "repeat_offender_vehicles": 1,
+          "repeat_violations": 1,
+          "max_violations_per_vehicle": 1
+        }
+      }
+    ],
+    "allowDiskUse": true,
+    "cursor": {},
+    "maxTimeMS": 120000,
+    "$db": "nyc_traffic"
+  },
+  "ok": 1
+}

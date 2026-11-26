@@ -1,0 +1,36 @@
+Q2 and Q5 Execution Plan Comparison
+
+Q2 at 1M Records
+Centralized Median: 1501 ms
+Distributed Median: 4336 ms
+Centralized Latency Reduction: 65.38%
+Centralized Split Pipeline: False
+Distributed Split Pipeline: True
+
+shardsPart
+$group
+mergerPart
+$mergeCursors
+$group
+$sort
+
+Q5 at 1M Records
+Centralized Median: 6384 ms
+Distributed Median: 10564 ms
+Centralized Latency Reduction: 39.57%
+Centralized Split Pipeline: False
+Distributed Split Pipeline: True
+
+shardsPart
+$match
+$group
+mergerPart
+$mergeCursors
+$group
+$match
+$group
+$sort
+$project
+
+Execution plans were captured after replication was added to Shard 4.
+Original performance benchmarks were collected before replication.

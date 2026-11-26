@@ -1,0 +1,15 @@
+{
+  ok: 1,
+  '$clusterTime': {
+    clusterTime: Timestamp({ t: 1795602208, i: 2 }),
+    signature: {
+      hash: Binary.createFromBase64('AAAAAAAAAAAAAAAAAAAAAAAAAAA=', 0),
+      keyId: Long('0')
+    }
+  },
+  operationTime: Timestamp({ t: 1795602208, i: 1 })
+}
+Replica Set Voting Configuration
+shard4:27017 | votes: 1 | priority: 1
+shard4b:27017 | votes: 1 | priority: 1
+shard4c:27017 | votes: 0 | priority: 0

@@ -1,0 +1,31 @@
+MongoDB Performance Analysis
+Centralized vs. Hash-Sharded MongoDB
+Metric: Median Client Latency (ms)
+Measurements: 30 runs per query and dataset
+
+Query Q1
+100K: Centralized=1 ms, Distributed=1 ms, Faster=Equal
+500K: Centralized=1 ms, Distributed=1 ms, Faster=Equal
+1M: Centralized=1 ms, Distributed=1 ms, Faster=Equal
+
+Query Q2
+100K: Centralized=148 ms, Distributed=147 ms, Faster=Distributed
+500K: Centralized=773 ms, Distributed=803 ms, Faster=Centralized
+1M: Centralized=1501 ms, Distributed=4336 ms, Faster=Centralized
+
+Query Q3
+100K: Centralized=311 ms, Distributed=237 ms, Faster=Distributed
+500K: Centralized=1612 ms, Distributed=2774 ms, Faster=Centralized
+1M: Centralized=6422 ms, Distributed=5771 ms, Faster=Distributed
+
+Query Q4
+100K: Centralized=60 ms, Distributed=34 ms, Faster=Distributed
+500K: Centralized=290 ms, Distributed=153 ms, Faster=Distributed
+1M: Centralized=582 ms, Distributed=305 ms, Faster=Distributed
+
+Query Q5
+100K: Centralized=274 ms, Distributed=254.5 ms, Faster=Distributed
+500K: Centralized=1478 ms, Distributed=5080.5 ms, Faster=Centralized
+1M: Centralized=6384 ms, Distributed=10564 ms, Faster=Centralized
+
+Note: Performance measurements were collected before adding replication to Shard 4.

@@ -1,0 +1,62 @@
+Shard shard1RS at shard1RS/shard1:27017
+{
+  data: '4.58MiB',
+  docs: 25025,
+  chunks: 1,
+  'estimated data per chunk': '4.58MiB',
+  'estimated docs per chunk': 25025
+}
+---
+Shard shard2RS at shard2RS/shard2:27017
+{
+  data: '4.6MiB',
+  docs: 25094,
+  chunks: 1,
+  'estimated data per chunk': '4.6MiB',
+  'estimated docs per chunk': 25094
+}
+---
+Shard shard3RS at shard3RS/shard3:27017
+{
+  data: '4.58MiB',
+  docs: 24995,
+  chunks: 1,
+  'estimated data per chunk': '4.58MiB',
+  'estimated docs per chunk': 24995
+}
+---
+Shard shard4RS at shard4RS/shard4:27017
+{
+  data: '4.56MiB',
+  docs: 24886,
+  chunks: 1,
+  'estimated data per chunk': '4.56MiB',
+  'estimated docs per chunk': 24886
+}
+---
+Totals
+{
+  data: '18.33MiB',
+  docs: 100000,
+  chunks: 4,
+  'Shard shard1RS': [
+    '25.02 % data',
+    '25.02 % docs in cluster',
+    '192B avg obj size on shard'
+  ],
+  'Shard shard2RS': [
+    '25.09 % data',
+    '25.09 % docs in cluster',
+    '192B avg obj size on shard'
+  ],
+  'Shard shard3RS': [
+    '24.99 % data',
+    '24.99 % docs in cluster',
+    '192B avg obj size on shard'
+  ],
+  'Shard shard4RS': [
+    '24.88 % data',
+    '24.88 % docs in cluster',
+    '192B avg obj size on shard'
+  ]
+}

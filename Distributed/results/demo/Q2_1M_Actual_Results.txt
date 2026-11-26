@@ -1,0 +1,45 @@
+Q2 Actual Query Results
+Dataset: 1M
+Results returned: 10
+[
+  {
+    _id: '516db70d5cc57f091724efdde8bf390a1af447a8a7653b51c3661c4877967394',
+    violation_count: 113
+  },
+  {
+    _id: '19326c93adf46c461d9e7c3b741866facc8cb7a9b4d7115d1a8745e45a5737b8',
+    violation_count: 111
+  },
+  {
+    _id: '6f7e635ee16bbb7da6ee271b8b5a9cc3d13e1f3691f199dc40bcfab5a88bdb2f',
+    violation_count: 73
+  },
+  {
+    _id: 'd75622eb18b9049e1e4a28e9f682040296583c335593311804149b14c32a25e8',
+    violation_count: 69
+  },
+  {
+    _id: '9b898357ab7e291fe32845c6c78344ff2f2731352c6f7beb07e79a540d8c0a91',
+    violation_count: 56
+  },
+  {
+    _id: '01b3866c6beba600319b0933c56490e89b31270c1a3e43dfad06b380d561afde',
+    violation_count: 54
+  },
+  {
+    _id: '7cee4fd280d39efd93ecedaee2ff4160dbe5b4ae2df23f7b369c9e3c55725a5d',
+    violation_count: 54
+  },
+  {
+    _id: '08d401e769c757618c59052db9216d63caa1ac76cd0d9fbf5fc9a14e353bd785',
+    violation_count: 51
+  },
+  {
+    _id: '95083fb211a2b78597bff294f693d6f0cfe814799dedeb2f7f5e73d538de09bf',
+    violation_count: 50
+  },
+  {
+    _id: '39d0160aa277991030cce177f1f5877e5824e6858a39fecfc2dd635559af32bc',
+    violation_count: 49
+  }
+]

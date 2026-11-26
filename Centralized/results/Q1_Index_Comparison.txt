@@ -1,0 +1,69 @@
+Index ready: 100k
+Index ready: 500k
+Index ready: 1m
+===== Q1 Performance: 100k | Collection Scan =====
+{
+  query: 'Q1 - Vehicle Lookup',
+  dataset: '100k',
+  mode: 'Collection Scan',
+  latencyMillis: 55,
+  serverExecutionTimeMillis: 50,
+  totalDocsExamined: 100000,
+  totalKeysExamined: 0,
+  recordsReturned: 1
+}
+===== Q1 Performance: 100k | Hashed Index =====
+{
+  query: 'Q1 - Vehicle Lookup',
+  dataset: '100k',
+  mode: 'Hashed Index',
+  latencyMillis: 9,
+  serverExecutionTimeMillis: 6,
+  totalDocsExamined: 1,
+  totalKeysExamined: 1,
+  recordsReturned: 1
+}
+===== Q1 Performance: 500k | Collection Scan =====
+{
+  query: 'Q1 - Vehicle Lookup',
+  dataset: '500k',
+  mode: 'Collection Scan',
+  latencyMillis: 252,
+  serverExecutionTimeMillis: 250,
+  totalDocsExamined: 500000,
+  totalKeysExamined: 0,
+  recordsReturned: 1
+}
+===== Q1 Performance: 500k | Hashed Index =====
+{
+  query: 'Q1 - Vehicle Lookup',
+  dataset: '500k',
+  mode: 'Hashed Index',
+  latencyMillis: 7,
+  serverExecutionTimeMillis: 5,
+  totalDocsExamined: 1,
+  totalKeysExamined: 1,
+  recordsReturned: 1
+}
+===== Q1 Performance: 1m | Collection Scan =====
+{
+  query: 'Q1 - Vehicle Lookup',
+  dataset: '1m',
+  mode: 'Collection Scan',
+  latencyMillis: 363,
+  serverExecutionTimeMillis: 360,
+  totalDocsExamined: 1000000,
+  totalKeysExamined: 0,
+  recordsReturned: 2
+}
+===== Q1 Performance: 1m | Hashed Index =====
+{
+  query: 'Q1 - Vehicle Lookup',
+  dataset: '1m',
+  mode: 'Hashed Index',
+  latencyMillis: 5,
+  serverExecutionTimeMillis: 3,
+  totalDocsExamined: 2,
+  totalKeysExamined: 2,
+  recordsReturned: 2
+}

@@ -1,0 +1,148 @@
+===== Q1 DISTRIBUTED VEHICLE LOOKUP =====
+Vehicle hash: e5a78c9d453d18b28e03adaaab7804a79457e5f5c4fa235dde042d54f11dfe60
+
+===== 100K =====
+{
+  query: 'Q1 - Vehicle Lookup',
+  dataset: '100K',
+  collection: 'violations_100k',
+  vehicleHash: 'e5a78c9d453d18b28e03adaaab7804a79457e5f5c4fa235dde042d54f11dfe60',
+  warmupRuns: 2,
+  measuredRuns: 20,
+  clientLatencyMs: [
+    2,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    0,
+    1,
+    1,
+    1,
+    2,
+    0,
+    1
+  ],
+  medianLatencyMs: 1,
+  p95LatencyMs: 2,
+  explainExecutionTimeMillis: 2,
+  totalDocsExamined: 1,
+  totalKeysExamined: 1,
+  explainNReturned: 1,
+  recordsReturned: 1,
+  shardsInvolved: [
+    'shard1RS'
+  ],
+  shardCount: 1,
+  queryPlanStages: [
+    'FETCH',
+    'IXSCAN',
+    'SINGLE_SHARD'
+  ]
+}
+
+===== 500K =====
+{
+  query: 'Q1 - Vehicle Lookup',
+  dataset: '500K',
+  collection: 'violations_500k',
+  vehicleHash: 'e5a78c9d453d18b28e03adaaab7804a79457e5f5c4fa235dde042d54f11dfe60',
+  warmupRuns: 2,
+  measuredRuns: 20,
+  clientLatencyMs: [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    2,
+    1,
+    1,
+    1,
+    1,
+    0,
+    1,
+    1,
+    1,
+    1,
+    0,
+    1,
+    1
+  ],
+  medianLatencyMs: 1,
+  p95LatencyMs: 1,
+  explainExecutionTimeMillis: 0,
+  totalDocsExamined: 1,
+  totalKeysExamined: 1,
+  explainNReturned: 1,
+  recordsReturned: 1,
+  shardsInvolved: [
+    'shard1RS'
+  ],
+  shardCount: 1,
+  queryPlanStages: [
+    'FETCH',
+    'IXSCAN',
+    'SINGLE_SHARD'
+  ]
+}
+
+===== 1M =====
+{
+  query: 'Q1 - Vehicle Lookup',
+  dataset: '1M',
+  collection: 'violations_1m',
+  vehicleHash: 'e5a78c9d453d18b28e03adaaab7804a79457e5f5c4fa235dde042d54f11dfe60',
+  warmupRuns: 2,
+  measuredRuns: 20,
+  clientLatencyMs: [
+    0,
+    1,
+    1,
+    1,
+    0,
+    1,
+    1,
+    0,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    0,
+    1,
+    1,
+    1,
+    1
+  ],
+  medianLatencyMs: 1,
+  p95LatencyMs: 1,
+  explainExecutionTimeMillis: 0,
+  totalDocsExamined: 1,
+  totalKeysExamined: 1,
+  explainNReturned: 1,
+  recordsReturned: 1,
+  shardsInvolved: [
+    'shard1RS'
+  ],
+  shardCount: 1,
+  queryPlanStages: [
+    'FETCH',
+    'IXSCAN',
+    'SINGLE_SHARD'
+  ]
+}
+
+===== Q1 ALL SIZES COMPLETED =====

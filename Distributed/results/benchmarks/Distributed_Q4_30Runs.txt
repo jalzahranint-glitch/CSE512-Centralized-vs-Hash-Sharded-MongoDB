@@ -1,0 +1,440 @@
+===== Q4 DISTRIBUTED BOROUGH MONTHLY ANALYSIS =====
+Warmup runs: 5
+Measured runs: 30
+
+===== 100K =====
+===== Q4 Top 10 Results =====
+[
+  {
+    total_violations: 4567,
+    borough: 'Queens',
+    month: '2023-10'
+  },
+  {
+    total_violations: 4411,
+    borough: 'Queens',
+    month: '2024-08'
+  },
+  {
+    total_violations: 4349,
+    borough: 'Queens',
+    month: '2024-07'
+  },
+  {
+    total_violations: 3765,
+    borough: 'Queens',
+    month: '2024-01'
+  },
+  {
+    total_violations: 3663,
+    borough: 'Queens',
+    month: '2023-09'
+  },
+  {
+    total_violations: 3120,
+    borough: 'Brooklyn',
+    month: '2023-10'
+  },
+  {
+    total_violations: 3015,
+    borough: 'Brooklyn',
+    month: '2024-08'
+  },
+  {
+    total_violations: 2941,
+    borough: 'Brooklyn',
+    month: '2024-07'
+  },
+  {
+    total_violations: 2818,
+    borough: 'Brooklyn',
+    month: '2024-01'
+  },
+  {
+    total_violations: 2767,
+    borough: 'Queens',
+    month: '2023-12'
+  }
+]
+===== Q4 Performance =====
+{
+  query: 'Q4 - Borough and Monthly Analysis',
+  dataset: '100K',
+  mode: 'Distributed - Hash Sharding',
+  collection: 'violations_100k',
+  warmupRuns: 5,
+  measuredRuns: 30,
+  clientLatencyMs: [
+    35,
+    38,
+    35,
+    34,
+    35,
+    34,
+    33,
+    62,
+    37,
+    45,
+    43,
+    40,
+    43,
+    38,
+    36,
+    32,
+    34,
+    32,
+    34,
+    31,
+    33,
+    33,
+    34,
+    33,
+    33,
+    33,
+    34,
+    33,
+    32,
+    32
+  ],
+  medianLatencyMs: 34,
+  p95LatencyMs: 45,
+  explainExecutionTimeMillis: null,
+  serverExecutionTimeMillis: null,
+  totalDocsExamined: 100000,
+  totalKeysExamined: 0,
+  recordsReturned: 10,
+  shardsInvolved: [
+    'shard1RS',
+    'shard2RS',
+    'shard3RS',
+    'shard4RS'
+  ],
+  shardCount: 4,
+  queryPlanStages: [
+    'COLLSCAN',
+    'GROUP',
+    'SHARDING_FILTER',
+    'filter',
+    'group',
+    'project',
+    'scan'
+  ],
+  perShardExplainStats: [
+    {
+      shard: 'shard3RS',
+      docs: 24995,
+      keys: 0,
+      explainMillis: 31
+    },
+    {
+      shard: 'shard1RS',
+      docs: 25025,
+      keys: 0,
+      explainMillis: 32
+    },
+    {
+      shard: 'shard2RS',
+      docs: 25094,
+      keys: 0,
+      explainMillis: 33
+    },
+    {
+      shard: 'shard4RS',
+      docs: 24886,
+      keys: 0,
+      explainMillis: 33
+    }
+  ]
+}
+
+===== 500K =====
+===== Q4 Top 10 Results =====
+[
+  {
+    total_violations: 22947,
+    borough: 'Queens',
+    month: '2023-10'
+  },
+  {
+    total_violations: 22701,
+    borough: 'Queens',
+    month: '2024-08'
+  },
+  {
+    total_violations: 21898,
+    borough: 'Queens',
+    month: '2024-07'
+  },
+  {
+    total_violations: 18632,
+    borough: 'Queens',
+    month: '2023-09'
+  },
+  {
+    total_violations: 18571,
+    borough: 'Queens',
+    month: '2024-01'
+  },
+  {
+    total_violations: 16091,
+    borough: 'Brooklyn',
+    month: '2023-10'
+  },
+  {
+    total_violations: 15134,
+    borough: 'Brooklyn',
+    month: '2024-07'
+  },
+  {
+    total_violations: 14867,
+    borough: 'Brooklyn',
+    month: '2024-08'
+  },
+  {
+    total_violations: 14135,
+    borough: 'Brooklyn',
+    month: '2024-01'
+  },
+  {
+    total_violations: 13614,
+    borough: 'Queens',
+    month: '2024-03'
+  }
+]
+===== Q4 Performance =====
+{
+  query: 'Q4 - Borough and Monthly Analysis',
+  dataset: '500K',
+  mode: 'Distributed - Hash Sharding',
+  collection: 'violations_500k',
+  warmupRuns: 5,
+  measuredRuns: 30,
+  clientLatencyMs: [
+    156,
+    153,
+    149,
+    150,
+    163,
+    147,
+    153,
+    153,
+    149,
+    187,
+    211,
+    158,
+    154,
+    164,
+    151,
+    150,
+    149,
+    153,
+    150,
+    156,
+    154,
+    155,
+    216,
+    153,
+    153,
+    146,
+    167,
+    154,
+    156,
+    149
+  ],
+  medianLatencyMs: 153,
+  p95LatencyMs: 211,
+  explainExecutionTimeMillis: null,
+  serverExecutionTimeMillis: null,
+  totalDocsExamined: 500000,
+  totalKeysExamined: 0,
+  recordsReturned: 10,
+  shardsInvolved: [
+    'shard1RS',
+    'shard2RS',
+    'shard3RS',
+    'shard4RS'
+  ],
+  shardCount: 4,
+  queryPlanStages: [
+    'COLLSCAN',
+    'GROUP',
+    'SHARDING_FILTER',
+    'filter',
+    'group',
+    'project',
+    'scan'
+  ],
+  perShardExplainStats: [
+    {
+      shard: 'shard4RS',
+      docs: 124927,
+      keys: 0,
+      explainMillis: 145
+    },
+    {
+      shard: 'shard2RS',
+      docs: 124837,
+      keys: 0,
+      explainMillis: 145
+    },
+    {
+      shard: 'shard3RS',
+      docs: 124899,
+      keys: 0,
+      explainMillis: 146
+    },
+    {
+      shard: 'shard1RS',
+      docs: 125337,
+      keys: 0,
+      explainMillis: 147
+    }
+  ]
+}
+
+===== 1M =====
+===== Q4 Top 10 Results =====
+[
+  {
+    total_violations: 45739,
+    borough: 'Queens',
+    month: '2023-10'
+  },
+  {
+    total_violations: 45516,
+    borough: 'Queens',
+    month: '2024-08'
+  },
+  {
+    total_violations: 43676,
+    borough: 'Queens',
+    month: '2024-07'
+  },
+  {
+    total_violations: 37398,
+    borough: 'Queens',
+    month: '2024-01'
+  },
+  {
+    total_violations: 37145,
+    borough: 'Queens',
+    month: '2023-09'
+  },
+  {
+    total_violations: 32023,
+    borough: 'Brooklyn',
+    month: '2023-10'
+  },
+  {
+    total_violations: 30351,
+    borough: 'Brooklyn',
+    month: '2024-07'
+  },
+  {
+    total_violations: 29506,
+    borough: 'Brooklyn',
+    month: '2024-08'
+  },
+  {
+    total_violations: 28240,
+    borough: 'Brooklyn',
+    month: '2024-01'
+  },
+  {
+    total_violations: 27594,
+    borough: 'Queens',
+    month: '2023-12'
+  }
+]
+===== Q4 Performance =====
+{
+  query: 'Q4 - Borough and Monthly Analysis',
+  dataset: '1M',
+  mode: 'Distributed - Hash Sharding',
+  collection: 'violations_1m',
+  warmupRuns: 5,
+  measuredRuns: 30,
+  clientLatencyMs: [
+    315,
+    293,
+    313,
+    385,
+    323,
+    305,
+    308,
+    318,
+    294,
+    297,
+    310,
+    294,
+    297,
+    307,
+    296,
+    296,
+    301,
+    294,
+    294,
+    293,
+    327,
+    307,
+    320,
+    312,
+    295,
+    305,
+    291,
+    290,
+    339,
+    344
+  ],
+  medianLatencyMs: 305,
+  p95LatencyMs: 344,
+  explainExecutionTimeMillis: null,
+  serverExecutionTimeMillis: null,
+  totalDocsExamined: 1000000,
+  totalKeysExamined: 0,
+  recordsReturned: 10,
+  shardsInvolved: [
+    'shard1RS',
+    'shard2RS',
+    'shard3RS',
+    'shard4RS'
+  ],
+  shardCount: 4,
+  queryPlanStages: [
+    'COLLSCAN',
+    'GROUP',
+    'SHARDING_FILTER',
+    'filter',
+    'group',
+    'project',
+    'scan'
+  ],
+  perShardExplainStats: [
+    {
+      shard: 'shard3RS',
+      docs: 250148,
+      keys: 0,
+      explainMillis: 293
+    },
+    {
+      shard: 'shard4RS',
+      docs: 249737,
+      keys: 0,
+      explainMillis: 293
+    },
+    {
+      shard: 'shard1RS',
+      docs: 250608,
+      keys: 0,
+      explainMillis: 295
+    },
+    {
+      shard: 'shard2RS',
+      docs: 249507,
+      keys: 0,
+      explainMillis: 306
+    }
+  ]
+}
+
+===== Q4 ALL SIZES COMPLETED =====

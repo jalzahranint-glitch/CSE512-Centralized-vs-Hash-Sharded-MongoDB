@@ -1,0 +1,395 @@
+===== Q5 DISTRIBUTED MONTHLY REPEAT OFFENDERS =====
+Warmup runs: 1
+Measured runs: 5
+
+===== 100K =====
+===== Q5 Top 10 Results =====
+[
+  {
+    repeat_offender_vehicles: 173,
+    repeat_violations: 362,
+    max_violations_per_vehicle: 4,
+    month: '2024-07'
+  },
+  {
+    repeat_offender_vehicles: 159,
+    repeat_violations: 334,
+    max_violations_per_vehicle: 6,
+    month: '2023-10'
+  },
+  {
+    repeat_offender_vehicles: 152,
+    repeat_violations: 332,
+    max_violations_per_vehicle: 7,
+    month: '2024-08'
+  },
+  {
+    repeat_offender_vehicles: 149,
+    repeat_violations: 334,
+    max_violations_per_vehicle: 8,
+    month: '2024-01'
+  },
+  {
+    repeat_offender_vehicles: 115,
+    repeat_violations: 243,
+    max_violations_per_vehicle: 5,
+    month: '2023-09'
+  },
+  {
+    repeat_offender_vehicles: 85,
+    repeat_violations: 177,
+    max_violations_per_vehicle: 5,
+    month: '2024-03'
+  },
+  {
+    repeat_offender_vehicles: 81,
+    repeat_violations: 168,
+    max_violations_per_vehicle: 3,
+    month: '2024-09'
+  },
+  {
+    repeat_offender_vehicles: 79,
+    repeat_violations: 165,
+    max_violations_per_vehicle: 4,
+    month: '2023-12'
+  },
+  {
+    repeat_offender_vehicles: 61,
+    repeat_violations: 124,
+    max_violations_per_vehicle: 4,
+    month: '2024-04'
+  },
+  {
+    repeat_offender_vehicles: 59,
+    repeat_violations: 124,
+    max_violations_per_vehicle: 7,
+    month: '2023-11'
+  }
+]
+===== Q5 Performance =====
+{
+  query: 'Q5 - Monthly Repeat-Offender Analysis',
+  dataset: '100K',
+  mode: 'Distributed - Hash Sharding',
+  collection: 'violations_100k',
+  warmupRuns: 1,
+  measuredRuns: 5,
+  clientLatencyMs: [
+    474,
+    352,
+    376,
+    295,
+    262
+  ],
+  medianLatencyMs: 352,
+  p95LatencyMs: 474,
+  explainExecutionTimeMillis: null,
+  serverExecutionTimeMillis: null,
+  totalDocsExamined: 100000,
+  totalKeysExamined: 0,
+  recordsReturned: 10,
+  shardsInvolved: [
+    'shard1RS',
+    'shard2RS',
+    'shard3RS',
+    'shard4RS'
+  ],
+  shardCount: 4,
+  queryPlanStages: [
+    'COLLSCAN',
+    'GROUP',
+    'SHARDING_FILTER',
+    'filter',
+    'group',
+    'project',
+    'scan'
+  ],
+  perShardExplainStats: [
+    {
+      shard: 'shard1RS',
+      docs: 25025,
+      keys: 0,
+      explainMillis: 53
+    },
+    {
+      shard: 'shard4RS',
+      docs: 24886,
+      keys: 0,
+      explainMillis: 53
+    },
+    {
+      shard: 'shard2RS',
+      docs: 25094,
+      keys: 0,
+      explainMillis: 54
+    },
+    {
+      shard: 'shard3RS',
+      docs: 24995,
+      keys: 0,
+      explainMillis: 55
+    }
+  ]
+}
+
+===== 500K =====
+===== Q5 Top 10 Results =====
+[
+  {
+    repeat_offender_vehicles: 3323,
+    repeat_violations: 7415,
+    max_violations_per_vehicle: 12,
+    month: '2024-07'
+  },
+  {
+    repeat_offender_vehicles: 2999,
+    repeat_violations: 6736,
+    max_violations_per_vehicle: 15,
+    month: '2024-08'
+  },
+  {
+    repeat_offender_vehicles: 2863,
+    repeat_violations: 6427,
+    max_violations_per_vehicle: 18,
+    month: '2023-10'
+  },
+  {
+    repeat_offender_vehicles: 2586,
+    repeat_violations: 6015,
+    max_violations_per_vehicle: 33,
+    month: '2024-01'
+  },
+  {
+    repeat_offender_vehicles: 1903,
+    repeat_violations: 4177,
+    max_violations_per_vehicle: 12,
+    month: '2023-09'
+  },
+  {
+    repeat_offender_vehicles: 1551,
+    repeat_violations: 3433,
+    max_violations_per_vehicle: 12,
+    month: '2024-09'
+  },
+  {
+    repeat_offender_vehicles: 1441,
+    repeat_violations: 3233,
+    max_violations_per_vehicle: 13,
+    month: '2023-12'
+  },
+  {
+    repeat_offender_vehicles: 1434,
+    repeat_violations: 3201,
+    max_violations_per_vehicle: 36,
+    month: '2024-03'
+  },
+  {
+    repeat_offender_vehicles: 1054,
+    repeat_violations: 2315,
+    max_violations_per_vehicle: 12,
+    month: '2024-04'
+  },
+  {
+    repeat_offender_vehicles: 1006,
+    repeat_violations: 2214,
+    max_violations_per_vehicle: 22,
+    month: '2024-02'
+  }
+]
+===== Q5 Performance =====
+{
+  query: 'Q5 - Monthly Repeat-Offender Analysis',
+  dataset: '500K',
+  mode: 'Distributed - Hash Sharding',
+  collection: 'violations_500k',
+  warmupRuns: 1,
+  measuredRuns: 5,
+  clientLatencyMs: [
+    5313,
+    7060,
+    5110,
+    5456,
+    5095
+  ],
+  medianLatencyMs: 5313,
+  p95LatencyMs: 7060,
+  explainExecutionTimeMillis: null,
+  serverExecutionTimeMillis: null,
+  totalDocsExamined: 500000,
+  totalKeysExamined: 0,
+  recordsReturned: 10,
+  shardsInvolved: [
+    'shard1RS',
+    'shard2RS',
+    'shard3RS',
+    'shard4RS'
+  ],
+  shardCount: 4,
+  queryPlanStages: [
+    'COLLSCAN',
+    'GROUP',
+    'SHARDING_FILTER',
+    'filter',
+    'group',
+    'project',
+    'scan'
+  ],
+  perShardExplainStats: [
+    {
+      shard: 'shard2RS',
+      docs: 124837,
+      keys: 0,
+      explainMillis: 351
+    },
+    {
+      shard: 'shard4RS',
+      docs: 124927,
+      keys: 0,
+      explainMillis: 354
+    },
+    {
+      shard: 'shard3RS',
+      docs: 124899,
+      keys: 0,
+      explainMillis: 369
+    },
+    {
+      shard: 'shard1RS',
+      docs: 125337,
+      keys: 0,
+      explainMillis: 370
+    }
+  ]
+}
+
+===== 1M =====
+===== Q5 Top 10 Results =====
+[
+  {
+    repeat_offender_vehicles: 10312,
+    repeat_violations: 24344,
+    max_violations_per_vehicle: 28,
+    month: '2024-07'
+  },
+  {
+    repeat_offender_vehicles: 9355,
+    repeat_violations: 22020,
+    max_violations_per_vehicle: 26,
+    month: '2024-08'
+  },
+  {
+    repeat_offender_vehicles: 9069,
+    repeat_violations: 21232,
+    max_violations_per_vehicle: 37,
+    month: '2023-10'
+  },
+  {
+    repeat_offender_vehicles: 7979,
+    repeat_violations: 19379,
+    max_violations_per_vehicle: 64,
+    month: '2024-01'
+  },
+  {
+    repeat_offender_vehicles: 5987,
+    repeat_violations: 13808,
+    max_violations_per_vehicle: 25,
+    month: '2023-09'
+  },
+  {
+    repeat_offender_vehicles: 5341,
+    repeat_violations: 12310,
+    max_violations_per_vehicle: 19,
+    month: '2024-09'
+  },
+  {
+    repeat_offender_vehicles: 4677,
+    repeat_violations: 10793,
+    max_violations_per_vehicle: 69,
+    month: '2024-03'
+  },
+  {
+    repeat_offender_vehicles: 4663,
+    repeat_violations: 10997,
+    max_violations_per_vehicle: 24,
+    month: '2023-12'
+  },
+  {
+    repeat_offender_vehicles: 3486,
+    repeat_violations: 7983,
+    max_violations_per_vehicle: 23,
+    month: '2024-04'
+  },
+  {
+    repeat_offender_vehicles: 3327,
+    repeat_violations: 7600,
+    max_violations_per_vehicle: 42,
+    month: '2024-02'
+  }
+]
+===== Q5 Performance =====
+{
+  query: 'Q5 - Monthly Repeat-Offender Analysis',
+  dataset: '1M',
+  mode: 'Distributed - Hash Sharding',
+  collection: 'violations_1m',
+  warmupRuns: 1,
+  measuredRuns: 5,
+  clientLatencyMs: [
+    10972,
+    11940,
+    13648,
+    13374,
+    13030
+  ],
+  medianLatencyMs: 13030,
+  p95LatencyMs: 13648,
+  explainExecutionTimeMillis: null,
+  serverExecutionTimeMillis: null,
+  totalDocsExamined: 1000000,
+  totalKeysExamined: 0,
+  recordsReturned: 10,
+  shardsInvolved: [
+    'shard1RS',
+    'shard2RS',
+    'shard3RS',
+    'shard4RS'
+  ],
+  shardCount: 4,
+  queryPlanStages: [
+    'COLLSCAN',
+    'GROUP',
+    'SHARDING_FILTER',
+    'filter',
+    'group',
+    'project',
+    'scan'
+  ],
+  perShardExplainStats: [
+    {
+      shard: 'shard3RS',
+      docs: 250148,
+      keys: 0,
+      explainMillis: 820
+    },
+    {
+      shard: 'shard2RS',
+      docs: 249507,
+      keys: 0,
+      explainMillis: 821
+    },
+    {
+      shard: 'shard1RS',
+      docs: 250608,
+      keys: 0,
+      explainMillis: 834
+    },
+    {
+      shard: 'shard4RS',
+      docs: 249737,
+      keys: 0,
+      explainMillis: 857
+    }
+  ]
+}
+
+===== Q5 ALL SIZES COMPLETED =====

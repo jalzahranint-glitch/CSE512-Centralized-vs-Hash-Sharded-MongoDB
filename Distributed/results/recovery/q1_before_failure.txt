@@ -1,0 +1,4 @@
+=== BEFORE SHARD FAILURE: Q1 ===
+100k: 1 records
+500k: 1 records
+1m: 2 records

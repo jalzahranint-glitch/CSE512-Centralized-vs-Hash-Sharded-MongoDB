@@ -1,0 +1,65 @@
+Q5 Actual Query Results
+Dataset: 1M
+Results returned: 10
+[
+  {
+    repeat_offender_vehicles: 10312,
+    repeat_violations: 24344,
+    max_violations_per_vehicle: 28,
+    month: '2024-07'
+  },
+  {
+    repeat_offender_vehicles: 9355,
+    repeat_violations: 22020,
+    max_violations_per_vehicle: 26,
+    month: '2024-08'
+  },
+  {
+    repeat_offender_vehicles: 9069,
+    repeat_violations: 21232,
+    max_violations_per_vehicle: 37,
+    month: '2023-10'
+  },
+  {
+    repeat_offender_vehicles: 7979,
+    repeat_violations: 19379,
+    max_violations_per_vehicle: 64,
+    month: '2024-01'
+  },
+  {
+    repeat_offender_vehicles: 5987,
+    repeat_violations: 13808,
+    max_violations_per_vehicle: 25,
+    month: '2023-09'
+  },
+  {
+    repeat_offender_vehicles: 5341,
+    repeat_violations: 12310,
+    max_violations_per_vehicle: 19,
+    month: '2024-09'
+  },
+  {
+    repeat_offender_vehicles: 4677,
+    repeat_violations: 10793,
+    max_violations_per_vehicle: 69,
+    month: '2024-03'
+  },
+  {
+    repeat_offender_vehicles: 4663,
+    repeat_violations: 10997,
+    max_violations_per_vehicle: 24,
+    month: '2023-12'
+  },
+  {
+    repeat_offender_vehicles: 3486,
+    repeat_violations: 7983,
+    max_violations_per_vehicle: 23,
+    month: '2024-04'
+  },
+  {
+    repeat_offender_vehicles: 3327,
+    repeat_violations: 7600,
+    max_violations_per_vehicle: 42,
+    month: '2024-02'
+  }
+]

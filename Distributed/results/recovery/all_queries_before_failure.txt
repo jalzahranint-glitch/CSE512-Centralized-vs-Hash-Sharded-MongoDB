@@ -1,0 +1,18 @@
+=== BEFORE FAILURE: Q1-Q5 ===
+100k Q1: PASS - 1 records
+100k Q2: PASS - 10 records
+100k Q3: PASS - 10 records
+100k Q4: PASS - 10 records
+100k Q5: PASS - 10 records
+500k Q1: PASS - 1 records
+500k Q2: PASS - 10 records
+500k Q3: PASS - 10 records
+500k Q4: PASS - 10 records
+500k Q5: PASS - 10 records
+1m Q1: PASS - 2 records
+1m Q2: PASS - 10 records
+1m Q3: PASS - 10 records
+1m Q4: PASS - 10 records
+1m Q5: PASS - 10 records
+Passed: 15/15
+Failed: 0

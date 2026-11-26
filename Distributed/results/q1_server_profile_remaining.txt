@@ -1,0 +1,64 @@
+===== shard1 =====
+{
+  tag: 'CSE512_Q1_500K_PROFILE_TEST',
+  operations: [],
+  serverOperationMillis: null
+}
+{
+  tag: 'CSE512_Q1_1M_PROFILE_TEST',
+  operations: [],
+  serverOperationMillis: null
+}
+===== shard2 =====
+{
+  tag: 'CSE512_Q1_500K_PROFILE_TEST',
+  operations: [],
+  serverOperationMillis: null
+}
+{
+  tag: 'CSE512_Q1_1M_PROFILE_TEST',
+  operations: [],
+  serverOperationMillis: null
+}
+===== shard3 =====
+{
+  tag: 'CSE512_Q1_500K_PROFILE_TEST',
+  operations: [
+    {
+      op: 'query',
+      ns: 'nyc_traffic.violations_500k',
+      keysExamined: 3,
+      docsExamined: 3,
+      nreturned: 3,
+      millis: 1,
+      ts: ISODate('2026-11-10T12:54:50.904Z')
+    }
+  ],
+  serverOperationMillis: 1
+}
+{
+  tag: 'CSE512_Q1_1M_PROFILE_TEST',
+  operations: [
+    {
+      op: 'query',
+      ns: 'nyc_traffic.violations_1m',
+      keysExamined: 3,
+      docsExamined: 3,
+      nreturned: 3,
+      millis: 2,
+      ts: ISODate('2026-11-10T12:54:50.909Z')
+    }
+  ],
+  serverOperationMillis: 2
+}
+===== shard4 =====
+{
+  tag: 'CSE512_Q1_500K_PROFILE_TEST',
+  operations: [],
+  serverOperationMillis: null
+}
+{
+  tag: 'CSE512_Q1_1M_PROFILE_TEST',
+  operations: [],
+  serverOperationMillis: null
+}

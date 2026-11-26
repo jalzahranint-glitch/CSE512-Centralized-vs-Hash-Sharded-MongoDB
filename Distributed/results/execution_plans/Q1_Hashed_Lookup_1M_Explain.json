@@ -1,0 +1,213 @@
+{
+  "queryPlanner": {
+    "winningPlan": {
+      "stage": "SINGLE_SHARD",
+      "shards": [
+        {
+          "explainVersion": "1",
+          "shardName": "shard4RS",
+          "connectionString": "shard4RS/shard4:27017,shard4b:27017,shard4c:27017",
+          "serverInfo": {
+            "host": "71d4c7e0ee45",
+            "port": 27017,
+            "version": "8.0.34",
+            "gitVersion": "51db4515a6597aedcf6188ee4e48a27e65b065ae"
+          },
+          "namespace": "nyc_traffic.violations_1m",
+          "parsedQuery": {
+            "vehicle_hash": {
+              "$eq": "e1b3dc8fd32093207a7a965292593e4601fe2825d72d02e58f37d0d438e84dd2"
+            }
+          },
+          "indexFilterSet": false,
+          "queryHash": "30590474",
+          "planCacheShapeHash": "30590474",
+          "planCacheKey": "5D975F38",
+          "optimizationTimeMillis": 0,
+          "maxIndexedOrSolutionsReached": false,
+          "maxIndexedAndSolutionsReached": false,
+          "maxScansToExplodeReached": false,
+          "prunedSimilarIndexes": false,
+          "winningPlan": {
+            "isCached": false,
+            "stage": "FETCH",
+            "filter": {
+              "vehicle_hash": {
+                "$eq": "e1b3dc8fd32093207a7a965292593e4601fe2825d72d02e58f37d0d438e84dd2"
+              }
+            },
+            "inputStage": {
+              "stage": "IXSCAN",
+              "keyPattern": {
+                "vehicle_hash": "hashed"
+              },
+              "indexName": "vehicle_hash_hashed",
+              "isMultiKey": false,
+              "isUnique": false,
+              "isSparse": false,
+              "isPartial": false,
+              "indexVersion": 2,
+              "direction": "forward",
+              "indexBounds": {
+                "vehicle_hash": [
+                  "[-699523373090794189, -699523373090794189]"
+                ]
+              }
+            }
+          },
+          "rejectedPlans": []
+        }
+      ]
+    }
+  },
+  "executionStats": {
+    "nReturned": 2,
+    "executionTimeMillis": 6,
+    "totalKeysExamined": 2,
+    "totalDocsExamined": 2,
+    "executionStages": {
+      "stage": "SINGLE_SHARD",
+      "nReturned": 2,
+      "executionTimeMillis": 6,
+      "totalKeysExamined": 2,
+      "totalDocsExamined": 2,
+      "totalChildMillis": 3,
+      "shards": [
+        {
+          "shardName": "shard4RS",
+          "executionSuccess": true,
+          "nReturned": 2,
+          "executionTimeMillis": 3,
+          "totalKeysExamined": 2,
+          "totalDocsExamined": 2,
+          "executionStages": {
+            "isCached": false,
+            "stage": "FETCH",
+            "filter": {
+              "vehicle_hash": {
+                "$eq": "e1b3dc8fd32093207a7a965292593e4601fe2825d72d02e58f37d0d438e84dd2"
+              }
+            },
+            "nReturned": 2,
+            "executionTimeMillisEstimate": 0,
+            "works": 3,
+            "advanced": 2,
+            "needTime": 0,
+            "needYield": 0,
+            "saveState": 0,
+            "restoreState": 0,
+            "isEOF": 1,
+            "docsExamined": 2,
+            "alreadyHasObj": 0,
+            "inputStage": {
+              "stage": "IXSCAN",
+              "nReturned": 2,
+              "executionTimeMillisEstimate": 0,
+              "works": 3,
+              "advanced": 2,
+              "needTime": 0,
+              "needYield": 0,
+              "saveState": 0,
+              "restoreState": 0,
+              "isEOF": 1,
+              "keyPattern": {
+                "vehicle_hash": "hashed"
+              },
+              "indexName": "vehicle_hash_hashed",
+              "isMultiKey": false,
+              "isUnique": false,
+              "isSparse": false,
+              "isPartial": false,
+              "indexVersion": 2,
+              "direction": "forward",
+              "indexBounds": {
+                "vehicle_hash": [
+                  "[-699523373090794189, -699523373090794189]"
+                ]
+              },
+              "keysExamined": 2,
+              "seeks": 1,
+              "dupsTested": 0,
+              "dupsDropped": 0
+            }
+          }
+        }
+      ]
+    }
+  },
+  "queryShapeHash": "DF0B843CC092BBF5877897AC30FEEE30182B33BD4F18136CE44E3ACC96C91FA7",
+  "serverInfo": {
+    "host": "3c181f8cb02f",
+    "port": 27017,
+    "version": "8.0.34",
+    "gitVersion": "51db4515a6597aedcf6188ee4e48a27e65b065ae"
+  },
+  "serverParameters": {
+    "internalQueryFacetBufferSizeBytes": 104857600,
+    "internalQueryFacetMaxOutputDocSizeBytes": 104857600,
+    "internalLookupStageIntermediateDocumentMaxSizeBytes": 104857600,
+    "internalDocumentSourceGroupMaxMemoryBytes": 104857600,
+    "internalQueryMaxBlockingSortMemoryUsageBytes": 104857600,
+    "internalQueryProhibitBlockingMergeOnMongoS": 0,
+    "internalQueryMaxAddToSetBytes": 104857600,
+    "internalDocumentSourceSetWindowFieldsMaxMemoryBytes": 104857600,
+    "internalQueryFrameworkControl": "trySbeRestricted",
+    "internalQueryPlannerIgnoreIndexWithCollationForRegex": 1
+  },
+  "command": {
+    "find": "violations_1m",
+    "filter": {
+      "vehicle_hash": "e1b3dc8fd32093207a7a965292593e4601fe2825d72d02e58f37d0d438e84dd2"
+    },
+    "lsid": {
+      "id": {
+        "$binary": {
+          "base64": "OnayXtSyRw2ZNaNm2bMJsQ==",
+          "subType": "04"
+        }
+      }
+    },
+    "$clusterTime": {
+      "clusterTime": {
+        "$timestamp": {
+          "t": 1795606002,
+          "i": 1
+        }
+      },
+      "signature": {
+        "hash": {
+          "$binary": {
+            "base64": "AAAAAAAAAAAAAAAAAAAAAAAAAAA=",
+            "subType": "00"
+          }
+        },
+        "keyId": 0
+      }
+    },
+    "$db": "nyc_traffic"
+  },
+  "ok": 1,
+  "$clusterTime": {
+    "clusterTime": {
+      "$timestamp": {
+        "t": 1795606002,
+        "i": 1
+      }
+    },
+    "signature": {
+      "hash": {
+        "$binary": {
+          "base64": "AAAAAAAAAAAAAAAAAAAAAAAAAAA=",
+          "subType": "00"
+        }
+      },
+      "keyId": 0
+    }
+  },
+  "operationTime": {
+    "$timestamp": {
+      "t": 1795606002,
+      "i": 1
+    }
+  }
+}

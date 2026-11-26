@@ -1,0 +1,12 @@
+{
+  dataset: '500k',
+  tag: 'CSE512_Q1_500K_PROFILE_TEST',
+  clientLatencyMs: 5,
+  recordsReturned: 3
+}
+{
+  dataset: '1m',
+  tag: 'CSE512_Q1_1M_PROFILE_TEST',
+  clientLatencyMs: 4,
+  recordsReturned: 3
+}

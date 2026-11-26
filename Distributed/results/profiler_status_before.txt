@@ -1,0 +1,24 @@
+===== shard1 =====
+{
+  level: 0,
+  slowms: 100,
+  sampleRate: 1
+}
+===== shard2 =====
+{
+  level: 0,
+  slowms: 100,
+  sampleRate: 1
+}
+===== shard3 =====
+{
+  level: 0,
+  slowms: 100,
+  sampleRate: 1
+}
+===== shard4 =====
+{
+  level: 0,
+  slowms: 100,
+  sampleRate: 1
+}
