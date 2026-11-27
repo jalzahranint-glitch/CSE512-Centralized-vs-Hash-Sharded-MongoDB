@@ -170,13 +170,13 @@ function analyzeExplain(explain) {
   };
 }
 
-print("===== Q2 DISTRIBUTED REPEAT OFFENDERS =====");
+print(" Q2 DISTRIBUTED REPEAT OFFENDERS ");
 print("Warmup runs: " + WARMUP);
 print("Measured runs: " + RUNS);
 
 // Run Q2 for each dataset size.
 for (var dataset of q2sizes) {
-  print("\n===== " + dataset.size + " =====");
+  print("\n " + dataset.size + " ");
 
   // Retrieve the top 10 vehicles from the selected collection.
   var results = runQ2(dataset.name);
@@ -206,10 +206,10 @@ for (var dataset of q2sizes) {
   // Extract shard information and execution plan details.
   var plan = analyzeExplain(explain);
 
-  print("===== Top 10 Repeat Offenders =====");
+  print(" Top 10 Repeat Offenders ");
   printjson(results);
 
-  print("===== Q2 Performance =====");
+  print(" Q2 Performance ");
 
   // Display query results, latency, and execution statistics.
   printjson({
@@ -238,4 +238,4 @@ for (var dataset of q2sizes) {
   });
 }
 
-print("\n===== Q2 ALL SIZES COMPLETED =====");
+print("\n Q2 ALL SIZES COMPLETED ");

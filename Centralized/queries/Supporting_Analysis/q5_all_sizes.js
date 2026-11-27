@@ -116,10 +116,10 @@ try {
       (sum, e) => sum + (e.keysExamined ?? 0), 0
     );
 
-    print("===== Q5 Results: " + size + " =====");
+    print(" Q5 Results: " + size + " ");
     printjson(results);
 
-    print("===== Q5 Performance: " + size + " =====");
+    print(" Q5 Performance: " + size + " ");
     printjson({
       query: "Q5 - Monthly Repeat-Offender Analysis",
       dataset: size,

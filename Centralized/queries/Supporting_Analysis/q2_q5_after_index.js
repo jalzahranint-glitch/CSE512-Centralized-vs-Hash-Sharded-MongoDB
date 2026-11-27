@@ -244,8 +244,8 @@ try {
       ];
 
       print(
-        "===== Performance: " +
-        query.id + " | " + size + " ====="
+        " Performance: " +
+        query.id + " | " + size + " "
       );
 
       printjson({

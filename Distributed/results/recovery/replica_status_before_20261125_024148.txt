@@ -1,16 +1,16 @@
-=== SHARD 1 ===
+ SHARD 1
 Replica Set: shard1RS
 Members: 1
 shard1:27017 | PRIMARY
-=== SHARD 2 ===
+ SHARD 2
 Replica Set: shard2RS
 Members: 1
 shard2:27017 | PRIMARY
-=== SHARD 3 ===
+ SHARD 3
 Replica Set: shard3RS
 Members: 1
 shard3:27017 | PRIMARY
-=== SHARD 4 ===
+ SHARD 4
 Replica Set: shard4RS
 Members: 1
 shard4:27017 | PRIMARY

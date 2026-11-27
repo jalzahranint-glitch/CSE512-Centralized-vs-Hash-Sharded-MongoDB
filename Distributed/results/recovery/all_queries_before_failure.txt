@@ -1,4 +1,4 @@
-=== BEFORE FAILURE: Q1-Q5 ===
+ BEFORE FAILURE: Q1-Q5
 100k Q1: PASS - 1 records
 100k Q2: PASS - 10 records
 100k Q3: PASS - 10 records

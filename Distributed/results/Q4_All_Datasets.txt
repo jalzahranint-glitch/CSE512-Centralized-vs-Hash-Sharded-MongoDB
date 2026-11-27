@@ -1,9 +1,9 @@
-===== Q4 DISTRIBUTED BOROUGH MONTHLY ANALYSIS =====
+ Q4 DISTRIBUTED BOROUGH MONTHLY ANALYSIS
 Warmup runs: 1
 Measured runs: 5
 
-===== 100K =====
-===== Q4 Top 10 Results =====
+ 100K
+ Q4 Top 10 Results
 [
   {
     total_violations: 4567,
@@ -56,7 +56,7 @@ Measured runs: 5
     month: '2023-12'
   }
 ]
-===== Q4 Performance =====
+ Q4 Performance
 {
   query: 'Q4 - Borough and Monthly Analysis',
   dataset: '100K',
@@ -122,8 +122,8 @@ Measured runs: 5
   ]
 }
 
-===== 500K =====
-===== Q4 Top 10 Results =====
+ 500K
+ Q4 Top 10 Results
 [
   {
     total_violations: 22947,
@@ -176,7 +176,7 @@ Measured runs: 5
     month: '2024-03'
   }
 ]
-===== Q4 Performance =====
+ Q4 Performance
 {
   query: 'Q4 - Borough and Monthly Analysis',
   dataset: '500K',
@@ -242,8 +242,8 @@ Measured runs: 5
   ]
 }
 
-===== 1M =====
-===== Q4 Top 10 Results =====
+ 1M
+ Q4 Top 10 Results
 [
   {
     total_violations: 45739,
@@ -296,7 +296,7 @@ Measured runs: 5
     month: '2023-12'
   }
 ]
-===== Q4 Performance =====
+ Q4 Performance
 {
   query: 'Q4 - Borough and Monthly Analysis',
   dataset: '1M',
@@ -362,4 +362,4 @@ Measured runs: 5
   ]
 }
 
-===== Q4 ALL SIZES COMPLETED =====
+ Q4 ALL SIZES COMPLETED

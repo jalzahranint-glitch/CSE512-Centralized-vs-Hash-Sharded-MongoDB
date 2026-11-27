@@ -1,4 +1,4 @@
-===== Performance: Q2 | 100k =====
+ Performance: Q2 | 100k
 {
   query: 'Repeat Offenders',
   dataset: '100k',
@@ -54,7 +54,7 @@
     }
   ]
 }
-===== Performance: Q2 | 500k =====
+ Performance: Q2 | 500k
 {
   query: 'Repeat Offenders',
   dataset: '500k',
@@ -110,7 +110,7 @@
     }
   ]
 }
-===== Performance: Q2 | 1m =====
+ Performance: Q2 | 1m
 {
   query: 'Repeat Offenders',
   dataset: '1m',
@@ -166,7 +166,7 @@
     }
   ]
 }
-===== Performance: Q3 | 100k =====
+ Performance: Q3 | 100k
 {
   query: 'Cross-Borough Detection',
   dataset: '100k',
@@ -282,7 +282,7 @@
     }
   ]
 }
-===== Performance: Q3 | 500k =====
+ Performance: Q3 | 500k
 {
   query: 'Cross-Borough Detection',
   dataset: '500k',
@@ -411,7 +411,7 @@
     }
   ]
 }
-===== Performance: Q3 | 1m =====
+ Performance: Q3 | 1m
 {
   query: 'Cross-Borough Detection',
   dataset: '1m',
@@ -547,7 +547,7 @@
     }
   ]
 }
-===== Performance: Q4 | 100k =====
+ Performance: Q4 | 100k
 {
   query: 'Borough and Monthly Analysis',
   dataset: '100k',
@@ -613,7 +613,7 @@
     }
   ]
 }
-===== Performance: Q4 | 500k =====
+ Performance: Q4 | 500k
 {
   query: 'Borough and Monthly Analysis',
   dataset: '500k',
@@ -679,7 +679,7 @@
     }
   ]
 }
-===== Performance: Q4 | 1m =====
+ Performance: Q4 | 1m
 {
   query: 'Borough and Monthly Analysis',
   dataset: '1m',
@@ -745,7 +745,7 @@
     }
   ]
 }
-===== Performance: Q5 | 100k =====
+ Performance: Q5 | 100k
 {
   query: 'Monthly Repeat-Offender Analysis',
   dataset: '100k',
@@ -821,7 +821,7 @@
     }
   ]
 }
-===== Performance: Q5 | 500k =====
+ Performance: Q5 | 500k
 {
   query: 'Monthly Repeat-Offender Analysis',
   dataset: '500k',
@@ -897,7 +897,7 @@
     }
   ]
 }
-===== Performance: Q5 | 1m =====
+ Performance: Q5 | 1m
 {
   query: 'Monthly Repeat-Offender Analysis',
   dataset: '1m',

@@ -182,12 +182,12 @@ function q4Analyze(explain) {
   };
 }
 
-print("===== Q4 DISTRIBUTED BOROUGH MONTHLY ANALYSIS =====");
+print(" Q4 DISTRIBUTED BOROUGH MONTHLY ANALYSIS ");
 print("Warmup runs: " + Q4_WARMUP);
 print("Measured runs: " + Q4_RUNS);
 
 for (var dataset of q4sizes) {
-  print("\n===== " + dataset.size + " =====");
+  print("\n " + dataset.size + " ");
 
   var results = runQ4(dataset.name);
 
@@ -211,10 +211,10 @@ for (var dataset of q4sizes) {
 
   var plan = q4Analyze(explain);
 
-  print("===== Q4 Top 10 Results =====");
+  print(" Q4 Top 10 Results ");
   printjson(results);
 
-  print("===== Q4 Performance =====");
+  print(" Q4 Performance ");
 
   printjson({
     query: "Q4 - Borough and Monthly Analysis",
@@ -242,4 +242,4 @@ for (var dataset of q4sizes) {
   });
 }
 
-print("\n===== Q4 ALL SIZES COMPLETED =====");
+print("\n Q4 ALL SIZES COMPLETED ");

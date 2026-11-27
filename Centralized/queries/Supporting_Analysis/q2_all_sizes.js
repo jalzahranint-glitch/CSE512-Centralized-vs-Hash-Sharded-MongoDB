@@ -77,10 +77,10 @@ try {
       (sum, e) => sum + (e.keysExamined ?? 0), 0
     );
 
-    print("===== Q2 Results: " + size + " =====");
+    print(" Q2 Results: " + size + " ");
     printjson(results);
 
-    print("===== Q2 Performance: " + size + " =====");
+    print(" Q2 Performance: " + size + " ");
     printjson({
       query: "Q2 - Repeat Offender Detection",
       dataset: size,

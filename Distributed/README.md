@@ -83,7 +83,7 @@ across all three dataset sizes.
 
 The Docker Compose configuration is in compose.yaml.
 
-From the CSE512_Final_Project root directory,
+From the CSE512_GitHub_Final root directory,
 start the existing containers:
 
 docker compose -p nyc-mongo-distributed \
@@ -93,6 +93,20 @@ To check container status:
 
 docker compose -p nyc-mongo-distributed \
   -f Distributed/compose.yaml ps
+
+### Reproducing the Distributed Environment
+
+To reproduce the distributed environment on another computer, Docker and MongoDB tools are required.
+
+The Docker Compose configuration creates the MongoDB containers.
+
+The configuration server replica set cfgRS and the four shard replica sets must be initialized manually.
+
+The four shards must then be registered through mongos.
+
+The scripts in Distributed/scripts configure hash sharding and load the cleaned datasets.
+
+The Docker database volumes are not included in this repository.
 
 ## 8. Important Notes
 

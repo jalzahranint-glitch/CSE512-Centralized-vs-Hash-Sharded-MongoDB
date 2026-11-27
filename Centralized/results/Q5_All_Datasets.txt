@@ -1,4 +1,4 @@
-===== Q5 Results: 100k =====
+ Q5 Results: 100k
 [
   {
     repeat_offender_vehicles: 173,
@@ -61,7 +61,7 @@
     month: '2023-11'
   }
 ]
-===== Q5 Performance: 100k =====
+ Q5 Performance: 100k
 {
   query: 'Q5 - Monthly Repeat-Offender Analysis',
   dataset: '100k',
@@ -72,7 +72,7 @@
   totalKeysExamined: 0,
   recordsReturned: 10
 }
-===== Q5 Results: 500k =====
+ Q5 Results: 500k
 [
   {
     repeat_offender_vehicles: 3323,
@@ -135,7 +135,7 @@
     month: '2024-02'
   }
 ]
-===== Q5 Performance: 500k =====
+ Q5 Performance: 500k
 {
   query: 'Q5 - Monthly Repeat-Offender Analysis',
   dataset: '500k',
@@ -146,7 +146,7 @@
   totalKeysExamined: 0,
   recordsReturned: 10
 }
-===== Q5 Results: 1m =====
+ Q5 Results: 1m
 [
   {
     repeat_offender_vehicles: 10312,
@@ -209,7 +209,7 @@
     month: '2024-02'
   }
 ]
-===== Q5 Performance: 1m =====
+ Q5 Performance: 1m
 {
   query: 'Q5 - Monthly Repeat-Offender Analysis',
   dataset: '1m',

@@ -1,9 +1,9 @@
-===== Q5 DISTRIBUTED MONTHLY REPEAT OFFENDERS =====
+ Q5 DISTRIBUTED MONTHLY REPEAT OFFENDERS
 Warmup runs: 5
 Measured runs: 30
 
-===== 100K =====
-===== Q5 Top 10 Results =====
+ 100K
+ Q5 Top 10 Results
 [
   {
     repeat_offender_vehicles: 173,
@@ -66,7 +66,7 @@ Measured runs: 30
     month: '2023-11'
   }
 ]
-===== Q5 Performance =====
+ Q5 Performance
 {
   query: 'Q5 - Monthly Repeat-Offender Analysis',
   dataset: '100K',
@@ -157,8 +157,8 @@ Measured runs: 30
   ]
 }
 
-===== 500K =====
-===== Q5 Top 10 Results =====
+ 500K
+ Q5 Top 10 Results
 [
   {
     repeat_offender_vehicles: 3323,
@@ -221,7 +221,7 @@ Measured runs: 30
     month: '2024-02'
   }
 ]
-===== Q5 Performance =====
+ Q5 Performance
 {
   query: 'Q5 - Monthly Repeat-Offender Analysis',
   dataset: '500K',
@@ -312,8 +312,8 @@ Measured runs: 30
   ]
 }
 
-===== 1M =====
-===== Q5 Top 10 Results =====
+ 1M
+ Q5 Top 10 Results
 [
   {
     repeat_offender_vehicles: 10312,
@@ -376,7 +376,7 @@ Measured runs: 30
     month: '2024-02'
   }
 ]
-===== Q5 Performance =====
+ Q5 Performance
 {
   query: 'Q5 - Monthly Repeat-Offender Analysis',
   dataset: '1M',
@@ -467,4 +467,4 @@ Measured runs: 30
   ]
 }
 
-===== Q5 ALL SIZES COMPLETED =====
+ Q5 ALL SIZES COMPLETED

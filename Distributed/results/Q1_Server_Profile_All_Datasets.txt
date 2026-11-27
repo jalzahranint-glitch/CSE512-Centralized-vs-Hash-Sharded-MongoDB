@@ -1,4 +1,39 @@
-===== shard1 =====
+Q1 DISTRIBUTED SERVER PROFILING
+
+100K DATASET
+shard1 
+{
+  operations: [
+    {
+      op: 'query',
+      ns: 'nyc_traffic.violations_100k',
+      keysExamined: 1,
+      docsExamined: 1,
+      nreturned: 1,
+      millis: 3,
+      ts: ISODate('2026-11-10T12:51:59.188Z')
+    }
+  ],
+  totalShardOperationMillis: 3
+}
+ shard2 
+{
+  operations: [],
+  totalShardOperationMillis: 0
+}
+ shard3 
+{
+  operations: [],
+  totalShardOperationMillis: 0
+}
+ shard4 
+{
+  operations: [],
+  totalShardOperationMillis: 0
+}
+
+500K AND 1M DATASETS
+shard1 
 {
   tag: 'CSE512_Q1_500K_PROFILE_TEST',
   operations: [],
@@ -9,7 +44,7 @@
   operations: [],
   serverOperationMillis: null
 }
-===== shard2 =====
+ shard2 
 {
   tag: 'CSE512_Q1_500K_PROFILE_TEST',
   operations: [],
@@ -20,7 +55,7 @@
   operations: [],
   serverOperationMillis: null
 }
-===== shard3 =====
+ shard3 
 {
   tag: 'CSE512_Q1_500K_PROFILE_TEST',
   operations: [
@@ -51,7 +86,7 @@
   ],
   serverOperationMillis: 2
 }
-===== shard4 =====
+ shard4 
 {
   tag: 'CSE512_Q1_500K_PROFILE_TEST',
   operations: [],

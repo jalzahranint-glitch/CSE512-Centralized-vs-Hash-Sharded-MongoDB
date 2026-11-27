@@ -114,10 +114,10 @@ try {
         )
       : null;
 
-    print("===== Q4 Results: " + size + " =====");
+    print(" Q4 Results: " + size + " ");
     printjson(results);
 
-    print("===== Q4 Performance: " + size + " =====");
+    print(" Q4 Performance: " + size + " ");
     printjson({
       query: "Q4 - Borough and Monthly Analysis",
       dataset: size,

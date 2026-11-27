@@ -1,4 +1,4 @@
-===== Q2 Results: 100k =====
+ Q2 Results: 100k
 [
   {
     _id: '19326c93adf46c461d9e7c3b741866facc8cb7a9b4d7115d1a8745e45a5737b8',
@@ -41,7 +41,7 @@
     violation_count: 7
   }
 ]
-===== Q2 Performance: 100k =====
+ Q2 Performance: 100k
 {
   query: 'Q2 - Repeat Offender Detection',
   dataset: '100k',
@@ -52,7 +52,7 @@
   totalKeysExamined: 0,
   recordsReturned: 10
 }
-===== Q2 Results: 500k =====
+ Q2 Results: 500k
 [
   {
     _id: '19326c93adf46c461d9e7c3b741866facc8cb7a9b4d7115d1a8745e45a5737b8',
@@ -95,7 +95,7 @@
     violation_count: 25
   }
 ]
-===== Q2 Performance: 500k =====
+ Q2 Performance: 500k
 {
   query: 'Q2 - Repeat Offender Detection',
   dataset: '500k',
@@ -106,7 +106,7 @@
   totalKeysExamined: 0,
   recordsReturned: 10
 }
-===== Q2 Results: 1m =====
+ Q2 Results: 1m
 [
   {
     _id: '516db70d5cc57f091724efdde8bf390a1af447a8a7653b51c3661c4877967394',
@@ -149,7 +149,7 @@
     violation_count: 49
   }
 ]
-===== Q2 Performance: 1m =====
+ Q2 Performance: 1m
 {
   query: 'Q2 - Repeat Offender Detection',
   dataset: '1m',

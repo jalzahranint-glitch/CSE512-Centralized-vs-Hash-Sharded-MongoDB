@@ -102,10 +102,10 @@ try {
         )
       : null;
 
-    print("===== Q3 Results: " + size + " =====");
+    print(" Q3 Results: " + size + " ");
     printjson(results);
 
-    print("===== Q3 Performance: " + size + " =====");
+    print(" Q3 Performance: " + size + " ");
     printjson({
       query: "Q3 - Cross-Borough Vehicle Detection",
       dataset: size,

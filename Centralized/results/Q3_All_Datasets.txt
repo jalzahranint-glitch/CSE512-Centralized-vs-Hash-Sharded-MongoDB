@@ -1,4 +1,4 @@
-===== Q3 Results: 100k =====
+ Q3 Results: 100k
 [
   {
     _id: '6f7e635ee16bbb7da6ee271b8b5a9cc3d13e1f3691f199dc40bcfab5a88bdb2f',
@@ -101,7 +101,7 @@
     borough_count: 3
   }
 ]
-===== Q3 Performance: 100k =====
+ Q3 Performance: 100k
 {
   query: 'Q3 - Cross-Borough Vehicle Detection',
   dataset: '100k',
@@ -112,7 +112,7 @@
   totalKeysExamined: 0,
   recordsReturned: 10
 }
-===== Q3 Results: 500k =====
+ Q3 Results: 500k
 [
   {
     _id: '95083fb211a2b78597bff294f693d6f0cfe814799dedeb2f7f5e73d538de09bf',
@@ -228,7 +228,7 @@
     borough_count: 4
   }
 ]
-===== Q3 Performance: 500k =====
+ Q3 Performance: 500k
 {
   query: 'Q3 - Cross-Borough Vehicle Detection',
   dataset: '500k',
@@ -239,7 +239,7 @@
   totalKeysExamined: 0,
   recordsReturned: 10
 }
-===== Q3 Results: 1m =====
+ Q3 Results: 1m
 [
   {
     _id: '01b3866c6beba600319b0933c56490e89b31270c1a3e43dfad06b380d561afde',
@@ -362,7 +362,7 @@
     borough_count: 5
   }
 ]
-===== Q3 Performance: 1m =====
+ Q3 Performance: 1m
 {
   query: 'Q3 - Cross-Borough Vehicle Detection',
   dataset: '1m',

@@ -1,10 +1,10 @@
-===== Q3 DISTRIBUTED CROSS-BOROUGH =====
+ Q3 DISTRIBUTED CROSS-BOROUGH
 Minimum distinct boroughs: 2
 Warmup runs: 5
 Measured runs: 30
 
-===== 100K =====
-===== Q3 Top 10 Results =====
+ 100K
+ Q3 Top 10 Results
 [
   {
     _id: '6f7e635ee16bbb7da6ee271b8b5a9cc3d13e1f3691f199dc40bcfab5a88bdb2f',
@@ -107,7 +107,7 @@ Measured runs: 30
     borough_count: 3
   }
 ]
-===== Q3 Performance =====
+ Q3 Performance
 {
   query: 'Q3 - Cross-Borough Vehicle Detection',
   dataset: '100K',
@@ -198,8 +198,8 @@ Measured runs: 30
   ]
 }
 
-===== 500K =====
-===== Q3 Top 10 Results =====
+ 500K
+ Q3 Top 10 Results
 [
   {
     _id: '95083fb211a2b78597bff294f693d6f0cfe814799dedeb2f7f5e73d538de09bf',
@@ -315,7 +315,7 @@ Measured runs: 30
     borough_count: 4
   }
 ]
-===== Q3 Performance =====
+ Q3 Performance
 {
   query: 'Q3 - Cross-Borough Vehicle Detection',
   dataset: '500K',
@@ -406,8 +406,8 @@ Measured runs: 30
   ]
 }
 
-===== 1M =====
-===== Q3 Top 10 Results =====
+ 1M
+ Q3 Top 10 Results
 [
   {
     _id: '01b3866c6beba600319b0933c56490e89b31270c1a3e43dfad06b380d561afde',
@@ -530,7 +530,7 @@ Measured runs: 30
     borough_count: 5
   }
 ]
-===== Q3 Performance =====
+ Q3 Performance
 {
   query: 'Q3 - Cross-Borough Vehicle Detection',
   dataset: '1M',
@@ -621,4 +621,4 @@ Measured runs: 30
   ]
 }
 
-===== Q3 ALL SIZES COMPLETED =====
+ Q3 ALL SIZES COMPLETED

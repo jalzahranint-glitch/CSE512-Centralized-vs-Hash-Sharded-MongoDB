@@ -84,14 +84,14 @@ if (!sample) {
 
 var vehicle = sample.vehicle_hash;
 
-print("===== Q1 DISTRIBUTED VEHICLE LOOKUP =====");
+print(" Q1 DISTRIBUTED VEHICLE LOOKUP ");
 print("Vehicle hash: " + vehicle);
 
 for (var i = 0; i < datasets.length; i++) {
   var dataset = datasets[i];
   var filter = { vehicle_hash: vehicle };
 
-  print("\n===== " + dataset.size + " =====");
+  print("\n " + dataset.size + " ");
 
   var results = lookup(dataset.name, vehicle);
 
@@ -137,4 +137,4 @@ for (var i = 0; i < datasets.length; i++) {
   });
 }
 
-print("\n===== Q1 ALL SIZES COMPLETED =====");
+print("\n Q1 ALL SIZES COMPLETED ");

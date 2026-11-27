@@ -196,14 +196,14 @@ function q3Analyze(explain) {
   };
 }
 
-print("===== Q3 DISTRIBUTED CROSS-BOROUGH =====");
+print(" Q3 DISTRIBUTED CROSS-BOROUGH ");
 print("Minimum distinct boroughs: 2");
 print("Warmup runs: " + Q3_WARMUP);
 print("Measured runs: " + Q3_RUNS);
 
 // Run the query for each dataset size.
 for (var dataset of q3sizes) {
-  print("\n===== " + dataset.size + " =====");
+  print("\n " + dataset.size + " ");
 
   var results = runQ3(dataset.name);
 
@@ -231,10 +231,10 @@ for (var dataset of q3sizes) {
   // Extract shard information and execution statistics.
   var plan = q3Analyze(explain);
 
-  print("===== Q3 Top 10 Results =====");
+  print(" Q3 Top 10 Results ");
   printjson(results);
 
-  print("===== Q3 Performance =====");
+  print(" Q3 Performance ");
 
   printjson({
     query: "Q3 - Cross-Borough Vehicle Detection",
@@ -262,4 +262,4 @@ for (var dataset of q3sizes) {
   });
 }
 
-print("\n===== Q3 ALL SIZES COMPLETED =====");
+print("\n Q3 ALL SIZES COMPLETED ");

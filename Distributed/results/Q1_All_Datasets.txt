@@ -1,7 +1,7 @@
-===== Q1 DISTRIBUTED VEHICLE LOOKUP =====
+ Q1 DISTRIBUTED VEHICLE LOOKUP 
 Vehicle hash: e5a78c9d453d18b28e03adaaab7804a79457e5f5c4fa235dde042d54f11dfe60
 
-===== 100K =====
+ 100K 
 {
   query: 'Q1 - Vehicle Lookup',
   dataset: '100K',
@@ -49,7 +49,7 @@ Vehicle hash: e5a78c9d453d18b28e03adaaab7804a79457e5f5c4fa235dde042d54f11dfe60
   ]
 }
 
-===== 500K =====
+ 500K 
 {
   query: 'Q1 - Vehicle Lookup',
   dataset: '500K',
@@ -97,7 +97,7 @@ Vehicle hash: e5a78c9d453d18b28e03adaaab7804a79457e5f5c4fa235dde042d54f11dfe60
   ]
 }
 
-===== 1M =====
+ 1M 
 {
   query: 'Q1 - Vehicle Lookup',
   dataset: '1M',
@@ -145,4 +145,4 @@ Vehicle hash: e5a78c9d453d18b28e03adaaab7804a79457e5f5c4fa235dde042d54f11dfe60
   ]
 }
 
-===== Q1 ALL SIZES COMPLETED =====
+ Q1 ALL SIZES COMPLETED 

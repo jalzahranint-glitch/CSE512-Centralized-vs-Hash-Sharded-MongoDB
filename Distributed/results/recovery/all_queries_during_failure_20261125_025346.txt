@@ -1,7 +1,7 @@
-=== STOPPING SHARD 4 ===
+ STOPPING SHARD 4
 Shard 4 stopped.
-=== TESTING Q1-Q5 DURING FAILURE ===
-=== DURING FAILURE: Q1-Q5 ===
+ TESTING Q1-Q5 DURING FAILURE
+ DURING FAILURE: Q1-Q5
 100k Q1: FAIL - Encountered non-retryable error during query :: caused by :: operation exceeded time limit
 100k Q2: FAIL - operation exceeded time limit
 100k Q3: FAIL - operation exceeded time limit
@@ -21,6 +21,6 @@ Passed: 0/15
 Failed: 15
 
 Test exit code: 2
-=== RESTARTING SHARD 4 ===
+ RESTARTING SHARD 4
 Restart exit code: 0
 nyc-mongo-distributed-shard4-1

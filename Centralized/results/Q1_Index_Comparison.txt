@@ -1,7 +1,7 @@
 Index ready: 100k
 Index ready: 500k
 Index ready: 1m
-===== Q1 Performance: 100k | Collection Scan =====
+ Q1 Performance: 100k | Collection Scan
 {
   query: 'Q1 - Vehicle Lookup',
   dataset: '100k',
@@ -12,7 +12,7 @@ Index ready: 1m
   totalKeysExamined: 0,
   recordsReturned: 1
 }
-===== Q1 Performance: 100k | Hashed Index =====
+ Q1 Performance: 100k | Hashed Index
 {
   query: 'Q1 - Vehicle Lookup',
   dataset: '100k',
@@ -23,7 +23,7 @@ Index ready: 1m
   totalKeysExamined: 1,
   recordsReturned: 1
 }
-===== Q1 Performance: 500k | Collection Scan =====
+ Q1 Performance: 500k | Collection Scan
 {
   query: 'Q1 - Vehicle Lookup',
   dataset: '500k',
@@ -34,7 +34,7 @@ Index ready: 1m
   totalKeysExamined: 0,
   recordsReturned: 1
 }
-===== Q1 Performance: 500k | Hashed Index =====
+ Q1 Performance: 500k | Hashed Index
 {
   query: 'Q1 - Vehicle Lookup',
   dataset: '500k',
@@ -45,7 +45,7 @@ Index ready: 1m
   totalKeysExamined: 1,
   recordsReturned: 1
 }
-===== Q1 Performance: 1m | Collection Scan =====
+ Q1 Performance: 1m | Collection Scan
 {
   query: 'Q1 - Vehicle Lookup',
   dataset: '1m',
@@ -56,7 +56,7 @@ Index ready: 1m
   totalKeysExamined: 0,
   recordsReturned: 2
 }
-===== Q1 Performance: 1m | Hashed Index =====
+ Q1 Performance: 1m | Hashed Index
 {
   query: 'Q1 - Vehicle Lookup',
   dataset: '1m',

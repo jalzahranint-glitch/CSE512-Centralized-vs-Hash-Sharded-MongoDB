@@ -1,4 +1,4 @@
-===== Q4 Results: 100k =====
+ Q4 Results: 100k
 [
   {
     total_violations: 4567,
@@ -51,7 +51,7 @@
     month: '2023-12'
   }
 ]
-===== Q4 Performance: 100k =====
+ Q4 Performance: 100k
 {
   query: 'Q4 - Borough and Monthly Analysis',
   dataset: '100k',
@@ -62,7 +62,7 @@
   totalKeysExamined: 0,
   recordsReturned: 10
 }
-===== Q4 Results: 500k =====
+ Q4 Results: 500k
 [
   {
     total_violations: 22947,
@@ -115,7 +115,7 @@
     month: '2024-03'
   }
 ]
-===== Q4 Performance: 500k =====
+ Q4 Performance: 500k
 {
   query: 'Q4 - Borough and Monthly Analysis',
   dataset: '500k',
@@ -126,7 +126,7 @@
   totalKeysExamined: 0,
   recordsReturned: 10
 }
-===== Q4 Results: 1m =====
+ Q4 Results: 1m
 [
   {
     total_violations: 45739,
@@ -179,7 +179,7 @@
     month: '2023-12'
   }
 ]
-===== Q4 Performance: 1m =====
+ Q4 Performance: 1m
 {
   query: 'Q4 - Borough and Monthly Analysis',
   dataset: '1m',

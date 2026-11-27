@@ -1,9 +1,9 @@
-===== Q2 DISTRIBUTED REPEAT OFFENDERS =====
+ Q2 DISTRIBUTED REPEAT OFFENDERS
 Warmup runs: 1
 Measured runs: 5
 
-===== 100K =====
-===== Top 10 Repeat Offenders =====
+ 100K
+ Top 10 Repeat Offenders
 [
   {
     _id: '19326c93adf46c461d9e7c3b741866facc8cb7a9b4d7115d1a8745e45a5737b8',
@@ -46,7 +46,7 @@ Measured runs: 5
     violation_count: 7
   }
 ]
-===== Q2 Performance =====
+ Q2 Performance
 {
   query: 'Q2 - Repeat Offender Detection',
   dataset: '100K',
@@ -124,8 +124,8 @@ Measured runs: 5
   ]
 }
 
-===== 500K =====
-===== Top 10 Repeat Offenders =====
+ 500K
+ Top 10 Repeat Offenders
 [
   {
     _id: '19326c93adf46c461d9e7c3b741866facc8cb7a9b4d7115d1a8745e45a5737b8',
@@ -168,7 +168,7 @@ Measured runs: 5
     violation_count: 25
   }
 ]
-===== Q2 Performance =====
+ Q2 Performance
 {
   query: 'Q2 - Repeat Offender Detection',
   dataset: '500K',
@@ -246,8 +246,8 @@ Measured runs: 5
   ]
 }
 
-===== 1M =====
-===== Top 10 Repeat Offenders =====
+ 1M
+ Top 10 Repeat Offenders
 [
   {
     _id: '516db70d5cc57f091724efdde8bf390a1af447a8a7653b51c3661c4877967394',
@@ -290,7 +290,7 @@ Measured runs: 5
     violation_count: 49
   }
 ]
-===== Q2 Performance =====
+ Q2 Performance
 {
   query: 'Q2 - Repeat Offender Detection',
   dataset: '1M',
@@ -368,4 +368,4 @@ Measured runs: 5
   ]
 }
 
-===== Q2 ALL SIZES COMPLETED =====
+ Q2 ALL SIZES COMPLETED

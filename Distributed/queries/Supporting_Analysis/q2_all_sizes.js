@@ -154,12 +154,12 @@ function analyzeExplain(explain) {
   };
 }
 
-print("===== Q2 DISTRIBUTED REPEAT OFFENDERS =====");
+print(" Q2 DISTRIBUTED REPEAT OFFENDERS ");
 print("Warmup runs: " + WARMUP);
 print("Measured runs: " + RUNS);
 
 for (var dataset of q2sizes) {
-  print("\n===== " + dataset.size + " =====");
+  print("\n " + dataset.size + " ");
 
   var results = runQ2(dataset.name);
 
@@ -183,10 +183,10 @@ for (var dataset of q2sizes) {
 
   var plan = analyzeExplain(explain);
 
-  print("===== Top 10 Repeat Offenders =====");
+  print(" Top 10 Repeat Offenders ");
   printjson(results);
 
-  print("===== Q2 Performance =====");
+  print(" Q2 Performance ");
 
   printjson({
     query: "Q2 - Repeat Offender Detection",
@@ -214,4 +214,4 @@ for (var dataset of q2sizes) {
   });
 }
 
-print("\n===== Q2 ALL SIZES COMPLETED =====");
+print("\n Q2 ALL SIZES COMPLETED ");

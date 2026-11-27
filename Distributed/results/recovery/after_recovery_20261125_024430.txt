@@ -1,9 +1,9 @@
-=== SHARD 4 RECOVERY STATUS ===
+ SHARD 4 RECOVERY STATUS
 Replica Set: shard4RS
 State: 1
 Members: 1
 shard4:27017 | PRIMARY
-=== Q1 AFTER RECOVERY ===
+ Q1 AFTER RECOVERY
 100k: 1 records
 500k: 1 records
 1m: 2 records

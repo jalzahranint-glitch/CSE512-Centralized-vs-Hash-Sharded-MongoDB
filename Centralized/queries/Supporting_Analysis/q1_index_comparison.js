@@ -96,8 +96,8 @@ try {
       );
 
       print(
-        "===== Q1 Performance: " +
-        size + " | " + mode.name + " ====="
+        " Q1 Performance: " +
+        size + " | " + mode.name + " "
       );
 
       printjson({

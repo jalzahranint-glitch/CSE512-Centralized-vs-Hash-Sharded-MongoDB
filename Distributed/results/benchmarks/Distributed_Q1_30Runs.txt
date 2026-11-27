@@ -1,31 +1,31 @@
-[direct: mongos] test> 
-[direct: mongos] test> 
-[direct: mongos] test> | | | | 
-[direct: mongos] test> 
-[direct: mongos] test> 
-[direct: mongos] test> 
-[direct: mongos] test> 
+[direct: mongos] test>
+[direct: mongos] test>
+[direct: mongos] test> | | | |
+[direct: mongos] test>
+[direct: mongos] test>
+[direct: mongos] test>
+[direct: mongos] test>
 [direct: mongos] test> | | | | | | | | | | | | | | | [Function: lookup]
-[direct: mongos] test> 
+[direct: mongos] test>
 [direct: mongos] test> | | | | | | | | | | [Function: metrics]
-[direct: mongos] test> 
+[direct: mongos] test>
 [direct: mongos] test> | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | [Function: getPlanInfo]
-[direct: mongos] test> 
-[direct: mongos] test> | | 
-[direct: mongos] test> 
-[direct: mongos] test> 
-[direct: mongos] test> 
-[direct: mongos] test> | | 
-[direct: mongos] test> 
-[direct: mongos] test> 
-[direct: mongos] test> 
-[direct: mongos] test> ===== Q1 DISTRIBUTED VEHICLE LOOKUP =====
+[direct: mongos] test>
+[direct: mongos] test> | |
+[direct: mongos] test>
+[direct: mongos] test>
+[direct: mongos] test>
+[direct: mongos] test> | |
+[direct: mongos] test>
+[direct: mongos] test>
+[direct: mongos] test>
+[direct: mongos] test>  Q1 DISTRIBUTED VEHICLE LOOKUP
 
 [direct: mongos] test> Vehicle hash: e1b3dc8fd32093207a7a965292593e4601fe2825d72d02e58f37d0d438e84dd2
 
-[direct: mongos] test> 
-[direct: mongos] test> | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | 
-===== 100K =====
+[direct: mongos] test>
+[direct: mongos] test> | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+ 100K
 {
   query: 'Q1 - Vehicle Lookup',
   dataset: '100K',
@@ -83,7 +83,7 @@
   ]
 }
 
-===== 500K =====
+ 500K
 {
   query: 'Q1 - Vehicle Lookup',
   dataset: '500K',
@@ -141,7 +141,7 @@
   ]
 }
 
-===== 1M =====
+ 1M
 {
   query: 'Q1 - Vehicle Lookup',
   dataset: '1M',
@@ -199,8 +199,8 @@
   ]
 }
 
-[direct: mongos] test> 
-[direct: mongos] test> 
-===== Q1 ALL SIZES COMPLETED =====
+[direct: mongos] test>
+[direct: mongos] test>
+ Q1 ALL SIZES COMPLETED
 
-[direct: mongos] test> 
+[direct: mongos] test>

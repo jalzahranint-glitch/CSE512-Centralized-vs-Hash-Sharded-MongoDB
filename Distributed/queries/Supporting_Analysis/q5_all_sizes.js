@@ -191,12 +191,12 @@ function q5Analyze(explain) {
   };
 }
 
-print("===== Q5 DISTRIBUTED MONTHLY REPEAT OFFENDERS =====");
+print(" Q5 DISTRIBUTED MONTHLY REPEAT OFFENDERS ");
 print("Warmup runs: " + Q5_WARMUP);
 print("Measured runs: " + Q5_RUNS);
 
 for (var dataset of q5sizes) {
-  print("\n===== " + dataset.size + " =====");
+  print("\n " + dataset.size + " ");
 
   var results = runQ5(dataset.name);
 
@@ -220,10 +220,10 @@ for (var dataset of q5sizes) {
 
   var plan = q5Analyze(explain);
 
-  print("===== Q5 Top 10 Results =====");
+  print(" Q5 Top 10 Results ");
   printjson(results);
 
-  print("===== Q5 Performance =====");
+  print(" Q5 Performance ");
   printjson({
     query: "Q5 - Monthly Repeat-Offender Analysis",
     dataset: dataset.size,
@@ -251,4 +251,4 @@ for (var dataset of q5sizes) {
   });
 }
 
-print("\n===== Q5 ALL SIZES COMPLETED =====");
+print("\n Q5 ALL SIZES COMPLETED ");

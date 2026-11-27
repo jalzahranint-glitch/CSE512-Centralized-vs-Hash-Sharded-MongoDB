@@ -1,3 +1,13 @@
+Q1 DISTRIBUTED CLIENT LATENCY
+
+100K DATASET
+{
+  tag: 'CSE512_Q1_100K_PROFILE_TEST',
+  recordsReturned: 1,
+  clientLatencyMs: 9
+}
+
+500K AND 1M DATASETS
 {
   dataset: '500k',
   tag: 'CSE512_Q1_500K_PROFILE_TEST',

@@ -92,7 +92,7 @@ if (!sample) {
 
 var vehicle = "e1b3dc8fd32093207a7a965292593e4601fe2825d72d02e58f37d0d438e84dd2";
 
-print("===== Q1 DISTRIBUTED VEHICLE LOOKUP =====");
+print(" Q1 DISTRIBUTED VEHICLE LOOKUP ");
 print("Vehicle hash: " + vehicle);
 
 // Run the vehicle lookup for each dataset size.
@@ -100,7 +100,7 @@ for (var i = 0; i < datasets.length; i++) {
   var dataset = datasets[i];
   var filter = { vehicle_hash: vehicle };
 
-  print("\n===== " + dataset.size + " =====");
+  print("\n " + dataset.size + " ");
 
   // Retrieve matching records for the selected vehicle.
   var results = lookup(dataset.name, vehicle);
@@ -153,4 +153,4 @@ for (var i = 0; i < datasets.length; i++) {
   });
 }
 
-print("\n===== Q1 ALL SIZES COMPLETED =====");
+print("\n Q1 ALL SIZES COMPLETED ");
